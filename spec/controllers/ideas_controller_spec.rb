@@ -24,7 +24,10 @@ describe IdeasController do
   # Idea. As you add validations to Idea, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :user_id => 4,
+      :title => "aaa",
+      :content => "123456"
+    }
   end
 
   describe "GET index" do

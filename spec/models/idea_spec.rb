@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: ideas
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  content    :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Idea do
