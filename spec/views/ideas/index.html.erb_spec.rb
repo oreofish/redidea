@@ -14,6 +14,12 @@ describe "ideas/index.html.erb" do
         :content => "Content"
       )
     ])
+    
+    assign(:idea, stub_model(Idea,
+      :user_id => 1,
+      :title => "MyString",
+      :content => "MyString"
+    ).as_new_record)
   end
 
   it "renders a list of ideas" do
@@ -25,4 +31,17 @@ describe "ideas/index.html.erb" do
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "tr>td", :text => "Content".to_s, :count => 2
   end
+  
+  # case from new
+  it "renders new idea form" do
+    render
+
+    # Run the generator again with the --webrat flag if you want to use webrat matchers
+    assert_select "form", :action => ideas_path, :method => "post" do
+      assert_select "input#idea_user_id", :name => "idea[user_id]"
+      assert_select "input#idea_title", :name => "idea[title]"
+      assert_select "input#idea_content", :name => "idea[content]"
+    end
+  end
+
 end

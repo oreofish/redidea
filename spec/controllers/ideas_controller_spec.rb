@@ -36,6 +36,11 @@ describe IdeasController do
       get :index
       assigns(:ideas).should eq([idea])
     end
+    
+    it "assigns a new idea as @idea" do
+      get :index
+      assigns(:idea).should be_a_new(Idea)
+    end
   end
 
   describe "GET show" do
@@ -46,12 +51,6 @@ describe IdeasController do
     end
   end
 
-  describe "GET new" do
-    it "assigns a new idea as @idea" do
-      get :new
-      assigns(:idea).should be_a_new(Idea)
-    end
-  end
 
   describe "GET edit" do
     it "assigns the requested idea as @idea" do
