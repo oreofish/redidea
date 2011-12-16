@@ -43,7 +43,14 @@ describe Idea do
     short_idea.should_not be_valid
   end
 
-  it "should not create with long content" do 
+  it "should create with long content" do 
+    long_content = "a" * 400
+    long_idea = Idea.new(@attr.merge(:content => long_content))
+    long_idea.save
+    long_idea.reload.content == long_content
+  end
+
+  it "should not create with too long content" do 
     long_content = "a" * 401
     long_idea = Idea.new(@attr.merge(:content => long_content))
     long_idea.should_not be_valid
