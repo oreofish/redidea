@@ -76,7 +76,7 @@ describe IdeasController do
 
       it "redirects to the created idea" do
         post :create, :idea => valid_attributes
-        response.should redirect_to(Idea.last)
+        response.should redirect_to(ideas_path)
       end
     end
 
@@ -92,7 +92,7 @@ describe IdeasController do
         # Trigger the behavior that occurs when invalid params are submitted
         Idea.any_instance.stub(:save).and_return(false)
         post :create, :idea => {}
-        response.should render_template("new")
+        response.should redirect_to(ideas_path)
       end
     end
   end
