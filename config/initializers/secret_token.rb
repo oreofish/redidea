@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Redidea::Application.config.secret_token = '75228e84fc2692d027ed3e36c3445ca4942f9d55088dcf05d0df3aec74ecc26d58aa9a3c9bf96b19289d27314f3e0f2b2213899f19b2edd420f8ce4baf7bb971'
+Redidea::Application.config.secret_token = '59f0e0f1786404d011ff9031863158fc0596836cfae098c311ef33e790eea792d5ea3a7ef4fab8f9d17e4978ffa28dd1bc0b4dd48e376e39651cbb537c4550e7'
