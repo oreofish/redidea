@@ -14,7 +14,11 @@ require 'spec_helper'
 
 describe Idea do
   before(:each) do
-    @attr = { :user_id => 4, :title => "title", :content => "test content"}
+    @attr = {
+      :user_id => 4,
+      :title => "title",
+      :content => "test content"
+    }
   end
 
   it "should create a new idea with attr" do
@@ -60,5 +64,12 @@ describe Idea do
     Idea.create!(@attr)
     idea = Idea.new(@attr)
     idea.should_not be_valid
+  end
+
+  it "should store right idea" do 
+    long_idea = Idea.create!(@attr)
+    long_idea.reload.user_id == @attr[:user_id]
+    long_idea.reload.title == @attr[:title]
+    long_idea.reload.content == @attr[:content]
   end
 end
