@@ -6,9 +6,13 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @ideas = Idea.all
-    @idea = Idea.new
+    if params[:scope] == "mine" 
+      @ideas = current_user.ideas
+    else 
+      @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
+    end
 
+    @idea = Idea.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @ideas }

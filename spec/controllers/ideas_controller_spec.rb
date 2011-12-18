@@ -54,15 +54,31 @@ describe IdeasController do
     end
     
     describe "GET index" do
-      it "assigns all ideas as @ideas" do
-        idea = Factory(:idea, :user => @user)
-        get :index
-        assigns(:ideas).should eq([idea])
+        it "assigns a new idea as @idea" do
+          get :index
+          assigns(:idea).should be_a_new(Idea)
       end
-      it "assigns a new idea as @idea" do
-        get :index
-        assigns(:idea).should be_a_new(Idea)
+
+      describe "with argument: scope == mine" do
+        before(:each) do 
+          @idea = Factory(:idea, :user => @user)
+          sign_out(@user)
+          wrong_user = Factory(:user, :email => Factory.next(:email))
+          sign_in(wrong_user)
+          @idea2 = Factory(:idea, :user => wrong_user, :title => Factory.next(:title))
+        end
+
+        it "should show others ideas" do
+          get :index
+          assigns(:ideas).should eq([@idea])
+        end
+
+        it "should show my ideas" do
+          get :index,:scope => "mine"
+          assigns(:ideas).should eq([@idea2])
+        end
       end
+
     end
 
     describe "POST create" do
