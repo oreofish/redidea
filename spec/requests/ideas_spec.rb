@@ -2,12 +2,9 @@ require 'spec_helper'
 
 describe "Ideas" do
   describe "GET /ideas" do
-    it "should have sign_in/sign_up links" do
+    it "should be redirect_to sign_in page" do
       get ideas_path
-      response.should have_selector("a", :href => new_user_session_path,
-                                    :content => "Sign in")
-      response.should have_selector("a", :href => new_user_registration_path,
-                                    :content => "Sign up")
+      response.should redirect_to(new_user_session_path)
     end
     
     describe "after logged in" do

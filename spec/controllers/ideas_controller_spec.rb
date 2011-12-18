@@ -20,6 +20,23 @@ require 'spec_helper'
 
 describe IdeasController do
 
+  describe "access deny" do
+    it "should deny access to 'index'" do
+      get :index
+      response.should redirect_to(new_user_session_path)
+    end
+
+    it "should deny access to 'create'" do
+      post :create
+      response.should redirect_to(new_user_session_path)
+    end
+
+    it "should deny access to 'destroy'" do
+      delete :destroy, :id => 1
+      response.should redirect_to(new_user_session_path)
+    end
+  end
+
   # This should return the minimal set of attributes required to create a valid
   # Idea. As you add validations to Idea, be sure to
   # update the return value of this method accordingly.
@@ -30,68 +47,75 @@ describe IdeasController do
     }
   end
 
-  describe "GET index" do
-    it "assigns all ideas as @ideas" do
-      idea = Idea.create! valid_attributes
-      get :index
-      assigns(:ideas).should eq([idea])
+  describe "after logged in" do 
+    before(:each) do 
+      @user = Factory(:user)
+      sign_in @user
     end
     
-    it "assigns a new idea as @idea" do
-      get :index
-      assigns(:idea).should be_a_new(Idea)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Idea" do
-        expect {
-          post :create, :idea => valid_attributes
-        }.to change(Idea, :count).by(1)
+    describe "GET index" do
+      it "assigns all ideas as @ideas" do
+        idea = Idea.create! valid_attributes
+        get :index
+        assigns(:ideas).should eq([idea])
       end
-
-      it "assigns a newly created idea as @idea" do
-        post :create, :idea => valid_attributes
-        assigns(:idea).should be_a(Idea)
-        assigns(:idea).should be_persisted
-      end
-
-      it "redirects to the created idea" do
-        post :create, :idea => valid_attributes
-        response.should redirect_to(ideas_path)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved idea as @idea" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Idea.any_instance.stub(:save).and_return(false)
-        post :create, :idea => {}
+      
+      it "assigns a new idea as @idea" do
+        get :index
         assigns(:idea).should be_a_new(Idea)
       end
+    end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Idea.any_instance.stub(:save).and_return(false)
-        post :create, :idea => {}
-        response.should redirect_to(ideas_path)
+    describe "POST create" do
+      describe "with valid params" do
+        it "creates a new Idea" do
+          expect {
+            post :create, :idea => valid_attributes
+          }.to change(Idea, :count).by(1)
+        end
+
+        it "assigns a newly created idea as @idea" do
+          post :create, :idea => valid_attributes
+          assigns(:idea).should be_a(Idea)
+          assigns(:idea).should be_persisted
+        end
+
+        it "redirects to the created idea" do
+          post :create, :idea => valid_attributes
+          response.should redirect_to(ideas_path)
+        end
+      end
+
+      describe "with invalid params" do
+        it "assigns a newly created but unsaved idea as @idea" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Idea.any_instance.stub(:save).and_return(false)
+          post :create, :idea => {}
+          assigns(:idea).should be_a_new(Idea)
+        end
+
+        it "re-renders the 'new' template" do
+          # Trigger the behavior that occurs when invalid params are submitted
+          Idea.any_instance.stub(:save).and_return(false)
+          post :create, :idea => {}
+          response.should redirect_to(ideas_path)
+        end
       end
     end
-  end
 
-  describe "DELETE destroy" do
-    it "destroys the requested idea" do
-      idea = Idea.create! valid_attributes
-      expect {
+    describe "DELETE destroy" do
+      it "destroys the requested idea" do
+        idea = Idea.create! valid_attributes
+        expect {
+          delete :destroy, :id => idea.id
+        }.to change(Idea, :count).by(-1)
+      end
+
+      it "redirects to the ideas list" do
+        idea = Idea.create! valid_attributes
         delete :destroy, :id => idea.id
-      }.to change(Idea, :count).by(-1)
-    end
-
-    it "redirects to the ideas list" do
-      idea = Idea.create! valid_attributes
-      delete :destroy, :id => idea.id
-      response.should redirect_to(ideas_url)
+        response.should redirect_to(ideas_url)
+      end
     end
   end
 
