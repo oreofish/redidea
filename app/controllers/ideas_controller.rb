@@ -1,5 +1,7 @@
 class IdeasController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :authorized_user, :only => :destroy
+
 
   # GET /ideas
   # GET /ideas.json
@@ -40,4 +42,10 @@ class IdeasController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+    def authorized_user
+      @idea = current_user.ideas.find_by_id(params[:id])
+      redirect_to root_path if @idea.nil?
+    end
 end

@@ -72,6 +72,25 @@ describe Idea do
     long_idea.reload.content == @attr[:content]
   end
 
+  describe "idea associations" do
+    before(:each) do
+      @user = Factory(:user)
+      @idea1 = Factory(:idea, :user => @user, :created_at => 1.day.ago)
+      @idea2 = Factory(:idea, :user => @user, :title => Factory.next(:title), :created_at => 1.hour.ago)
+    end
+
+    it "should have the right ideas in the right order" do
+      @user.ideas.should == [@idea1, @idea2]
+    end
+
+    it "should destroy associated ideas" do
+      @user.destroy
+      [@idea1, @idea2].each do |idea|
+        Idea.find_by_id(idea.id).should be_nil
+      end
+    end
+  end
+
   describe "user associations" do
     before(:each) do
       @user = Factory(:user)

@@ -105,18 +105,31 @@ describe IdeasController do
 
     describe "DELETE destroy" do
       it "destroys the requested idea" do
-        idea = Idea.create! valid_attributes
+        idea = Factory(:idea, :user => @user)
         expect {
           delete :destroy, :id => idea.id
         }.to change(Idea, :count).by(-1)
       end
 
       it "redirects to the ideas list" do
-        idea = Idea.create! valid_attributes
+        idea = Factory(:idea, :user => @user)
         delete :destroy, :id => idea.id
         response.should redirect_to(ideas_url)
       end
     end
   end
 
+  describe "DELETE for an unauthorized user" do
+    before(:each) do
+      @user = Factory(:user)
+      wrong_user = Factory(:user, :email => Factory.next(:email))
+      sign_in(wrong_user)
+      @idea = Factory(:idea, :user => @user)
+    end
+
+    it "should deny access" do
+      delete :destroy, :id => @idea
+      response.should redirect_to(root_url)
+    end
+  end
 end
