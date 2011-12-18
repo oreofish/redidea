@@ -27,6 +27,16 @@ describe "ideas/index.html.erb" do
     assert_select "tr>td", :text => "Content".to_s, :count => 2
   end
   
+  it "renders a list of ideas" do
+    render
+    # link to others' ideas
+    rendered.should have_selector("a",   :href => ideas_path,
+                                         :content => "ideas") 
+    # link to mine 
+    rendered.should have_selector("a",   :href => "#{ideas_path}?scope=mine",
+                                         :content => "mine") 
+  end
+
   # case from new
   it "renders new idea form" do
     render
