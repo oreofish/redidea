@@ -16,5 +16,5 @@ class Idea < ActiveRecord::Base
   validates :title,   :presence     => true,
                       :uniqueness   => true,
                       :length       => { :maximum => 30 }
-
+  belongs_to :user 
 end

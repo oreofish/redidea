@@ -15,7 +15,6 @@ require 'spec_helper'
 describe Idea do
   before(:each) do
     @attr = {
-      :user_id => 4,
       :title => "title",
       :content => "test content"
     }
@@ -71,5 +70,21 @@ describe Idea do
     long_idea.reload.user_id == @attr[:user_id]
     long_idea.reload.title == @attr[:title]
     long_idea.reload.content == @attr[:content]
+  end
+
+  describe "user associations" do
+    before(:each) do
+      @user = Factory(:user)
+      @idea = @user.ideas.create(@attr)
+    end
+
+    it "should have a user attribute" do
+      @idea.should respond_to(:user)
+    end
+
+    it "should have the right associated user" do
+      @idea.user_id.should == @user.id
+      @idea.user.should == @user
+    end
   end
 end
