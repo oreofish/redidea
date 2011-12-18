@@ -105,4 +105,14 @@ describe Idea do
       @idea.user.should == @user
     end
   end
+  
+  describe "like associated" do 
+    before(:each) do
+      @idea = @user.ideas.create(@attr)
+    end
+
+    it "should have an like attribute" do
+      @idea.should respond_to(:likes)
+    end
+  end
 end
