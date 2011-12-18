@@ -11,22 +11,6 @@ class IdeasController < ApplicationController
     end
   end
 
-  # GET /ideas/1
-  # GET /ideas/1.json
-  def show
-    @idea = Idea.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @idea }
-    end
-  end
-
-  # GET /ideas/1/edit
-  def edit
-    @idea = Idea.find(params[:id])
-  end
-
   # POST /ideas
   # POST /ideas.json
   def create
@@ -38,22 +22,6 @@ class IdeasController < ApplicationController
         format.json { render :json => @idea, :status => :created, :location => @idea }
       else
         format.html { redirect_to ideas_path, :notice => 'Idea was unsuccessfully created.' }
-        format.json { render :json => @idea.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /ideas/1
-  # PUT /ideas/1.json
-  def update
-    @idea = Idea.find(params[:id])
-
-    respond_to do |format|
-      if @idea.update_attributes(params[:idea])
-        format.html { redirect_to @idea, :notice => 'Idea was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
         format.json { render :json => @idea.errors, :status => :unprocessable_entity }
       end
     end
