@@ -41,7 +41,7 @@ describe IdeasController do
   # Idea. As you add validations to Idea, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { :user_id => 4,
+    { 
       :title => "aaa",
       :content => "123456"
     }
@@ -55,11 +55,10 @@ describe IdeasController do
     
     describe "GET index" do
       it "assigns all ideas as @ideas" do
-        idea = Idea.create! valid_attributes
+        idea = Factory(:idea, :user => @user)
         get :index
         assigns(:ideas).should eq([idea])
       end
-      
       it "assigns a new idea as @idea" do
         get :index
         assigns(:idea).should be_a_new(Idea)
