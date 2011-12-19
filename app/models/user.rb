@@ -8,4 +8,15 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
   has_many :ideas, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
+  
+  has_many :liking, :through => :likes, :source => :idea
+  
+  def liking?(idea)
+    likes.find_by_idea_id(idea)
+  end
+  
+  def like!(idea, score)
+    likes.create!(:idea_id => idea.id, :score => score)
+  end
 end

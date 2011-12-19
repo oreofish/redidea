@@ -21,4 +21,10 @@ class Idea < ActiveRecord::Base
   belongs_to :user 
   attr_accessible :title, :created_at, :content
 
+  has_many :likes, :dependent => :destroy
+  has_many :liked_by, :through => :likes, :source => :user
+
+  def liked_by?(user)
+    likes.find_by_user_id(user)
+  end
 end

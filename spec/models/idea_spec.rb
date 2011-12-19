@@ -114,5 +114,24 @@ describe Idea do
     it "should have an like attribute" do
       @idea.should respond_to(:likes)
     end
+    
+    it "should have an liked_by attribute" do
+      @idea.should respond_to(:liked_by)
+    end
+    
+    describe 'create like' do 
+      before(:each) do 
+        @user2 = Factory(:user, :email => Factory.next(:email))
+        @user2.like!(@idea, 3)
+      end
+      
+      it "can check if the idea liked by user" do
+        @idea.should be_liked_by(@user2)
+      end
+      
+      it "can get all ideas the user like" do
+        @idea.liked_by.should include(@user2)
+      end
+    end
   end
 end

@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(:version => 20111218095116) do
     t.datetime "updated_at"
   end
 
+  add_index "likes", ["idea_id"], :name => "index_likes_on_idea_id"
+  add_index "likes", ["user_id", "idea_id"], :name => "index_likes_on_user_id_and_idea_id", :unique => true
+  add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
