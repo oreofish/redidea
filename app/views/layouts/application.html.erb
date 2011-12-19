@@ -1,27 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Redidea</title>
+  <title>Red Idea</title>
+  <%= stylesheet_link_tag 'web_app_theme' %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="user_nav">
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Red Idea</a></h1>
+      <div id="user-navigation">
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
   <% else %>
     <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
   <% end %>
-</div>
-
+        <ul class="wat-cf">
+          <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
+          <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
+          <li><a href="/logout" class="logout"><%= t("web-app-theme.logout", :default => "Logout") %></a></li>
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf"></ul>
+      </div>
+    </div>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%= Time.now.year %> Red Idea.</p>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <%= yield :sidebar %>
+      </div>
+    </div>
+  </div>
 <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

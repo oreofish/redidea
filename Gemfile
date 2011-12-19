@@ -12,6 +12,7 @@ group :development do
   gem 'rspec-rails'
   gem 'annotate'
   gem 'faker'
+  gem 'web-app-theme'
 end
 
 group :test do
