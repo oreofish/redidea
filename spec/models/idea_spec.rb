@@ -122,7 +122,7 @@ describe Idea do
     describe 'create like' do 
       before(:each) do 
         @user2 = Factory(:user, :email => Factory.next(:email))
-        @user2.like!(@idea, 3)
+        @user2.like!( {:idea_id => @idea, :score => 3} )
       end
       
       it "can check if the idea liked by user" do

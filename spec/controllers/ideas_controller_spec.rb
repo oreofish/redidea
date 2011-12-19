@@ -64,8 +64,8 @@ describe IdeasController do
           @idea = Factory(:idea, :user => @user)
           sign_out(@user)
           wrong_user = Factory(:user, :email => Factory.next(:email))
-          sign_in(wrong_user)
           @idea2 = Factory(:idea, :user => wrong_user, :title => Factory.next(:title))
+          sign_in(wrong_user)
         end
 
         it "should show others ideas" do
@@ -109,7 +109,7 @@ describe IdeasController do
           assigns(:idea).should be_a_new(Idea)
         end
 
-        it "re-renders the 'new' template" do
+        it "redirects to the ideas" do
           # Trigger the behavior that occurs when invalid params are submitted
           Idea.any_instance.stub(:save).and_return(false)
           post :create, :idea => {}

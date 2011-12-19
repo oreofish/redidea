@@ -3,6 +3,7 @@ Redidea::Application.routes.draw do
 
   root :to => "ideas#index"
   resources :ideas
+  resources :likes, :only => :create
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

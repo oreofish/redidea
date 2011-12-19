@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     likes.find_by_idea_id(idea)
   end
   
-  def like!(idea, score)
-    likes.create!(:idea_id => idea.id, :score => score)
+  def like!(like)
+    likes.create!(:idea_id => like[:idea_id], :score => like[:score])
   end
 end
