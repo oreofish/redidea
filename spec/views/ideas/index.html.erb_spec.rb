@@ -36,6 +36,18 @@ describe "ideas/index.html.erb" do
     rendered.should have_selector("a",   :href => "#{ideas_path}?scope=mine",
                                          :content => "mine") 
   end
+  it "has link of like for ideas" do
+    # link to like
+
+    rendered.should have_selector("a",   :href => "scope=1",
+                                  :content => "tread") 
+
+    rendered.should have_selector("a",	 :content => "like") 
+
+    rendered.should have_selector("a",   :content => "surprise") 
+
+    rendered.should have_selector("a",   :content => "soy") 
+  end
 
   # case from new
   it "renders new idea form" do

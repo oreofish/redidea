@@ -4,13 +4,13 @@ class LikesController < ApplicationController
 
   # POST /likes 
   def create
-    @like = current_user.like!(params[:like])
+    @like = current_user.like!(params[:idea_id], params[:score])
     respond_to do |format|
       if @like.save
-        format.html { redirect_to ideas_path, :notice => 'Like was successfully created.' }
+        format.html { redirect_to root_path, :notice => 'Like was successfully created.' }
         format.json { render :json => @like, :status => :created, :location => @like }
       else
-        format.html { redirect_to ideas_path, :notice => 'Like was unsuccessfully created.' }
+        format.html { redirect_to root_path, :notice => 'Like was unsuccessfully created.' }
         format.json { render :json => @like.errors, :status => :unprocessable_entity }
       end
     end
@@ -18,10 +18,10 @@ class LikesController < ApplicationController
 
   private
     def authorized_user
-      if (not params.empty?) and params.has_key?(:like) and params[:like].has_key?(:idea_id) and params[:like].has_key?(:score)
+      if params and params.has_key?(:idea_id) and params.has_key?(:score)
         # 检测传入的like是否是自己的idea 
         # 检测传入的like是否已经被创建
-        if current_user.ideas.find_by_id(params[:like][:idea_id]) or current_user.liking?(params[:like][:idea_id])
+        if current_user.ideas.find_by_id(params[:idea_id]) or current_user.liking?(params[:idea_id])
           redirect_to root_path 
         end
 

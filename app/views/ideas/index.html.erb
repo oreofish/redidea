@@ -17,6 +17,10 @@
     <td><%= idea.title %></td>
     <td><%= idea.content %></td>
     <td><%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'tread', likes_path, :method => :post %></td>
+    <td><%= link_to 'like', likes_path, :method => :post %></td>
+    <td><%= link_to 'surprise', likes_path, :method => :post %></td>
+    <td><%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %></td>
   </tr>
 <% end %>
 </table>

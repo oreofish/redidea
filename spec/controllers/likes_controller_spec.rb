@@ -8,12 +8,6 @@ describe LikesController do
     end
   end
 
-  def valid_attributes
-    { 
-      :score => 1
-    }
-  end
-
   describe "after logged in" do 
     before(:each) do 
       @user = Factory(:user)
@@ -30,27 +24,27 @@ describe LikesController do
       describe "with valid params" do
         it "creates a new Like to others idea" do
           expect {
-            post :create, :like => valid_attributes.merge(:idea_id => @idea2.id)
+            get :create, :idea_id => @idea2.id, :score => 1
           }.to change(Like, :count).by(1)
         end
 
         it "should not create a new Like to my idea" do
           expect {
-            post :create, :like => valid_attributes.merge(:idea_id => @idea.id)
+            get :create, :idea_id => @idea.id, :score => 1
           }.to change(Like, :count).by(0)
         end
 
 	it "should not create a Like to others idea twice" do
-          post :create, :like => valid_attributes.merge(:idea_id => @idea2.id)
+          get :create, :idea_id => @idea2.id, :score => 1
           expect {
-            post :create, :like => valid_attributes.merge(:idea_id => @idea2.id)
+            get :create, :idea_id => @idea2.id, :score => 1
           }.to change(Like, :count).by(0)
         end
 
      
-        it "redirects to the ideas" do
-          post :create, :like => valid_attributes.merge(:idea_id => @idea2.id)
-          response.should redirect_to(ideas_path)
+        it "redirects to the root" do
+          get :create, :idea_id => @idea2.id, :score => 1
+          response.should redirect_to(root_path)
         end
       end
 
