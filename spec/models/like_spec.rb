@@ -6,7 +6,7 @@ describe Like do
     @user2 = Factory(:user, :email => Factory.next(:email))
     @idea = Factory(:idea, :user => @user)
     @idea2 = Factory(:idea, :user => @user2, :title => Factory.next(:title))
-    @like = @user.likes.build(:idea_id => @idea2.id)
+    @like = @user.likes.build(:idea_id => @idea2.id, :score => 1)
   end
 
   it "should have a user attribute" do
@@ -42,8 +42,17 @@ describe Like do
   it "should not create again" do
     @like1 = @user.likes.create(:idea_id => @idea2.id)
     @like2 = @user.likes.new(:idea_id => @idea2.id)
-    # @like2.should_not be_valid
-    pending "fix me later!!!"
+    @like2.should_not be_valid
+  end
+
+  it "should not create like with score larger than 4" do
+    @like.score = 4
+    @like.should_not be_valid
+  end
+
+  it "should not create like with score less than 0" do
+    @like.score = -1
+    @like.should_not be_valid
   end
   
   describe "validations" do
