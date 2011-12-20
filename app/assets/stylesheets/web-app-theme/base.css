@@ -101,6 +101,8 @@ body {
 }
 
 #wrapper {
+  width: 900px;
+  margin:0 auto;
   padding-top: 20px;
 }
 
@@ -109,8 +111,20 @@ body {
   padding-top: 1px;
 }
 
-#main .block .content .inner {
+#main .block .content {
+  margin: 20px;
   padding: 0 15px 15px;  
+}
+
+#main .block .content .inner {
+  border-style: solid;
+  border-width: 1px;
+  padding: 0 15px 15px;  
+}
+
+#main .block .content .inner .right {
+  margin-bottom: 20;
+  float: right;  
 }
 
 #main .main p.first {
