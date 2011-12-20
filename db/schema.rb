@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218095116) do
+ActiveRecord::Schema.define(:version => 20111220075756) do
 
   create_table "ideas", :force => true do |t|
     t.integer  "user_id"
@@ -31,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20111218095116) do
   add_index "likes", ["idea_id"], :name => "index_likes_on_idea_id"
   add_index "likes", ["user_id", "idea_id"], :name => "index_likes_on_user_id_and_idea_id", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
+
+  create_table "plans", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "plan"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

@@ -14,3 +14,8 @@
 /log/*.log
 /tmp
 *.log
+.*~
+*~
+
+# dir for uploading plans
+public/uploads

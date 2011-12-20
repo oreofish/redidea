@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :likes, :dependent => :destroy
   
   has_many :liking, :through => :likes, :source => :idea
+  #has_one :plan, :dependent => :destroy
   
   def liking?(idea)
     likes.find_by_idea_id(idea)

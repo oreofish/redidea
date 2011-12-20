@@ -1,0 +1,36 @@
+<% if not @plan %>
+<h2>Upload your plan here </h2>
+
+  <%= form_for :plan do |f| %>
+    <div class="field">
+      <%= f.label "description" %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label "select your plan: " %><br />
+      <%= f.file_field :plan %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Upload" %>
+    </div>
+  <% end %>
+
+<% else %>
+  <h2>Plan</h2>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Current Plan</th>
+    </tr>
+
+    <tr>
+      <td><%= @plan.title %></td>
+      <td><%= @plan.plan.url %></td>
+    </tr>
+  </table>
+
+<% end %>
+
+<div>
+  <%= link_to "Back", :ideas, :method => :get %>
+</div>
