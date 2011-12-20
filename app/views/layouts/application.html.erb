@@ -12,24 +12,25 @@
     <div id="header">
       <h1><a href="/">Red Idea</a></h1>
       <div id="user-navigation">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>. Not you?
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
         <ul class="wat-cf">
-          <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
-          <li><a href="#"><%= t("web-app-theme.settings", :default => "Settings") %></a></li>
-          <li><a href="/logout" class="logout"><%= t("web-app-theme.logout", :default => "Logout") %></a></li>
+        <% if user_signed_in? %>
+          <li>Welcome <%= current_user.email %></li>
+          <li><%= link_to "Settings", edit_user_registration_path, :method => :get %></li>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign up", new_user_registration_path %></li>
+          <li><%= link_to "Sign in", new_user_session_path %></li>
+        <% end %>
         </ul>
       </div>
       <div id="main-navigation">
-        <ul class="wat-cf"></ul>
+        <ul class="wat-cf">
+        </ul>
       </div>
     </div>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
+<!--    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
     <div id="wrapper" class="wat-cf">
       <div class="flash">
         <% flash.each do |type, message| -%>
@@ -38,6 +39,7 @@
           </div>
         <% end -%>
       </div>
+
       <div id="main">
         <%= yield %>
         <div id="footer">

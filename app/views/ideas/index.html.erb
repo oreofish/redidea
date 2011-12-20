@@ -1,3 +1,15 @@
+<div class="block" id="block-text">
+          <div class="secondary-navigation">
+            <ul class="wat-cf">
+              <li class="active first"><a href="#block-text">Text</a></li>
+              <li><a href="#block-tables">Tables</a></li>
+              <li><a href="#block-forms">Forms</a></li>
+              <li><a href="#block-messages">Messages</a></li>
+              <li><a href="#block-forms-2">2 Columns Forms</a></li>
+              <li><a href="#block-lists">Lists</a></li>
+            </ul>
+          </div>
+
 <h1>Listing ideas</h1>
 <%= render 'form' %>
 
@@ -7,7 +19,6 @@
 <h2 class="title">Idea</h2>
 
 <% @ideas.each do |idea| %>
-<div class="block" id="block-text">
   <div class="content">
     <div class="inner">
       <p class="first">
@@ -26,10 +37,10 @@
       <%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
     </div>
   </div>
-</div>
 <% end %>
 
 <% content_for :sidebar, render(:partial => 'sidebar') -%>
 
 <br />
 
+</div>
