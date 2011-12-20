@@ -8,8 +8,10 @@ class IdeasController < ApplicationController
   def index
     if params[:scope] == "mine" 
       @ideas = current_user.ideas
+      @scope = :mine
     else 
       @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
+      @scope = :all
     end
 
     @idea = Idea.new

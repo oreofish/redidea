@@ -1,24 +1,26 @@
 <div class="block" id="block-text">
-          <div class="secondary-navigation">
-            <ul class="wat-cf">
-              <li class="active first"><a href="#block-text">Text</a></li>
-              <li><a href="#block-tables">Tables</a></li>
-              <li><a href="#block-forms">Forms</a></li>
-              <li><a href="#block-messages">Messages</a></li>
-              <li><a href="#block-forms-2">2 Columns Forms</a></li>
-              <li><a href="#block-lists">Lists</a></li>
-            </ul>
-          </div>
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <% if @scope == :mine %>
+        <li><%= link_to 'ideas', ideas_path %></li>
+        <li class="active first"><%= link_to 'mine', "#{ideas_path}?scope=mine" %></li>
+      <% else %>
+        <li class="active first"><%= link_to 'ideas', ideas_path %></li>
+        <li><%= link_to 'mine', "#{ideas_path}?scope=mine" %></li>
+      <% end %>
+    </ul>
+  </div>
 
-<h1>Listing ideas</h1>
-<%= render 'form' %>
+  <div class="content">
+  <% if @scope == :mine %>
+    <h1>My ideas</h1>
+    <%= render 'form' %>
+  <% else %> 
+    <h1>Listing ideas</h1>
+  <% end %>
+  </div>
 
-<%= link_to 'ideas', ideas_path %>
-<%= link_to 'mine', "#{ideas_path}?scope=mine" %>
-
-<h2 class="title">Idea</h2>
-
-<% @ideas.each do |idea| %>
+  <% @ideas.each do |idea| %>
   <div class="content">
     <div class="inner">
       <p class="first">
@@ -30,17 +32,23 @@
         <%= idea.content %>
       </p>
       <hr />
-      <%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %>
-      <%= link_to 'tread', likes_path, :method => :post %>
-      <%= link_to 'like', likes_path, :method => :post %>
-      <%= link_to 'surprise', likes_path, :method => :post %>
-      <%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
+
+      <div class="right">
+      <% if @scope == :mine %>
+        <%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %>
+      <% else %> 
+        <%= link_to 'tread', likes_path, :method => :post %>
+        <%= link_to 'like', likes_path, :method => :post %>
+        <%= link_to 'surprise', likes_path, :method => :post %>
+        <%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
+      <% end %>
+      </div>
     </div>
   </div>
-<% end %>
+  <% end %>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+  <% content_for :sidebar, render(:partial => 'sidebar') -%>
 
-<br />
+  <br />
 
 </div>
