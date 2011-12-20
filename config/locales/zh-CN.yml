@@ -1,0 +1,25 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+"zh-CN":
+  submit: '提交'
+  remember_me: '记住我'
+  idea_successfully_created: '新点子创建成功'
+
+  activerecord:
+    models:
+      user: '用户'
+      idea: '点子'
+      like: '喜欢'
+    attributes:
+      user:
+        email: '邮件'
+        password: '密码'
+      idea:
+        title: '标题'
+        content: '内容'
+      like:
+        score: '分数'
+
+
+      

@@ -30,7 +30,7 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to ideas_path, :notice => 'Idea was successfully created.' }
+        format.html { redirect_to ideas_path, :notice => t(:idea_successfully_created) }
         format.json { render :json => @idea, :status => :created, :location => @idea }
       else
         format.html { redirect_to ideas_path, :notice => 'Idea was unsuccessfully created.' }
