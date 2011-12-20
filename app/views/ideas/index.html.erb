@@ -24,7 +24,7 @@
   <div class="content">
     <div class="inner">
       <p class="first">
-        <%= idea.user_id %> | 
+       <%= image_tag("/images/icons/#{idea.user_id % 60}.png")%> <%= idea.user_id %> | 
         <%= idea.title %>
       </p>
       <hr />
