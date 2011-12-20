@@ -3,27 +3,33 @@
 
 <%= link_to 'ideas', ideas_path %>
 <%= link_to 'mine', "#{ideas_path}?scope=mine" %>
-<table>
-  <tr>
-    <th>User</th>
-    <th>Title</th>
-    <th>Content</th>
-    <th></th>
-  </tr>
+
+<h2 class="title">Idea</h2>
 
 <% @ideas.each do |idea| %>
-  <tr>
-    <td><%= idea.user_id %></td>
-    <td><%= idea.title %></td>
-    <td><%= idea.content %></td>
-    <td><%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'tread', likes_path, :method => :post %></td>
-    <td><%= link_to 'like', likes_path, :method => :post %></td>
-    <td><%= link_to 'surprise', likes_path, :method => :post %></td>
-    <td><%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %></td>
-  </tr>
+<div class="block" id="block-text">
+  <div class="content">
+    <div class="inner">
+      <p class="first">
+        <%= idea.user_id %> | 
+        <%= idea.title %>
+      </p>
+      <hr />
+      <p>
+        <%= idea.content %>
+      </p>
+      <hr />
+      <%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %>
+      <%= link_to 'tread', likes_path, :method => :post %>
+      <%= link_to 'like', likes_path, :method => :post %>
+      <%= link_to 'surprise', likes_path, :method => :post %>
+      <%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
+    </div>
+  </div>
+</div>
 <% end %>
-</table>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
 
 <br />
 
