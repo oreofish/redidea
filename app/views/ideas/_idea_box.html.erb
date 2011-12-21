@@ -1,0 +1,25 @@
+<div class="content">
+</div>
+
+<% @ideas.each do |idea| %>
+<div class="content">
+  <div class="inner">
+    <p class="first">
+      <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
+      <b><%= idea.title %>:</b>
+      <%= idea.content %>
+    </p>
+
+    <div class="right">
+      <% if @scope == :mine %>
+        <%= link_to '删除', idea, :confirm => '确认删除？', :method => :delete %>
+      <% else %>
+        <%= link_to '赞', likes_path, :class => 'small-button' %>
+        <%= link_to '顶', likes_path, :class => 'small-button1' %>
+        <%= link_to '木有感觉', likes_path(:idea_id => idea.id, :score => -1), :class => 'small-button2' %>
+        <%= link_to '踩', likes_path, :class => 'small-button3' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

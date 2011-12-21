@@ -78,7 +78,6 @@ hr {
 #main .block {
   padding-top: 0px;
   background-color: white;
-  text-shadow: 0 1px 0 white;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
@@ -358,7 +357,7 @@ hr {
 .flash .message p {
   margin: 8px;
 }
-.flash .error, .flash .error-list {
+.flash .alert, .flash .error, .flash .error-list {
   border: 1px solid #993624;
   background: #cc4831 url("/assets/web-app-theme/themes/default/images/messages/error.png") no-repeat 10px center;
 }
