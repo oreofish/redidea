@@ -1,5 +1,5 @@
 <div class='block' id='block-signup'>
-  <h2>Sign up</h2>
+  <h2>注册</h2>
   <div class='content'>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -14,16 +14,16 @@
     <div class='group'>
       <div><%= f.label :password %><br />
       <%= f.password_field :password %></div>
-      <span class='description'>must be at least 6 characters</span>
+      <span class='description'>至少6个字符</span>
     </div>
     <br />
     <div class='group'>
-      <div><%= f.label :password_confirmation %><br />
+      <div><%= f.label '确认密码'%><br />
       <%= f.password_field :password_confirmation %></div>
     </div>
     <br />
     <div class='group'>
-      <div><%= f.submit "Register" %></div>
+      <div><%= f.submit "注册" %></div>
     </div>
     <% end %>
     <br />
