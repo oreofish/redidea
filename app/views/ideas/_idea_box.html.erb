@@ -11,9 +11,9 @@
     </p>
 
     <div class="right">
-      <% if @scope == :mine %>
+      <% if @scope == 'mine' %>
         <%= link_to '删除', idea, :confirm => '确认删除？', :method => :delete %>
-      <% else %>
+      <% elsif @scope == 'unliked' %>
         <%= link_to '赞', likes_path, :class => 'small-button' %>
         <%= link_to '顶', likes_path, :class => 'small-button1' %>
         <%= link_to '木有感觉', likes_path(:idea_id => idea.id, :score => -1), :class => 'small-button2' %>
