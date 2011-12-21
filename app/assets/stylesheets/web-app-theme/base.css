@@ -101,7 +101,8 @@ body {
 }
 
 #sidebar p1 {
-  color: #0cd;
+  color: #056;
+	font-size:16px;
 }
 
 
@@ -150,22 +151,25 @@ body {
 }
 
 #rule h3 {
-  padding: 10px 15px;
+  padding: 0 0;
   font-size: 18px;
-  color: #cc0;
+  color: #880;
 }
 
 #rule h4 {
   padding: 0 0;
   font-size: 15px;
   color: purple;
+	font-family: "Arial","Sans-serif";
 }
 
 
 #rule .content p {
+	padding:0 0;
 	text-indent: 5%;
 	color: #000;
 	font-size: 14px;
+	font-family: "Arial","cursive";
 }
 
 #user-navigation {

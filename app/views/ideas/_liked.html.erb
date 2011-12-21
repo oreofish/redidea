@@ -1,10 +1,4 @@
 <div class="content">
-  <% if @scope == :mine %>
-  <h1>我的点子</h1>
-  <%= render 'form' %>
-  <% else %> 
-  <h1>点子列表</h1>
-  <% end %>
 </div>
 
 <% @ideas.each do |idea| %>
