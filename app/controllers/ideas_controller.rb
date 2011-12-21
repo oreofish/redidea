@@ -7,7 +7,7 @@ class IdeasController < ApplicationController
   # GET /ideas.json
   def index
     @scope = params[:scope]
-    @scopes = [:liked, :mine, :upload, :rule, :unliked]
+    @scopes = [:unliked, :liked, :mine, :upload, :rule]
     
     if @scope == "mine" 
       @ideas = current_user.ideas
