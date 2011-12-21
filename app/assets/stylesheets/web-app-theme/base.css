@@ -145,6 +145,29 @@ body {
   margin-top: 0;
 }
 
+#rule {
+	margin: 0;
+}
+
+#rule h3 {
+  padding: 10px 15px;
+  font-size: 18px;
+  color: #cc0;
+}
+
+#rule h4 {
+  padding: 0 0;
+  font-size: 15px;
+  color: purple;
+}
+
+
+#rule .content p {
+	text-indent: 5%;
+	color: #000;
+	font-size: 14px;
+}
+
 #user-navigation {
   position: absolute;
   top: 0px;
