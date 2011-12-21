@@ -34,6 +34,7 @@ gem 'will_paginate'
 gem 'json'
 gem 'jquery-rails'
 gem 'devise'
+gem 'therubyracer'
 
 # Gems used only for assets and not required
 # in production environments by default.
