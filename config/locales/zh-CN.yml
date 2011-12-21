@@ -5,6 +5,7 @@
   submit: '提交'
   remember_me: '记住我'
   idea_successfully_created: '新点子创建成功'
+  idea_was_unsuccessfully_created: '点子创建失败'
 
   activerecord:
     models:

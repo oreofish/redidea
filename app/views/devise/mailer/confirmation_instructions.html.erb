@@ -1,5 +1,11 @@
-<p>Welcome <%= @resource.email %>!</p>
+<p>您好,<%= @resource.email %>!</p>
 
-<p>You can confirm your account through the link below:</p>
+<p>感谢您对RedIdea的支持。</p>
+
+<p>现在请您点击下面的链接确认您的邮箱地址：</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>确认后，您可以参加RedIdea的活动。</p>
+
+<p>愿RedIdea给您带来轻松快乐。</p>

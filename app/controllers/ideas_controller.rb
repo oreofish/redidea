@@ -38,7 +38,7 @@ class IdeasController < ApplicationController
         format.html { redirect_to ideas_path, :notice => t(:idea_successfully_created) }
         format.json { render :json => @idea, :status => :created, :location => @idea }
       else
-        format.html { redirect_to ideas_path, :notice => 'Idea was unsuccessfully created.' }
+        format.html { redirect_to ideas_path, :notice => t(:idea_was_unsuccessfully_created) }
         format.json { render :json => @idea.errors, :status => :unprocessable_entity }
       end
     end

@@ -1,37 +1,36 @@
-<%= link_to 'upload plan', plans_path %>
-<br>
+<%= link_to '上传计划书', plans_path %>
 
-  <div class="content">
-    <% if @scope == :mine %>
-    <h1>My ideas</h1>
-    <%= render 'form' %>
-    <% else %> 
-    <h1>Listing ideas</h1>
-    <% end %>
-  </div>
+<div class="content">
+  <% if @scope == :mine %>
+  <h1>我的点子</h1>
+  <%= render 'form' %>
+  <% else %> 
+  <h1>点子列表</h1>
+  <% end %>
+</div>
 
-  <% @ideas.each do |idea| %>
-  <div class="content">
-    <div class="inner">
-      <p class="first">
-        <%= image_tag("/images/icons/#{idea.user_id % 60}.png") %> <%= idea.title %>
-      </p>
-      <hr />
-      <p>
-        <%= idea.content %>
-      </p>
-      <hr />
+<% @ideas.each do |idea| %>
+<div class="content">
+  <div class="inner">
+    <p class="first">
+      <%= image_tag("/images/icons/#{idea.user_id % 60}.png") %> <%= idea.title %>
+    </p>
+    <hr />
+    <p>
+      <%= idea.content %>
+    </p>
+    <hr />
 
-      <div class="right">
-        <% if @scope == :mine %>
-        <%= link_to 'Destroy', idea, :confirm => 'Are you sure?', :method => :delete %>
-        <% else %> 
-        <%= link_to 'tread', likes_path, :method => :post %>
-        <%= link_to 'like', likes_path, :method => :post %>
-        <%= link_to 'surprise', likes_path, :method => :post %>
-        <%= link_to 'soy', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
-        <% end %>
-      </div>
+    <div class="right">
+      <% if @scope == :mine %>
+      <%= link_to '删除', idea, :confirm => '确定删除吗?', :method => :delete %>
+      <% else %> 
+      <%= link_to '踩', likes_path, :method => :post %>
+      <%= link_to '喜欢', likes_path, :method => :post %>
+      <%= link_to '太赞了', likes_path, :method => :post %>
+      <%= link_to '打酱油', likes_path(:idea_id => idea.id, :score => -1), :method => :get %>
+      <% end %>
     </div>
   </div>
-  <% end %>
+</div>
+<% end %>
