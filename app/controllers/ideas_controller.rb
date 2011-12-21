@@ -6,12 +6,17 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    if params[:scope] == "mine" 
+    @scope = params[:scope]
+    @scopes = [:unliked, :liked, :mine, :upload, :rule]
+    
+    if @scope == "mine" 
       @ideas = current_user.ideas
-      @scope = :mine
-    else 
+    elsif @scope == "liked" 
       @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
-      @scope = :all
+    elsif @scope == "unliked" 
+      @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
+    else
+      @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
     end
 
     @idea = Idea.new

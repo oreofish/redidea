@@ -3,6 +3,11 @@
 
 "zh-CN":
   submit: '提交'
+  liked: '已评价'
+  unliked: '未评价'
+  mine: '我的点子'
+  upload: '提交计划书'
+  rule: '竞赛规则'
   remember_me: '记住我'
   idea_successfully_created: '新点子创建成功'
   idea_was_unsuccessfully_created: '点子创建失败'
