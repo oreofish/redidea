@@ -1,26 +1,26 @@
 <% if not @plan %>
-<h2>Upload your plan here </h2>
+<h2>从此处上传你的计划书</h2>
 
   <%= form_for :plan do |f| %>
     <div class="field">
-      <%= f.label "description" %><br />
+      <%= f.label "主题" %><br />
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label "select your plan: " %><br />
+      <%= f.label "上传计划书: " %><br />
       <%= f.file_field :plan %>
     </div>
     <div class="actions">
-      <%= f.submit "Upload" %>
+      <%= f.submit "确认上传" %>
     </div>
   <% end %>
 
 <% else %>
-  <h2>Plan</h2>
+  <h2>计划书</h2>
   <table>
     <tr>
-      <th>Title</th>
-      <th>Current Plan</th>
+      <th>主题</th>
+      <th>当前计划书</th>
     </tr>
 
     <tr>
@@ -32,5 +32,5 @@
 <% end %>
 
 <div>
-  <%= link_to "Back", :ideas, :method => :get %>
+  <%= link_to "后退", :ideas, :method => :get %>
 </div>
