@@ -5,11 +5,10 @@
 
 .field .idea_content {
   position: relative;
-
 }
+
 form#new_idea.new_idea div.field div.idea_content .title {
-  position: absolute;
-  height: 40px;
+  position: relative;
 }
 
 form#new_idea.new_idea div.field div.idea_content div.num {
@@ -21,4 +20,8 @@ form#new_idea.new_idea div.field div.idea_content div.num {
 form#new_idea.new_idea div.field div.idea_content div.num span {
     font-size: 28px;
     font-weight: 700;
+}
+
+form#new_idea.new_idea div.field #idea_content  {
+    position: relative;
 }
