@@ -15,8 +15,6 @@ class IdeasController < ApplicationController
       @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
     elsif @scope == "unliked" 
       @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
-    else
-      @ideas = Idea.find(:all, :conditions => "user_id != #{current_user.id}")
     end
 
     @idea = Idea.new
