@@ -3,8 +3,8 @@
 
 "zh-CN":
   submit: '提交'
-  liked: '已评价'
-  unliked: '未评价'
+  liked: '已评价点子'
+  unliked: '未评价点子'
   mine: '我的点子'
   upload: '提交计划书'
   rule: '竞赛规则'
