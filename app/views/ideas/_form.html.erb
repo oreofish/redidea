@@ -16,8 +16,13 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
+    <div class="idea_content">
+      <div class="title"><%= f.label :content %></div>
+      <div style="display: block;" node-type="num" class="num">
+        请文明发言，还可以输入<span>400</span>字
+      </div>
+      <div><%= f.text_area :content, :cols => 50, :rows => 4 %></div>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit '创建点子'%>
