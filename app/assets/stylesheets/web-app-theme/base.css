@@ -80,16 +80,30 @@ body {
   padding: 10px 15px;
   margin: 0;
   font-size: 13px;
+	text-decoration: blink;
 }
 
 #sidebar .block {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding-bottom: 10px;
 }
 
 #sidebar .block .content {
-  padding: 0 15px;
+  padding: 0 10px;
+	font-size: 14px;
 }
+
+#sidebar h4 { 
+  padding: 10px 5px;
+  margin: 0;
+  font-size: 15px;
+	color: #baf
+}
+
+#sidebar p1 {
+  color: #0cd;
+}
+
 
 #sidebar ul.navigation li a:link, #sidebar ul.navigation li a:visited {
   display: block;
