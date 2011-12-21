@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: plans
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer
+#  title      :string(255)
+#  plan       :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Plan < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
