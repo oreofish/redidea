@@ -37,7 +37,9 @@ class User < ActiveRecord::Base
     likes.find_by_idea_id(idea)
   end
   
-  def like!(idea, score)
-    likes.create!(:idea_id => idea, :score => score)
+  def like!(idea_id, score)
+    if Idea.find(idea_id).user_id != id and score >= 0 and score <= 3
+      likes.create(:idea_id => idea_id, :score => score)
+    end
   end
 end

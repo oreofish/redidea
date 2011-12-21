@@ -37,8 +37,7 @@ def make_likes
   liking = ideas[11..40]
   #likers = users[3..40]
   liking.each do | liked |
-     # user.likes.create!(liked,1) 
-  user.likes.create!(:idea_id => liked, :score => 1)
+  user.likes.create!(liked.id, 1) 
   end
   #likers.each { |liker| liker.like!(user) }
 end

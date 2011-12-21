@@ -55,7 +55,7 @@ describe User do
     describe 'create like' do 
       before(:each) do 
         @idea2 = Factory(:idea, :user => @user2)
-        @user.like!(@idea2, 3)
+        @user.like!(@idea2.id, 3)
       end
       
       it "should can like others" do
