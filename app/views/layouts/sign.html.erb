@@ -10,6 +10,14 @@
 <body>
   <div id="container">
     <div id="box">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+
       <%= yield %>
     </div>
   </div>
