@@ -29,7 +29,7 @@ a.small-button {
   width: 20px;
   background: #88bb88;
   font-size: 12px;
-  padding: 1px;
+  padding: 3px;
   text-decoration: none;
 }
 a.small-button1 {
@@ -38,7 +38,7 @@ a.small-button1 {
   width: 50px;
   background: #aaeeaa;
   font-size: 12px;
-  padding: 1px;
+  padding: 3px;
   text-decoration: none;
 }
 a.small-button2 {
@@ -47,7 +47,7 @@ a.small-button2 {
   width: 50px;
   background: #eeeeee;
   font-size: 12px;
-  padding: 1px;
+  padding: 3px;
   text-decoration: none;
 }
 a.small-button3 {
@@ -56,7 +56,16 @@ a.small-button3 {
   width: 50px;
   background: #eeaaaa;
   font-size: 12px;
-  padding: 1px;
+  padding: 3px;
+  text-decoration: none;
+}
+a.small-buttonlong {
+  display: inline-block;
+  text-align: center;
+  width: 150px;
+  background: #aaeeaa;
+  font-size: 12px;
+  padding: 5px;
   text-decoration: none;
 }
 
