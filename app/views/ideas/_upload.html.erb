@@ -1,36 +1,48 @@
 <%# encoding: utf-8 %>
 <div class="content">
-  <% if not @plan %>
+  <div>
     <h2>从此处上传你的计划书</h2>
+    <div>
+      <strong>
+        一个用户只允许上传一份计划书，重复上传将会覆盖已经上传的计划书
+      </strong>
+    </div>
 
-    <%= form_for(:plan, :url => plans_path) do |f| %>
+    <br>
+
+    <%= form_for(:plan, :url => @plan_upload_path, :method => @plan_upload_method) do |f| %>
       <div class="field">
-        <%= f.label "主题" %><br />
+        <%= f.label "计划书主题:" %>
         <%= f.text_field :title %>
       </div>
       <div class="field">
-        <%= f.label "上传计划书: " %><br />
+        <%= f.label "上传计划书: " %>
         <%= f.file_field :plan %>
       </div>
       <div class="actions">
         <%= f.submit "确认上传" %>
       </div>
     <% end %>
+  </div>
 
-  <% else %>
-    <h2>计划书</h2>
-    <table>
-      <tr>
-        <th>主题</th>
-        <th>当前计划书</th>
-      </tr>
+  <br>
+  <hr/>
+  <br>
+  <% if @plan %>
+    <div>
+      <h2>已上传的计划书</h2>
+      <table>
+        <tr>
+          <th>主题</th>
+          <th>当前计划书</th>
+        </tr>
 
-      <tr>
-        <td><%= @plan.title.force_encoding('utf-8') %></td>
-        <td><%= @plan.plan.url.force_encoding('utf-8').gsub(/.*\//, '') %></td>
-      </tr>
-    </table>
-
+        <tr>
+          <td><%= @plan.title.force_encoding('utf-8') %></td>
+          <td><%= @plan.plan.url.force_encoding('utf-8').gsub(/.*\//, '') %></td>
+        </tr>
+      </table>
+    </div>
   <% end %>
 
 </div>
