@@ -3,6 +3,6 @@
 <p>您可以参加RedIdea的活动，评价别人的点子，或者提交自己的点子和计划书。</p>
 <p>快点击下面的链接参赛吧！登录后记得修改密码。</p>
 <p><%= link_to '红点子竞赛网站', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
-<p>登录后可以查看<%= link_to '参赛细则', '/idea?scope=rule' %>了解更多情况</p>
+<p>登录后可以查看<%= link_to '参赛细则', "#{ideas_path}?scope=rule" %>了解更多情况</p>
 <p>愿RedIdea给您带来轻松快乐。谢谢
 <br>竞赛组委会</p>

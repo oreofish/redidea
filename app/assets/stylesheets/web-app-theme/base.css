@@ -30,6 +30,7 @@ a.small-button {
   background: #88bb88;
   font-size: 12px;
   padding: 1px;
+  text-decoration: none;
 }
 a.small-button1 {
   display: inline-block;
@@ -38,6 +39,7 @@ a.small-button1 {
   background: #aaeeaa;
   font-size: 12px;
   padding: 1px;
+  text-decoration: none;
 }
 a.small-button2 {
   display: inline-block;
@@ -46,6 +48,7 @@ a.small-button2 {
   background: #eeeeee;
   font-size: 12px;
   padding: 1px;
+  text-decoration: none;
 }
 a.small-button3 {
   display: inline-block;
@@ -54,6 +57,7 @@ a.small-button3 {
   background: #eeaaaa;
   font-size: 12px;
   padding: 1px;
+  text-decoration: none;
 }
 
 body {
@@ -143,6 +147,7 @@ body {
 #sidebar ul.navigation li a:link, #sidebar ul.navigation li a:visited {
   display: block;
   padding: 10px 15px;
+  text-decoration: none;
 }
 
 #sidebar .block .sidebar-block, #sidebar .notice {

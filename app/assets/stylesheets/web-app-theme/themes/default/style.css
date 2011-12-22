@@ -36,6 +36,7 @@ h1, h2, h3 {
 
 a:link, a:visited, a:hover, a:active {
   color: #111111;
+  text-decoration: none;
 }
 
 a {
@@ -69,6 +70,7 @@ hr {
 }
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
   color: #ff5555;
+  text-decoration: none;
 }
 
 #main {
@@ -122,6 +124,7 @@ hr {
 }
 #main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
   color: #a4a4a4;
+  text-decoration: none;
 }
 
 .secondary-navigation {
