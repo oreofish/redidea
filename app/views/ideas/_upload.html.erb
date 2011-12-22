@@ -31,15 +31,15 @@
   <% if @plan %>
     <div>
       <h2>已上传的计划书</h2>
-      <table>
+      <table class="myplan">
         <tr>
-          <th>主题</th>
-          <th>当前计划书</th>
+          <th class="title">主题</th>
+          <th class="plan">当前计划书</th>
         </tr>
 
         <tr>
-          <td><%= @plan.title.force_encoding('utf-8') %></td>
-          <td><%= @plan.plan.url.force_encoding('utf-8').gsub(/.*\//, '') %></td>
+          <td class="title"><%= @plan.title.force_encoding('utf-8') %></td>
+          <td class="plan"><%= @plan.plan.url.force_encoding('utf-8').gsub(/.*\//, '') %></td>
         </tr>
       </table>
     </div>
