@@ -1,4 +1,7 @@
 <div class="content">
+  <% if @scope == 'mine' %>
+    <%= render 'form' %>
+  <% end %>
 </div>
 
 <% @ideas.each do |idea| %>
@@ -12,7 +15,10 @@
 
     <div class="right">
       <% if @scope == 'mine' %>
-        <%= link_to '删除', idea, :confirm => '确认删除？', :method => :delete %>
+        <%= link_to '删除', idea, :confirm => '尽量不要删除，评分都将失效，确认删除？', :method => :delete, :class => 'small-button2' %>
+        <% score = 0 %>
+        <% idea.likes.each{ |like| score += like.score } %>
+        目前得分： <%= score %>
       <% elsif @scope == 'unliked' %>
         <%= link_to '赞', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button' %>
         <%= link_to '顶', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button1' %>
