@@ -118,21 +118,21 @@ body {
 
 #sidebar .block .content {
   padding: 0 10px;
-	font-size: 14px;
-	color: #eeeeee;
+  font-size: 14px;
+  color: #eeeeee;
 }
 
 #sidebar h4 { 
   padding: 10px 5px;
   margin: 0;
   font-size: 15px;
-	color: #9999ff;
+  color: #9999ff;
 }
 
 #sidebar p1 {
-  color: #eeeeee;
-	font-size:13px;
-	font-weight: "bold";
+  color: #fff;
+  font-size:13px;
+  font-weight: "bold";
 }
 
 

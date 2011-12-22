@@ -7,10 +7,10 @@ class LikesController < ApplicationController
     @like = current_user.like!(params[:idea_id], params[:score])
     respond_to do |format|
       if @like.save
-        format.html { redirect_to root_path, :notice => 'Like was successfully created.' }
+        format.html { redirect_to root_path, :notice => t(:like_created) }
         format.json { render :json => @like, :status => :created, :location => @like }
       else
-        format.html { redirect_to root_path, :notice => 'Like was unsuccessfully created.' }
+        format.html { redirect_to root_path, :notice => t(:like_create_fail) }
         format.json { render :json => @like.errors, :status => :unprocessable_entity }
       end
     end

@@ -9,18 +9,18 @@
 <div class="content">
   <div class="inner">
     <p class="first">
-      <div class='right'><%= time_ago_in_words(idea.created_at) %></div>
+      <div class='right'><%= time_ago_in_words(idea.created_at) %>前</div>
       <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
-      <b><%= idea.title.force_encoding('utf-8') %>:</b>
+      <b><%= idea.title.force_encoding('utf-8') %>:</b><br />
       <%= idea.content.force_encoding('utf-8') %>
     </p>
 
     <div class="right">
       <% if @scope == 'mine' %>
-        <%= link_to '删除', idea, :confirm => '尽量不要删除，评分都将失效，确认删除？', :method => :delete, :class => 'small-button' %>
         <% scores = [0,0,0,0] %>
         <% idea.likes.each{ |like| scores[like.score] += 1 } %>
-        目前评价： <%= "#{scores[3]} 牛" %>|<%= "#{scores[2]} 还不错" %>|<%= "#{scores[1]} 没意思" %>|<%= "#{scores[0]} 不喜欢" %>
+        目前评价： <%= "牛 #{scores[3]}" %> | <%= "还不错 #{scores[2]}" %> | <%= "没意思 #{scores[1]}" %> | <%= "不喜欢 #{scores[0]}" %>
+        <%= link_to '删除点子', idea, :confirm => '尽量不要删除，评分都将失效，确认删除？', :method => :delete, :class => 'small-button' %>
       <% elsif @scope == 'unliked' %>
         <%= link_to '牛', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button' %>
         <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button' %>
@@ -29,7 +29,7 @@
       <% else %>
         <% score = Like.find(:first, :conditions => "user_id = #{current_user.id} and idea_id = #{idea.id}").score %>
         <% scores = ['不喜欢','没意思','还不错','牛'] %>
-        我觉得<%= scores[score] %>
+        这个点子<%= scores[score] %>
       <% end %>
     </div>
   </div>

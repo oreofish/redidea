@@ -135,6 +135,7 @@ hr {
 }
 .secondary-navigation ul li a:link, .secondary-navigation ul li a:visited, secondary-navigation ul li a:active {
   text-decoration: none;
+  color: #111111;
 }
 .secondary-navigation ul li a:hover {
   text-decoration: none;
@@ -204,7 +205,7 @@ hr {
 #sidebar .notice {
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: #222222;
+  background-color: #aaaaaa;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0)));
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
   -moz-border-radius: 6px;
