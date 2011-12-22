@@ -3,25 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.field .idea_content {
-  position: relative;
-}
-
-form#new_idea.new_idea div.field div.idea_content .title {
-  position: relative;
+form#new_idea.new_idea div.field div.idea_content div.title {
+  height: 28px;
 }
 
 form#new_idea.new_idea div.field div.idea_content div.num {
-    position: relative;
-    left: 100px;
-    top: 0px;
+    float: right;
 }
 
 form#new_idea.new_idea div.field div.idea_content div.num span {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 22px;
+    /*font-weight: 300;*/
 }
 
-form#new_idea.new_idea div.field #idea_content  {
-    position: relative;
-}
