@@ -11,6 +11,7 @@ class IdeasController < ApplicationController
     
     if @scope == "mine" 
       @ideas = current_user.ideas
+      @ideas.reverse!
     elsif @scope == "liked" 
       @ideas = current_user.liking
     elsif @scope == "unliked" 

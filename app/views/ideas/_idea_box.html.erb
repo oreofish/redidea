@@ -8,6 +8,7 @@
 <div class="content">
   <div class="inner">
     <p class="first">
+      <div class='right'><%= time_ago_in_words(idea.created_at) %></div>
       <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
       <b><%= idea.title %>:</b>
       <%= idea.content %>
