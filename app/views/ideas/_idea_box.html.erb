@@ -26,6 +26,10 @@
         <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button1' %>
         <%= link_to '没感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button2' %>
         <%= link_to '不喜欢', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button3' %>
+      <% else %>
+        <% score = Like.find(:user_id => current_user, :idea_id => idea).score %>
+        <% scores = ['不喜欢','没感觉','还不错','牛'] %>
+        <%= scores[score] %>
       <% end %>
     </div>
   </div>
