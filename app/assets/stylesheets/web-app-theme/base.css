@@ -111,7 +111,7 @@ body {
 #sidebar h3 {  
   padding: 10px 15px;
   margin: 0;
-  font-size: 13px;
+  font-size: 14px;
 	text-decoration: blink;
 }
 
@@ -246,7 +246,7 @@ body {
 }
 
 .secondary-navigation {
-  font-size: 13px;  
+  font-size: 14px;  
   border-bottom-width: 10px;
   border-bottom-style: solid;
 }

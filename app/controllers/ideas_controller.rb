@@ -15,7 +15,8 @@ class IdeasController < ApplicationController
       @ideas = current_user.liking
     elsif @scope == "unliked" 
       all_ideas = Idea.all
-      @ideas = all_ideas - current_user.liking
+      my_ideas = current_user.ideas
+      @ideas = all_ideas - current_user.liking - my_ideas
     elsif @scope == "upload"
       @plan = Plan.find(:first, :conditions => "user_id == #{current_user.id}")
     end
