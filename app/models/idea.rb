@@ -12,7 +12,7 @@
 
 class Idea < ActiveRecord::Base
   validates :content, :presence     => true,
-                      :length       => { :within => 6..400 }
+                      :length       => { :maximum => 400 }
   validates :title,   :presence     => true,
                       :uniqueness   => true,
                       :length       => { :maximum => 30 }
