@@ -53,7 +53,7 @@ zh-CN:
       failure: '因为%{reason}，所以您无法从%{kind}获得授权.'
     mailer:
       confirmation_instructions:
-        subject: 'RedIdea确认信息'
+        subject: 'RedIdea大奖赛邀请函（内测版）'
       reset_password_instructions:
         subject: '重置密码信息'
       unlock_instructions:
