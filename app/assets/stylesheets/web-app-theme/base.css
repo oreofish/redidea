@@ -25,48 +25,68 @@ p { margin: 15px 0;}
 a img { border: none; }
 a.small-button {
   display: inline-block;
-  text-align: center;
-  width: 20px;
-  background: #88bb88;
-  font-size: 12px;
-  padding: 1px;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #99B5bb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
   text-decoration: none;
+  font-size: 12px;
 }
 a.small-button1 {
   display: inline-block;
-  text-align: center;
-  width: 50px;
-  background: #aaeeaa;
-  font-size: 12px;
-  padding: 1px;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #99B5bb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
   text-decoration: none;
+  font-size: 12px;
 }
 a.small-button2 {
   display: inline-block;
-  text-align: center;
-  width: 50px;
-  background: #eeeeee;
-  font-size: 12px;
-  padding: 1px;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #99B5bb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
   text-decoration: none;
+  font-size: 12px;
 }
 a.small-button3 {
   display: inline-block;
-  text-align: center;
-  width: 50px;
-  background: #eeaaaa;
-  font-size: 12px;
-  padding: 1px;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #99B5bb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
   text-decoration: none;
+  font-size: 12px;
 }
 a.small-buttonlong {
   display: inline-block;
-  text-align: center;
-  width: 120px;
-  background: #aaeeaa;
-  font-size: 12px;
-  padding: 2px;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #99B5bb;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+  color: white;
   text-decoration: none;
+  font-size: 12px;
 }
 
 body {
