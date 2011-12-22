@@ -29,7 +29,7 @@ Redidea::Application.configure do
   config.assets.debug = true
   
   # send confirm mail
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '172.16.82.163' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
