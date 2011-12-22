@@ -17,7 +17,7 @@ function bindIdeaHandler() {
         };
 
         $idea_content.bind({
-            'keyup': idea_validator.hotkeyHandler,
+            'keypress': idea_validator.hotkeyHandler,
             'input': idea_validator.keyHandler,
             'keyup': idea_validator.keyHandler,
             //'compositionend': idea_validator.keyhandler,
