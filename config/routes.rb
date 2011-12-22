@@ -1,5 +1,7 @@
 Redidea::Application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    match "/users/sign_up" => redirect("/users/sign_in")
+  end
 
   root :to => "ideas#index"
   resources :ideas
