@@ -68,7 +68,7 @@ hr {
   font-family: "Museo700", helvetica, arial, sans-serif;
 }
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
-  color: white;
+  color: #ff5555;
 }
 
 #main {
@@ -211,7 +211,7 @@ hr {
 #sidebar .notice {
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #222222;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0)));
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
   -moz-border-radius: 6px;

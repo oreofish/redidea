@@ -4,15 +4,22 @@ function bindIdeaHandler() {
         var $hint = $('.content .field .num').first();
 
         var idea_validator = {
-            keyhandler : function(e) {
+            hotkeyHandler : function(e) {
+                if (e.ctrlKey && e.which == 13) {
+                    $('.new_idea :submit').first().trigger('click');
+                }
+            },
+
+            keyHandler : function(e) {
                 var $this = $(this);
                 $hint.find('span').html( "" + (400 - $this.attr('value').length) );
             }
         };
 
         $idea_content.bind({
-            //'keypress': idea_validator.keyhandler,
-            'input': idea_validator.keyhandler,
+            'keyup': idea_validator.hotkeyHandler,
+            'input': idea_validator.keyHandler,
+            'keyup': idea_validator.keyHandler,
             //'compositionend': idea_validator.keyhandler,
             'focusin'   : function() { $hint.fadeIn('slow') },
             'focusout' : function() { $hint.fadeOut('fast') },
