@@ -23,7 +23,7 @@
       <% elsif @scope == 'unliked' %>
         <%= link_to '赞', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button' %>
         <%= link_to '顶', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button1' %>
-        <%= link_to '木有感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button2' %>
+        <%= link_to '没感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button2' %>
         <%= link_to '踩', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button3' %>
       <% end %>
     </div>
