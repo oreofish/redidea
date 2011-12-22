@@ -3,7 +3,7 @@ class CreatePlans < ActiveRecord::Migration
     create_table :plans do |t|
       t.integer :user_id
       t.string :title
-      t.string "plan"
+      t.string :plan
 
       t.timestamps
     end
