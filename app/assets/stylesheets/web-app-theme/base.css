@@ -59,6 +59,15 @@ a.small-button3 {
   padding: 1px;
   text-decoration: none;
 }
+a.small-buttonlong {
+  display: inline-block;
+  text-align: center;
+  width: 120px;
+  background: #aaeeaa;
+  font-size: 12px;
+  padding: 2px;
+  text-decoration: none;
+}
 
 body {
   font-size: 14px;
@@ -139,7 +148,7 @@ body {
 
 #sidebar p1 {
   color: #eeeeee;
-	font-size:16px;
+	font-size:14px;
 	font-weight: "bold";
 }
 
