@@ -17,19 +17,19 @@
 
     <div class="right">
       <% if @scope == 'mine' %>
-        <%= link_to '删除', idea, :confirm => '尽量不要删除，评分都将失效，确认删除？', :method => :delete, :class => 'small-button2' %>
+        <%= link_to '删除', idea, :confirm => '尽量不要删除，评分都将失效，确认删除？', :method => :delete, :class => 'small-button' %>
         <% scores = [0,0,0,0] %>
         <% idea.likes.each{ |like| scores[like.score] += 1 } %>
-        目前评价： <%= "#{scores[3]} 牛" %>|<%= "#{scores[2]} 还不错" %>|<%= "#{scores[1]} 没感觉" %>|<%= "#{scores[0]} 不喜欢" %>
+        目前评价： <%= "#{scores[3]} 牛" %>|<%= "#{scores[2]} 还不错" %>|<%= "#{scores[1]} 没意思" %>|<%= "#{scores[0]} 不喜欢" %>
       <% elsif @scope == 'unliked' %>
         <%= link_to '牛', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button' %>
-        <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button1' %>
-        <%= link_to '没感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button2' %>
-        <%= link_to '不喜欢', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button3' %>
+        <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button' %>
+        <%= link_to '没意思', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button' %>
+        <%= link_to '不喜欢', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button' %>
       <% else %>
-        <% score = Like.find(:user_id => current_user, :idea_id => idea).score %>
-        <% scores = ['不喜欢','没感觉','还不错','牛'] %>
-        <%= scores[score] %>
+        <% score = Like.find(:first, :conditions => "user_id = #{current_user.id} and idea_id = #{idea.id}").score %>
+        <% scores = ['不喜欢','没意思','还不错','牛'] %>
+        我觉得<%= scores[score] %>
       <% end %>
     </div>
   </div>

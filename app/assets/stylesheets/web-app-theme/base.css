@@ -23,70 +23,33 @@ h4 { font-size: 16px; margin: 10px 0; font-weight: normal;}
 hr {height: 1px; border: 0; }
 p { margin: 15px 0;}
 a img { border: none; }
+
+a:link {
+    color: #369;
+    text-decoration: none;
+}
+
+a {
+    color: #0078B6;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 a.small-button {
   display: inline-block;
   margin: 0 5px 5px 0;
   padding: 0px 10px;
   background-color: #99B5bb;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
   color: white;
   text-decoration: none;
   font-size: 12px;
-}
-a.small-button1 {
-  display: inline-block;
-  margin: 0 5px 5px 0;
-  padding: 0px 10px;
-  background-color: #99B5bb;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-}
-a.small-button2 {
-  display: inline-block;
-  margin: 0 5px 5px 0;
-  padding: 0px 10px;
-  background-color: #99B5bb;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-}
-a.small-button3 {
-  display: inline-block;
-  margin: 0 5px 5px 0;
-  padding: 0px 10px;
-  background-color: #99B5bb;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
-}
-a.small-buttonlong {
-  display: inline-block;
-  margin: 0 5px 5px 0;
-  padding: 0px 10px;
-  background-color: #99B5bb;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
-  border-radius: 10px;
-  color: white;
-  text-decoration: none;
-  font-size: 12px;
+  text-indent: 0;
 }
 
 body {
@@ -168,7 +131,7 @@ body {
 
 #sidebar p1 {
   color: #eeeeee;
-	font-size:14px;
+	font-size:13px;
 	font-weight: "bold";
 }
 

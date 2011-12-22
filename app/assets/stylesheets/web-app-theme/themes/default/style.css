@@ -34,15 +34,6 @@ h1, h2, h3 {
   font-weight: normal;
 }
 
-a:link, a:visited, a:hover, a:active {
-  color: #111111;
-  text-decoration: none;
-}
-
-a {
-  -moz-outline: none;
-}
-
 hr {
   background: #dddddd;
   color: #dddddd;
@@ -144,7 +135,6 @@ hr {
 }
 .secondary-navigation ul li a:link, .secondary-navigation ul li a:visited, secondary-navigation ul li a:active {
   text-decoration: none;
-  color: #111111;
 }
 .secondary-navigation ul li a:hover {
   text-decoration: none;
