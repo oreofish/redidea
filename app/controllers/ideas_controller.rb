@@ -34,10 +34,11 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea  = current_user.ideas.build(params[:idea])
+		mypath = ideas_path + "?scope=mine"
 
     respond_to do |format|
       if @idea.save
-        format.html { redirect_to ideas_path, :notice => t(:idea_successfully_created) }
+        format.html { redirect_to mypath, :notice => t(:idea_successfully_created) }
         format.json { render :json => @idea, :status => :created, :location => @idea }
       else
         format.html { redirect_to ideas_path, :notice => t(:idea_was_unsuccessfully_created) }
@@ -51,9 +52,10 @@ class IdeasController < ApplicationController
   def destroy
     @idea = Idea.find(params[:id])
     @idea.destroy
+		mypath= ideas_path + "?scope=mine"
 
     respond_to do |format|
-      format.html { redirect_to ideas_url }
+      format.html { redirect_to mypath }
       format.json { head :ok }
     end
   end
