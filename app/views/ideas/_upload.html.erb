@@ -26,7 +26,7 @@
 
       <tr>
         <td><%= @plan.title %></td>
-        <td><%= @plan.plan.url %></td>
+        <td><%= @plan.plan.url.gsub(/.*\//, '') %></td>
       </tr>
     </table>
 
