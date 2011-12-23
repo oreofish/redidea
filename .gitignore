@@ -20,3 +20,4 @@
 # dir for uploading plans
 public/uploads
 public/assets
+config/database.yml
