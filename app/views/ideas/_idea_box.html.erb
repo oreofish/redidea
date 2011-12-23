@@ -2,6 +2,8 @@
 <div class="content">
   <% if @scope == 'mine' %>
     <%= render 'form' %>
+  <% elsif @scope == 'unliked' %>
+    <p class="first">没有未评论点子啦。</p>
   <% end %>
 </div>
 

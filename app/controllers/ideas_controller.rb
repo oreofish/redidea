@@ -6,7 +6,7 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @scope = params[:scope] || 'unliked'
+    @scope = params[:scope] || 'mine'
     @scopes = [:unliked, :liked, :mine, :upload, :rule]
     
     if @scope == "mine" 
