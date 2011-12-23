@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
     make_users
-    make_ideas
+   # make_ideas
    # make_likes
   end
 end
