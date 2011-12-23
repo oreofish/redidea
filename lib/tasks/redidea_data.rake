@@ -3,14 +3,16 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
     make_users
-   # make_ideas
-   # make_likes
+    make_ideas
+    make_likes
   end
 end
 
 def make_users
-  emails = ['jianxing@redflag-linux.com', 'zhouhuan@redflag-linux.com', 
-	  		'sycao@redflag-linux.com','shensuwen@redflag-linux.com']
+  emails = ['jianxing@redflag-linux.com',
+            'zhouhuan@redflag-linux.com',
+	  		'sycao@redflag-linux.com',
+            'shensuwen@redflag-linux.com']
   password = "abc123"
   emails.each do | email |
     User.create!(:email => email,
@@ -32,12 +34,8 @@ end
 def make_likes
   users = User.all
   user = users.first
-  ideas = Idea.all
-  #idea = ideas.first
-  liking = ideas[11..40]
-  #likers = users[3..40]
-  liking.each do | liked |
-  user.likes.create!(liked.id, 1) 
+  Idea.all[11..40].each do | idea |
+    user.like!(idea.id, 1) 
   end
   #likers.each { |liker| liker.like!(user) }
 end
