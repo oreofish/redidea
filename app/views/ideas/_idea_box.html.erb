@@ -3,7 +3,9 @@
   <% if @scope == 'mine' %>
     <%= render 'form' %>
   <% elsif @scope == 'unliked' and @ideas.empty? %>
-    <p class="first">没有未评论点子啦。</p>
+    <p class="first">没有新鲜点子啦。</p>
+  <% elsif @scope == 'liked' and @ideas.empty? %>
+    <p class="first">还没有评价任何点子。</p>
   <% end %>
 </div>
 
@@ -31,7 +33,7 @@
       <% else %>
         <% score = Like.find(:first, :conditions => "user_id = #{current_user.id} and idea_id = #{idea.id}").score %>
         <% scores = ['不喜欢','没意思','还不错','牛'] %>
-        这个点子<%= scores[score] %>
+        <%= scores[score] %>
       <% end %>
     </div>
   </div>
