@@ -2,7 +2,9 @@
 <p>红旗红点子大赛开始啦，红旗员工都能参加，奖品有iPad、iTouch，你只需要提交<b>一段话的创新想法</b>或者<b>一份项目计划书</b>就能参赛。</p>
 <p>同时我们也邀请您参与进来评判别人提交的点子，哪个点子能够胜出完全看你的投票。</p>
 <p>快来参加吧！（注意：此登录链接只能使用一次，登录后记得修改密码）</p>
-<p><%= link_to '红点子大奖赛网站', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to '红点子大奖赛网址', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %><br>
+<%= confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+</p>
 <p>登录后可以查看<%= link_to '参赛细则', "#{ideas_path}?scope=rule" %>了解更多情况</p>
 <p>愿这次活动让你发现更多新鲜想法。谢谢
 <br>竞赛组委会</p>
