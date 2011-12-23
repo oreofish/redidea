@@ -15,9 +15,12 @@
     <div><%= f.label :current_password %>(系统默认密码是abc123) <br />
     <%= f.password_field :current_password %></div>
 
+    <p>
+    <div class='right'><%= link_to "进入主页", root_path %></div>
     <button class='button' type='submit'>
-      <%= image_tag "web-app-theme/icons/tike.png"%>修改
+      <%= image_tag "web-app-theme/icons/tick.png"%>修改
     </button>
+    </p>
     <% end %>
 
     <!--
@@ -25,6 +28,5 @@
 
 <p>Unhappy? <%= link_to "取消", registration_path(resource_name), :confirm => "确定删除吗?", :method => :delete %>.</p>
     -->
-    <%= link_to "进入主页", root_path %>
   </div>
 </div>
