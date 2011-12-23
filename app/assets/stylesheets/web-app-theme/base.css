@@ -163,8 +163,6 @@ body {
 }
 
 #main .block .content .inner {
-  border-top-style: solid;
-  border-top-width: 1px;
   padding: 0 15px 15px;  
 }
 

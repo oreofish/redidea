@@ -8,11 +8,13 @@
     </ul>
   </div>
 
-  <% if @scope == 'rule' or @scope == 'upload' %>
-    <%= render @scope %>
-  <% else %>
-    <%= render 'idea_box' %>
-  <% end %>
+  <div class="content">
+    <% if @scope == 'rule' or @scope == 'upload' %>
+      <%= render @scope %>
+    <% else %>
+      <%= render 'idea_box' %>
+    <% end %>
+  </div>
 
   <% content_for :sidebar, render(:partial => 'sidebar') -%>
 

@@ -84,6 +84,13 @@ hr {
 #main .block .content .inner {
   padding: 0 15px 15px;
 }
+#main .block .content .inner img {
+  padding: 0 15px 15px;
+}
+#main .block .content .inner .small {
+  font-size: 12px;
+}
+
 #main .block .content h2 {
   margin-left: 15px;
   font-size: 22px;
@@ -383,6 +390,13 @@ ul.list li {
   border-bottom-color: #dddddd;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  clear: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 ul.list li .item .avatar {
   border-color: #dddddd;
