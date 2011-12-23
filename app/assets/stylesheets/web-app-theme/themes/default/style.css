@@ -205,7 +205,7 @@ hr {
 #sidebar .notice {
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  background-color: #aaaaaa;
+  background-color: #777777;
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0)));
   background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
   -moz-border-radius: 6px;
