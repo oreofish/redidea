@@ -2,7 +2,7 @@
 <div class="content">
   <% if @scope == 'mine' %>
     <%= render 'form' %>
-  <% elsif @scope == 'unliked' %>
+  <% elsif @scope == 'unliked' and @ideas.empty? %>
     <p class="first">没有未评论点子啦。</p>
   <% end %>
 </div>
