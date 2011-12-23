@@ -11,23 +11,7 @@
 <body onload='bindIdeaHandler();'>
   <div id="container">
     <div id="header">
-      <h1><a href="/">Red iDea</a></h1>
-      <div id="user-navigation">
-        <ul class="wat-cf">
-        <% if user_signed_in? %>
-          <li>您好,<%= current_user.email %></li>
-          <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
-          <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>
-        <% else %>
-          <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
-          <li><%= link_to "登陆", new_user_session_path %></li>
-        <% end %>
-        </ul>
-      </div>
-      <div id="main-navigation">
-        <ul class="wat-cf">
-        </ul>
-      </div>
+      <%= render 'layouts/header' %>
     </div>
 
 <!--    <p class="notice"><%= notice %></p>

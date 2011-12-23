@@ -61,8 +61,11 @@ body {
   min-width: 960px;
 }
 
-#header, #wrapper {
-  padding: 0 20px;
+#header .wrapper {
+  width: 900px;
+  margin:0 auto;
+  color: #eeeeee;
+  font-size: 14px;
 }
 
 #header {
@@ -108,7 +111,7 @@ body {
   padding: 10px 15px;
   margin: 0;
   font-size: 14px;
-	color: #eeeeee;
+  color: #eeeeee;
 }
 
 #sidebar .block {
@@ -147,6 +150,7 @@ body {
 }
 
 #wrapper {
+  padding: 0 20px;
   width: 900px;
   margin:0 auto;
   padding-top: 20px;
@@ -204,12 +208,6 @@ body {
 	color: #000;
 	font-size: 14px;
 	font-family: "Arial","cursive";
-}
-
-#user-navigation {
-  position: absolute;
-  top: 0px;
-  right: 20px;  
 }
 
 #main-navigation {
