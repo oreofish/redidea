@@ -11,8 +11,8 @@
     <p class="first">
       <div class='right'><%= time_ago_in_words(idea.created_at) %>前</div>
       <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
-      <b><%= idea.title.force_encoding('utf-8') %>:</b><br />
-      <%= idea.content.force_encoding('utf-8') %>
+      <b><%= idea.title %>:</b><br />
+      <%= idea.content %>
     </p>
 
     <div class="right">

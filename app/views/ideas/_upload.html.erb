@@ -38,8 +38,8 @@
         </tr>
 
         <tr>
-          <td class="title"><%= @plan.title.force_encoding('utf-8') %></td>
-          <td class="plan"><%= @plan.plan.url.force_encoding('utf-8').gsub(/.*\//, '') %></td>
+          <td class="title"><%= @plan.title %></td>
+          <td class="plan"><%= @plan.plan.url.gsub(/.*\//, '') %></td>
         </tr>
       </table>
     </div>
