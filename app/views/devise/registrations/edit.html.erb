@@ -6,21 +6,23 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label '新密码' %> <i>（如果不想修改密码请不要填写）</i><br />
-    <%= f.password_field :password %></div>
+    <p><%= f.label :current_password %>
+    <%= f.password_field :current_password, :size => 20 %><i>(初始密码abc123)</i></p>
 
-    <div><%= f.label '确认新密码' %><br />
-    <%= f.password_field :password_confirmation %></div>
+    <p><%= f.label '新的密码：' %>
+    <%= f.password_field :password, :size => 20 %><i>(留空则不修改)</i></p>
 
-    <div><%= f.label :current_password %>(系统默认密码是abc123) <br />
-    <%= f.password_field :current_password %></div>
+    <p><%= f.label '确认密码：' %>
+    <%= f.password_field :password_confirmation, :size => 20 %></p>
+
 
     <p>
-    <div class='right'><%= link_to "进入主页", root_path %></div>
     <button class='button' type='submit'>
       <%= image_tag "web-app-theme/icons/tick.png"%>修改
     </button>
+    <div><%= link_to "进入主页", root_path %></div>
     </p>
+    <p></p>
     <% end %>
 
     <!--

@@ -21,10 +21,10 @@
       like: '喜欢'
     attributes:
       user:
-        email: '邮件'
-        password: '密码'
+        email: '邮件：'
+        password: '密码：'
         password_confirmation: '确认密码'
-        current_password: '请输入现在的密码'
+        current_password: '当前密码：'
       idea:
         title: '标题(限制30字)'
         content: '内容'

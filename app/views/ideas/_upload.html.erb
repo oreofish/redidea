@@ -1,9 +1,9 @@
 <%# encoding: utf-8 %>
   <div>
-    <h2>从此处上传你的计划书</h2>
+    <h2>从此处提交你的计划书</h2>
     <div>
       <strong>
-        一个用户只允许上传一份计划书，重复上传将会覆盖已经上传的计划书
+        每个人允许提交多份计划书，但是上传同名的计划书会覆盖已有的。
       </strong>
     </div>
 
@@ -12,15 +12,15 @@
     <%= form_for(:plan, :url => @plan_upload_path, :method => @plan_upload_method) do |f| %>
       <div class="field">
         <%= f.label "计划书主题:" %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label "上传计划书: " %>
-        <%= f.file_field :plan %>
+        <%= f.text_field :title, :style => "width: 70%;" %>
       </div>
       <button class='button' type='submit'>
-        <%= image_tag "web-app-theme/icons/tick.png"%>上传
+        <%= image_tag "web-app-theme/icons/tick.png"%>提交
       </button>
+      <div class="field">
+        <%= f.label "上传计划书: " %>
+        <%= f.file_field :plan, :style => "width: 70%;" %>
+      </div>
     <% end %>
   </div>
 
@@ -29,7 +29,7 @@
   <br>
   <% if @plan %>
     <div>
-      <h2>已上传的计划书</h2>
+      <h2>已提交的计划书</h2>
       <table class="myplan">
         <tr>
           <th class="title">主题</th>
