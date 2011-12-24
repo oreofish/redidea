@@ -41,11 +41,11 @@ hr {
 
 #header {
   height: 50px;
-  background-color: #a00;
+  background-color: #800;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 0 -35px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
-  -moz-box-shadow: inset 0 -35px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
-  -webkit-box-shadow: inset 0 -35px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
   font-family: "Museo700", helvetica, arial, sans-serif;
 }
 #header h1 {
