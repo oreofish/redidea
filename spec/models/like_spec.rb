@@ -2,10 +2,10 @@
 #
 # Table name: likes
 #
-#  id         :integer         not null, primary key
-#  user_id    :integer
-#  idea_id    :integer
-#  score      :integer
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
+#  idea_id    :integer(4)
+#  score      :integer(4)
 #  created_at :datetime
 #  updated_at :datetime
 #

@@ -2,8 +2,8 @@
 #
 # Table name: plans
 #
-#  id         :integer         not null, primary key
-#  user_id    :integer
+#  id         :integer(4)      not null, primary key
+#  user_id    :integer(4)
 #  title      :string(255)
 #  plan       :string(255)
 #  created_at :datetime
