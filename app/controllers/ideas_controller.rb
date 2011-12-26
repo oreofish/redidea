@@ -6,19 +6,16 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
-    @scope = params[:scope] || 'mine'
-    @scopes = [:unliked, :liked, :mine, :upload, :rule]
+    @scope = params[:scope] || 'liked'
+    @scopes = [:liked, :mine, :upload, :rule]
     
     if @scope == "mine" 
       @ideas = current_user.ideas
       @ideas.reverse!
     elsif @scope == "liked" 
-      @ideas = current_user.liking
+      @liked_ideas = current_user.liking
+      @ideas = Idea.all - @liked_ideas - current_user.ideas
       @ideas.reverse!
-    elsif @scope == "unliked" 
-      all_ideas = Idea.all
-      my_ideas = current_user.ideas
-      @ideas = all_ideas - current_user.liking - my_ideas
     elsif @scope == "upload"
       @plan = Plan.find(:first, :conditions => "user_id = #{current_user.id}")
       if @plan
@@ -32,6 +29,8 @@ class IdeasController < ApplicationController
 
     @idea = Idea.new
     @user = current_user
+    @ideas = Array.new if @ideas == nil
+    @liked_ideas = Array.new if @ideas == nil
 
     respond_to do |format|
       format.html # index.html.erb
