@@ -76,7 +76,7 @@ class IdeasController < ApplicationController
     end
     def user_info
 		@browser = request.env['HTTP_USER_AGENT']
-		$my_logger.info("user_id = #{current_user.id}")
+		$my_logger.info("user_email = #{current_user.email}")
 		$my_logger.info("time = #{Time.now}")
 		$my_logger.info("user_agent = #{@browser}")
 		$my_logger.info("\n")
