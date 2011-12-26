@@ -41,11 +41,12 @@ describe Idea do
     no_content_idea.should_not be_valid
   end
 
-  it "should not create with too short content" do 
-    short_content = "a" * 5
-    short_idea = @user.ideas.new(@attr.merge(:content => short_content))
-    short_idea.should_not be_valid
-  end
+  # we allow to create short idea
+  #it "should not create with too short content" do 
+  #  short_content = "a" * 5
+  #  short_idea = @user.ideas.new(@attr.merge(:content => short_content))
+  #  short_idea.should_not be_valid
+  #end
 
   it "should create with long content" do 
     long_content = "a" * 400
