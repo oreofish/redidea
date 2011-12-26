@@ -3,21 +3,50 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
     make_users
-    make_ideas
-    make_likes
+  # make_ideas
+  # make_likes
   end
+
+end
+
+namespace :db do
+  desc "invite users"
+  task :invite => :environment do
+    make_users
+  end
+
 end
 
 def make_users
-  emails = ['jianxing@redflag-linux.com',
-            'zhouhuan@redflag-linux.com',
-	  		'sycao@redflag-linux.com',
-            'shensuwen@redflag-linux.com']
+  emails = [
+    'jianxing@redflag-linux.com',
+    'zhouhuan@redflag-linux.com', 
+    'sycao@redflag-linux.com',
+    'shensuwen@redflag-linux.com',
+    'junhuang@redflag-linux.com',
+    'lvlisong@redflag-linux.com',
+    'zyzheng@redflag-linux.com',
+    'penghao@redflag-linux.com',
+    'lingwei@redflag-linux.com',
+    'wudi@redflag-linux.com',
+    'hanlifei@redflag-linux.com',
+    'pengyin@redflag-linux.com',
+    'zuohongsheng@redflag-linux.com',
+    'jianhuichen@redflag-linux.com',
+    'hgfan@redflag-linux.com',
+    'wangchao@redflag-linux.com',
+    'yushang@redflag-linux.com',
+    'zhzhang@redflag-linux.com',
+    'sywang@redflag-linux.com',
+    'chenjie@redflag-linux.com'
+  ]
   password = "abc123"
   emails.each do | email |
-    User.create!(:email => email,
-                 :password => password,
-                 :password_confirmation => password)
+    if not User.find(:first, "email = #{email}")
+      User.create!(:email => email,
+                   :password => password,
+                   :password_confirmation => password)
+    end
   end
 end
 
