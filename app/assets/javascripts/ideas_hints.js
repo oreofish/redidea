@@ -28,3 +28,23 @@ function bindIdeaHandler() {
 
 }
 
+function handleIdeaCreate() {
+    var log_idea_create_success = false;
+    $('#new_idea').bind({
+        'ajax:failure': function() {
+            $('.flash').html('
+          <div class="message notice">
+            <p>创建失败</p>
+          </div>');
+        },
+        'ajax:success': function() {
+            log_idea_create_success = true;
+        },
+        'ajax:complete': function() {
+            log_idea_create_success = false;
+        }
+    });
+}
+
+
+

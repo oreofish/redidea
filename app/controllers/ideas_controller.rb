@@ -35,7 +35,6 @@ class IdeasController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @ideas }
     end
   end
 
@@ -43,15 +42,21 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea  = current_user.ideas.build(params[:idea])
-		mypath = ideas_path + "?scope=mine"
+    mypath = ideas_path + "?scope=mine"
 
     respond_to do |format|
       if @idea.save
+        @scope = 'mine'
+        @ideas = current_user.ideas
+        @ideas.reverse!
+
         format.html { redirect_to mypath, :notice => t(:idea_successfully_created) }
         format.json { render :json => @idea, :status => :created, :location => @idea }
+        format.js 
       else
         format.html { redirect_to mypath, :notice => t(:idea_was_unsuccessfully_created) }
         format.json { render :json => @idea.errors, :status => :unprocessable_entity }
+        format.js { head :index }
       end
     end
   end
