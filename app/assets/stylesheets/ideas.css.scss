@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.flash .create {
+  position: absolute;
+  top: 10px;
+  left: 44%;
+  width: 130px;
+}
+
+.flash .create p {
+  width: 80%;
+}
 
 form#new_idea.new_idea div.field div.idea_content div.title {
   height: 28px;

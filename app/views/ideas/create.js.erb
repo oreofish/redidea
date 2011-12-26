@@ -1,4 +1,9 @@
-$('#myideas').prepend( "<%= j render 'my_ideas' %>" );
-$('#myideas > li:first').effect('highlight', {}, 3000);
-$('#new_idea')[0].reset();
+<% if @idea.valid? %>
+    $('#myideas').prepend( "<%= j render 'my_ideas' %>" );
+  $('#myideas > li:first').effect('highlight', {}, 3000);
+<% else %>
+    $('.flash').html('<div class="message notice create"> <p>创建失败</p>  </div>');
+  $('.flash .notice').effect('fade', {}, 3000);
+<% end %>
 
+$('#new_idea')[0].reset();
