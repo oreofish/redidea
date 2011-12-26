@@ -40,18 +40,18 @@ hr {
 }
 
 #header {
-  height: 80px;
-  background-color: #333333;
+  height: 50px;
+  background-color: #800;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
-  -moz-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
-  -webkit-box-shadow: inset 0 -5px 10px rgba(0, 0, 0, 0.25), 0 1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+  -webkit-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
   font-family: "Museo700", helvetica, arial, sans-serif;
 }
 #header h1 {
-  padding: 15px 5px;
+  padding: 5px 5px;
   float: left;
-  font-size: 40px;
+  font-size: 36px;
   font-style: normal;
   text-transform: normal;
   letter-spacing: -1px;
@@ -60,7 +60,7 @@ hr {
   font-family: "Museo700", helvetica, arial, sans-serif;
 }
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
-  color: #ff5555;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -77,6 +77,7 @@ hr {
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.3);
+  min-height: 360px;
 }
 #main .block .content {
   padding-top: 1px;
@@ -84,6 +85,13 @@ hr {
 #main .block .content .inner {
   padding: 0 15px 15px;
 }
+#main .block .content .inner img {
+  padding: 0 15px 15px;
+}
+#main .block .content .inner .small {
+  font-size: 12px;
+}
+
 #main .block .content h2 {
   margin-left: 15px;
   font-size: 22px;
@@ -101,7 +109,7 @@ hr {
 }
 
 #main-navigation {
-  padding-top: 30px;
+  padding-top: 15px;
   width: auto;
 }
 #main-navigation ul li {
@@ -109,12 +117,12 @@ hr {
   margin-right: 0;
 }
 #main-navigation ul li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active {
-  padding: 8px 0;
+  padding: 4px 0;
   text-decoration: none;
-  color: #eeeeee;
+  color: #fff;
 }
 #main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
-  color: #a4a4a4;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -153,15 +161,15 @@ hr {
 }
 
 #user-navigation {
-  top: 33px;
-  right: 10px;
+  padding: 12px 15px;
+  float: right;
   color: #eeeeee;
   font-size: 14px;
 }
 
 #user-navigation ul li a:link, #user-navigation ul li a:visited, #user-navigation ul li a:hover, #user-navigation ul li a:active {
   text-decoration: none;
-  color: #eeeeee;
+  color: #fff;
 }
 #user-navigation ul li a:active img {
   margin-top: 1px;
@@ -383,6 +391,13 @@ ul.list li {
   border-bottom-color: #dddddd;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+  border-bottom-left-radius: 9px;
+  border-bottom-right-radius: 9px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  clear: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 ul.list li .item .avatar {
   border-color: #dddddd;
@@ -392,7 +407,7 @@ ul.list li .item .avatar {
 }
 
 #box {
-  width: 480px;
+  width: 400px;
 }
 #box .block {
   background: white;

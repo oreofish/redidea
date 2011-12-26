@@ -3,10 +3,9 @@
 
 "zh-CN":
   submit: '提交'
-  liked: '已评价点子'
-  unliked: '新鲜点子'
-  mine: '我的点子'
-  upload: '提交计划书'
+  liked: '评价点子'
+  mine: '提交点子'
+  upload: '提交策划书'
   rule: '竞赛规则'
   remember_me: '记住我'
   idea_successfully_created: '新点子创建成功'
@@ -21,10 +20,10 @@
       like: '喜欢'
     attributes:
       user:
-        email: '邮件'
-        password: '密码'
+        email: '邮件：'
+        password: '密码：'
         password_confirmation: '确认密码'
-        current_password: '请输入现在的密码'
+        current_password: '当前密码：'
       idea:
         title: '标题(限制30字)'
         content: '内容'
