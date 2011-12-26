@@ -35,7 +35,7 @@
     <% end %>
 
     <!-- liked ideas -->
-    <% if @scope == 'liked' %>
+    <% if @scope == 'liked' and not @liked_ideas.empty? %>
     <li>已评价点子：
     </li>
 
