@@ -16,3 +16,7 @@ $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
   }
 } );
 
+<% if @scope == 'mine' %>
+    ideasController.initialized = false;
+    ideasController.init();
+<% end %>
