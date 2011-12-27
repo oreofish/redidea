@@ -51,6 +51,10 @@ var ideasController = {
             this.handleIdeaCreate(); 
             this.bindIdeaHandler();
         }
+
+        if ($('.flash').find('.message').css('display') != "none") {
+            $('.flash .message').fadeOut('slow');
+        }
     } 
 };
 
