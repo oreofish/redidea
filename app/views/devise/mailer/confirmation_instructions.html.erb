@@ -5,6 +5,6 @@
 <p><%= link_to '红点子大奖赛网址', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %><br>
 <%= confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
 </p>
-<p>登录后可以查看<%= link_to '参赛细则', "http://172.16.82.163/#{ideas_path}?scope=rule" %>了解更多情况</p>
+<p>登录后可以查看<%= link_to '参赛细则', "http://172.16.82.163#{ideas_path}?scope=rule" %>了解更多情况</p>
 <p>愿这次活动让你发现更多新鲜想法。谢谢
 <br>竞赛组委会</p>
