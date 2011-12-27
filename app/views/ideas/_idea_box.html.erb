@@ -9,29 +9,7 @@
   <ul id="myideas" class="list">
     <!-- unlied ideas -->
     <% @ideas.each do |idea| %>
-    <li>
-      <div class='left'>
-        <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
-      </div>
-      <div class='item'>
-        <b><%= idea.title %></b>
-        <p><%= (idea.content).html_safe %></p>
-        <div class='right small'>
-          <% if @scope == 'mine' %>
-          <% scores = [0,0,0,0] %>
-          <% idea.likes.each{ |like| scores[like.score] += 1 } %>
-          目前评价： 得分(<%= "#{scores[3]*2 + scores[2] - scores[0]}" %>)，关注(<%= "#{scores[2] + scores[1] + scores[0]}" %>)
-          <%= link_to '删除点子', idea, :confirm => '无论评分高还是评分低，其实都是很有价值的点子。除非写错了，否则不需要删除。你确认删除？', :method => :delete, :class => 'small-button' %>
-          <% else %>
-          <%= link_to '牛', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button' %>
-          <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button' %>
-          <%= link_to '没感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button' %>
-          <%= link_to '不喜欢', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button' %>
-          <% end %>
-        </div>
-        <div class='small'><%= time_ago_in_words(idea.created_at) %>前</div>
-      </div>
-    </li>
+      <%= render :partial => "my_ideas", :locals => { :idea => idea } %>
     <% end %>
 
     <!-- liked ideas -->

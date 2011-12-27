@@ -1,5 +1,5 @@
 <% if @idea.valid? %>
-    $('#myideas').prepend( "<%= j render 'my_ideas' %>" );
+    $('#myideas').prepend( "<%= j render( :partial => 'my_ideas', :locals => { :idea => @idea }) %>" );
   $('#myideas > li:first').effect('highlight', {}, 3000);
 <% else %>
     $('.flash').html('<div class="message notice create"> <p>创建失败</p>  </div>');
