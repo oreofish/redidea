@@ -62,7 +62,7 @@ class IdeasController < ApplicationController
   def destroy
     @idea = Idea.find(params[:id])
     @idea.destroy
-		mypath= ideas_path + "?scope=mine"
+    mypath= ideas_path + "?scope=mine"
 
     respond_to do |format|
       format.html { redirect_to mypath }
