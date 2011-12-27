@@ -19,13 +19,9 @@ class IdeasController < ApplicationController
       @liked_ideas.reverse!
     elsif @scope == "upload"
       @plan = Plan.find(:first, :conditions => "user_id = #{current_user.id}")
-      if @plan
-        @plan_upload_path = plan_path(@plan.id)
-        @plan_upload_method = :put
-      else
-        @plan_upload_path = plans_path 
-        @plan_upload_method = :post
-      end
+      if not @plan
+        @plan = Plan.new
+      end 
     end
 
     @idea = Idea.new

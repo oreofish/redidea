@@ -2,12 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.flash .create {
-  position: absolute;
-  top: 10px;
-  left: 44%;
-  width: 130px;
+#wrapper .flash {
+  /*float: top;*/
+  height: 38px;
+  width: 30% auto;
+  max-width: 80%;
+  margin: 3px;
 }
+
+/*.flash .create {*/
+  /*position: absolute;*/
+  /*top: 10px;*/
+  /*left: 44%;*/
+  /*width: 130px;*/
+/*}*/
 
 .flash .create p {
   width: 80%;

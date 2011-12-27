@@ -32,14 +32,6 @@ function handleIdeaCreate() {
     var log_idea_create_success = false;
     $('#new_idea').bind({
         'ajax:failure': function() {
-            //$('.flash').html('
-          //<div class="message notice">
-            //<p>创建失败</p>
-          //</div>').css({
-              //position: 'absolute',
-              //top: '10px',
-              //left: '%45',
-          //});
         },
         'ajax:success': function() {
             log_idea_create_success = true;
@@ -50,5 +42,7 @@ function handleIdeaCreate() {
     });
 }
 
-
-
+$(document).ready( function() {
+    handleIdeaCreate(); 
+    bindIdeaHandler();
+} );

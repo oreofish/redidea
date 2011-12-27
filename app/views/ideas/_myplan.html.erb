@@ -1,0 +1,17 @@
+<%# encoding: utf-8 %>
+<% if @plan.valid? %>
+  <h2>已提交的策划书</h2>
+  <table id="plans" class="myplan">
+    <tbody>
+      <tr>
+        <th class="title">主题</th>
+        <th class="plan">当前策划书</th>
+      </tr>
+
+      <tr>
+        <td class="title"><%= @plan.title %></td>
+        <td class="plan"><%= @plan.plan.url.gsub(/.*\//, '') %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
