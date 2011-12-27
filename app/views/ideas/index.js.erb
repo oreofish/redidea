@@ -1,0 +1,18 @@
+<%# encoding: utf-8 %>
+
+<% if @scope == 'rule' or @scope == 'upload' %>
+    $('#main .block .content').html( "<%= j render @scope %>" );
+<% else %>
+    $('#main .block .content').html( " <%= j render 'idea_box' %> " );
+<% end %>
+
+var pat = new RegExp("scope=(<%= j @scope %>)", 'g');
+$('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+  var ret = pat.exec( $(el).attr('href') );
+  if ( ret && ret[1] ) {
+    $(el).parent().addClass('active first');
+  } else {
+    $(el).parent().removeClass('active first');
+  }
+} );
+
