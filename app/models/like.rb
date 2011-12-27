@@ -18,7 +18,7 @@ class Like < ActiveRecord::Base
   
   validates :user_id, :presence => true
   validates :idea_id, :presence => true
-  validates :user_id, :idea_id, :uniqueness => true # this can not work with sqlite3
+  #validates :user_id, :idea_id, :uniqueness => true # this can not work with sqlite3
   validates :score,   :presence     => true,
                       :numericality => true,
                       :inclusion    => { :in => 0..3 } # this can not work with sqlite3
