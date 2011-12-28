@@ -21,38 +21,17 @@ describe Like do
     @like = @user.likes.build(:idea_id => @idea2.id, :score => 1)
   end
 
-  it "should have a user attribute" do
-    @like.should respond_to(:user)
-  end
-
-  it "should have right idea" do
-    @like.idea.should == @idea2
-  end
-
-  it "should have right user" do
-    @like.user.should == @user
-  end
-
-  it "should have a idea attribute" do
-    @like.should respond_to(:idea)
-  end
-
-  it "should create a new instance given valid attributes" do 
+  it "should create a new instance with given valid attributes" do 
     @like.save!
   end
   
-  it "should not like ideas of itself" do
-    @selflike = @user.likes.build(:idea_id => @idea.id)
-    # @like.should_not be_valid
-    pending "fix me later!!!"
+  it "should delete" do 
+    @like.save
+    @like.destroy
   end
   
-  it "should like ideas of others" do
-    @like.should be_valid
-  end
-  
-  it "should not create again" do
-    @like1 = @user.likes.create(:idea_id => @idea2.id)
+  it "should not create with same idea and user" do
+    @like.save!
     @like2 = @user.likes.new(:idea_id => @idea2.id)
     @like2.should_not be_valid
   end
@@ -67,6 +46,41 @@ describe Like do
     @like.should_not be_valid
   end
   
+  it "should not create like with score string" do
+    @like.score = "aa"
+    @like.should_not be_valid
+  end
+  
+  describe User do 
+    it "should have a user attribute" do
+      @like.should respond_to(:user)
+    end
+    
+    it "should have right user" do
+      @like.user.should == @user
+    end
+    
+    it "should not like ideas of itself" do
+      @selflike = @user.likes.build(:idea_id => @idea.id)
+      # @like.should_not be_valid
+      pending "fix me later!!!"
+    end
+    
+    it "should like ideas of others" do
+      @like.should be_valid
+    end
+  end
+
+  describe Idea do 
+    it "should have a idea attribute" do
+      @like.should respond_to(:idea)
+    end
+    
+    it "should have right idea" do
+      @like.idea.should == @idea2
+    end
+  end
+
   describe "validations" do
     it "should require a user" do
       @like.user_id = nil

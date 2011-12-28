@@ -36,7 +36,21 @@ describe User do
   it "should have an like attribute" do
     @user.should respond_to(:likes)
   end
-  
+
+  describe "idea associations" do
+    before(:each) do
+      @idea1 = Factory(:idea, :user => @user, :created_at => 1.day.ago)
+      @idea2 = Factory(:idea, :user => @user, :title => Factory.next(:title), :created_at => 1.hour.ago)
+    end
+
+    it "should destroy associated ideas" do
+      @user.destroy
+      [@idea1, @idea2].each do |idea|
+        @user.ideas.find_by_id(idea.id).should be_nil
+      end
+    end
+  end
+
   describe 'like' do 
     it "should have a like method" do
       @user.should respond_to(:likes)
@@ -58,11 +72,7 @@ describe User do
         @user.like!(@idea2.id, 3)
       end
       
-      it "should can like others" do
-        @user.should be_liking(@idea2)
-      end
-      
-      it "can check if i like the idea" do
+      it "should like others" do
         @user.should be_liking(@idea2)
       end
       

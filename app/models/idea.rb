@@ -14,7 +14,6 @@ class Idea < ActiveRecord::Base
   validates :content, :presence     => true,
                       :length       => { :maximum => 400 }
   validates :title,   :presence     => true,
-                      :uniqueness   => true,
                       :length       => { :maximum => 30 }
   validates :user_id, :presence => true
 
