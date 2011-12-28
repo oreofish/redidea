@@ -1,7 +1,5 @@
 var ideasController = {
     initialized: false, // if event handler are binded, then it's true
-    checkFrequence: 3000,
-    lastCheckedCount: 0,
 
     bindIdeaHandler: function() {
         var $idea_content = $('#idea_content').first();
@@ -34,15 +32,35 @@ var ideasController = {
 
     },
 
+    checkFrequence: 10000,
+    lastCheckedCount: 0,
+    hasNewIdeas: false,      // this can be used by other objects
+    hasIdeasDeleted: false,  // this can be used by other objects
+
     checkFreshIdeas : function() {
         var that = this;
         $.get("/ideas/fresh", function(respone) {
             var new_count = parseInt(respone);
             console.log( "Get fresh ideas: " + new_count );
             if (new_count > that.lastCheckedCount) {
-                flashController.doSuccess( "<div class='message notice'><b>有"+respone+"条新点子</b></div>" );
+                that.hasNewIdeas = true;
+                flashController.doSuccess( "<b>有"+respone+"条新点子</b>" );
+
+            } else if (new_count < that.lastCheckedCount) {
+                flashController.doSuccess( "<b>有点子被删除</b>" );
+                that.hasIdeasDeleted = true;
+            } else {
+                that.hasIdeasDeleted = false;
+                that.hasNewIdeas = false;
             }
             that.lastCheckedCount = new_count;
+
+            if (tabsManager.activeTab == "liked") {
+                //TODO: need refinement
+                $('.secondary-navigation .wat-cf li a').filter(function(idx) {
+                    return $(this).attr('href').indexOf(tabsManager.activeTab) >= 0;
+                }).trigger('click');
+            }
         });
     }, 
 
@@ -82,29 +100,24 @@ var tabsManager = {
                         ideasController.init();
                     }
                 },
-            })
-        });
-
-        $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
-            $(el).bind({
                 'ajax:before': function(ev, xhr) {
-                    console.log(that.previousTab + "," + that.activeTab);
-                    console.log(this.toString() + ':before');
                     if (that.previousTab == that.activeTab) {
-                        return false;
-                    } else 
-                        return true;
+                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
+                            return false;
+                        }
+                    } 
+                    return true;
                 },
                 'ajax:beforeSend': function(xhr, data, status) {
-                    console.log(that.previousTab + "," + that.activeTab);
-                    console.log(this.toString() + ':beforeSend');
                     if (that.previousTab == that.activeTab) {
-                        xhr.abort();
-                        return false;
-                    } else 
-                        return true;
+                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
+                            xhr.abort();
+                            return false;
+                        }
+                    } 
+                    return true;
                 }
-            });
+            })
         });
     }
 };
@@ -125,6 +138,7 @@ $(document).ready( function() {
     tabsManager.bindHandlers();
     ideasController.init();
 
-    setInterval( function() { ideasController.checkFreshIdeas(); }, 4000);
-    //$('.flash').show('bounce', { times: 3}, 500);
+    setInterval( function() { 
+        ideasController.checkFreshIdeas(); 
+    }, ideasController.checkFrequence );
 } );
