@@ -3,9 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #wrapper .flash {
-  /*float: top;*/
+  position: absolute;
+  top: 0;
   height: 38px;
-  width: 30% auto;
+  width: 40%;
   max-width: 80%;
   margin: 3px;
 }

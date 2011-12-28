@@ -95,4 +95,21 @@ var tabsManager = {
     }
 };
 
-//$(document).ready( function() {tabsManager.bindHandlers(); ideasController.init();} );
+// handle flash messages and animations
+var flashController = {
+    doFailure: function(msg) {
+        $('.flash').html(msg);
+        $('.flash .notice').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
+    }, 
+    doSuccess: function(msg) {
+        $('.flash').html(msg);
+        $('.flash .notice').effect('fade', {}, 3000);
+    }
+};
+
+$(document).ready( function() {
+    tabsManager.bindHandlers();
+    ideasController.init();
+
+    //$('.flash').show('bounce', { times: 3}, 500);
+} );
