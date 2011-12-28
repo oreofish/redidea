@@ -25,8 +25,8 @@
         password_confirmation: '确认密码'
         current_password: '当前密码：'
       idea:
-        title: '标题(限制30字)'
-        content: '内容'
+        title: '标题(限制30字):'
+        content: '内容(请尽量把你点子的意图描述清楚，让评论者知道这个点子是要做什么):'
       like:
         score: '分数'
 
