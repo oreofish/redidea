@@ -27,8 +27,7 @@
   } );
 
   <% if @scope == 'mine' %>
-      ideasController.initialized = false;
-    ideasController.init();
+    ideasController.reinit();
   <% end %>
 
 })();

@@ -2,34 +2,69 @@ var ideasController = {
     initialized: false, // if event handler are binded, then it's true
 
     bindIdeaHandler: function() {
-        var $idea_content = $('#idea_content').first();
-        if ($idea_content.length) {
-            var $hint = $('.content .field .num').first();
+        var $idea_content = $('#new_idea #idea_content');
+        var $idea_title = $('#new_idea #idea_title');
+        var $submit = $("#new_idea :submit");
+        var $hint = $('.content .field .num').first();
 
-            var idea_validator = {
-                hotkeyHandler : function(e) {
-                    if (e.ctrlKey && e.which == 13) {
-                        $('.new_idea :submit').first().trigger('click');
-                    }
-                },
+        var idea_validator = {
+            titleValidator: function() {
+                var $this = $(this);
+                var remain = (30 - $this.attr('value').length);
 
-                keyHandler : function(e) {
-                    var $this = $(this);
-                    $hint.find('span').html( "" + (400 - $this.attr('value').length) );
+                $this.stop(); // stop previous animation
+                if (remain < 0) {
+                    $this.animate({
+                        backgroundColor: "#00aa00",
+                        color: "#fff"
+                    }, 1000 );
+                } else {
+                    $this.animate({
+                        backgroundColor: "#fff",
+                        color: "#000"
+                    }, 1000 );
                 }
-            };
+            }, 
 
-            $idea_content.bind({
-                'keypress': idea_validator.hotkeyHandler,
-                'input': idea_validator.keyHandler,
-                'keyup': idea_validator.keyHandler,
-                //'compositionend': idea_validator.keyhandler,
-                'focusin'   : function() { $hint.fadeIn('slow') },
-                'focusout' : function() { $hint.fadeOut('fast') },
-            });
-            this.initialized = true;
-        }
+            hotkeyHandler : function(e) {
+                if (e.ctrlKey && e.which == 13) {
+                    $submit.trigger('click');
+                }
+            },
 
+            keyHandler : function(e) {
+                var $this = $(this);
+                var remain = (400 - $this.attr('value').length);
+                $hint.find('span').html( remain.toString() );
+
+                $this.stop(); // stop previous animation
+                if (remain < 0) {
+                    $this.animate({
+                        backgroundColor: "#aa0000",
+                        color: "#fff"
+                    }, 1000 );
+                } else {
+                    $this.animate({
+                        backgroundColor: "#fff",
+                        color: "#000"
+                    }, 1000 );
+                }
+            }
+        };
+
+        $idea_title.bind({
+            'input': idea_validator.titleValidator
+        });
+
+        $idea_content.bind({
+            'keypress': idea_validator.hotkeyHandler,
+            'input': idea_validator.keyHandler,
+            'keyup': idea_validator.keyHandler,
+            //'compositionend': idea_validator.keyhandler,
+            'focusin'   : function() { $hint.fadeIn('slow') },
+            'focusout' : function() { $hint.fadeOut('fast') },
+        });
+        this.initialized = true;
     },
 
     checkFrequence: 10000,
@@ -62,6 +97,12 @@ var ideasController = {
                 }).trigger('click');
             }
         });
+    }, 
+
+    // this needs to get called when tab 'mine' activated
+    reinit: function() {
+        this.initialized = false;
+        this.init();
     }, 
 
     init: function() {
