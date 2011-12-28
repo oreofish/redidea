@@ -21,59 +21,64 @@ describe Idea do
     }
   end
 
-  it "should create a new idea with attr" do
-    @user.ideas.create!(@attr)
+  describe "title verify" do
+    it "should create a new idea with attr" do
+      @user.ideas.create!(@attr)
+    end
+    
+    it "should not create without title" do 
+      no_title_idea = @user.ideas.new(@attr.merge(:title => ""))
+      no_title_idea.should_not be_valid
+    end
+  
+    it "should not create with long title" do 
+      long_title = "a" * 31
+      long_idea = @user.ideas.new(@attr.merge(:title => long_title))
+      long_idea.should_not be_valid
+    end
+  end
+
+  describe "content verify" do
+    it "should not create without content" do 
+      no_content_idea = @user.ideas.new(@attr.merge(:content => ""))
+      no_content_idea.should_not be_valid
+    end
+  
+    # we allow to create short idea
+    #it "should not create with too short content" do 
+    #  short_content = "a" * 5
+    #  short_idea = @user.ideas.new(@attr.merge(:content => short_content))
+    #  short_idea.should_not be_valid
+    #end
+  
+    it "should create with long content" do 
+      long_content = "a" * 400
+      long_idea = @user.ideas.new(@attr.merge(:content => long_content))
+      long_idea.save
+      long_idea.reload.content == long_content
+    end
+  
+    it "should not create with too long content" do 
+      long_content = "a" * 401
+      long_idea = @user.ideas.new(@attr.merge(:content => long_content))
+      long_idea.should_not be_valid
+    end
+  end
+ 
+  describe "has attributes" do
+    before(:each) do
+      idea = @user.ideas.new(@attr)
+    end
+
+    it "shoulde respond to likes" do
+      idea.should respond_to(:likes)
+    end
+
+    it "shoulde belong to user" do
+      idea.should respond_to(:user)
+    end
   end
   
-  it "should not create without title" do 
-    no_title_idea = @user.ideas.new(@attr.merge(:title => ""))
-    no_title_idea.should_not be_valid
-  end
-
-  it "should not create with long title" do 
-    long_title = "a" * 31
-    long_idea = @user.ideas.new(@attr.merge(:title => long_title))
-    long_idea.should_not be_valid
-  end
-  
-  it "should not create without content" do 
-    no_content_idea = @user.ideas.new(@attr.merge(:content => ""))
-    no_content_idea.should_not be_valid
-  end
-
-  # we allow to create short idea
-  #it "should not create with too short content" do 
-  #  short_content = "a" * 5
-  #  short_idea = @user.ideas.new(@attr.merge(:content => short_content))
-  #  short_idea.should_not be_valid
-  #end
-
-  it "should create with long content" do 
-    long_content = "a" * 400
-    long_idea = @user.ideas.new(@attr.merge(:content => long_content))
-    long_idea.save
-    long_idea.reload.content == long_content
-  end
-
-  it "should not create with too long content" do 
-    long_content = "a" * 401
-    long_idea = @user.ideas.new(@attr.merge(:content => long_content))
-    long_idea.should_not be_valid
-  end
-
-  it "should not create idea with same title" do 
-    @user.ideas.create!(@attr)
-    idea = @user.ideas.new(@attr)
-    idea.should_not be_valid
-  end
-
-  it "should store right idea" do 
-    long_idea = @user.ideas.create!(@attr)
-    long_idea.reload.user_id == @attr[:user_id]
-    long_idea.reload.title == @attr[:title]
-    long_idea.reload.content == @attr[:content]
-  end
-
   describe "idea associations" do
     before(:each) do
       @idea1 = Factory(:idea, :user => @user, :created_at => 1.day.ago)
@@ -83,27 +88,11 @@ describe Idea do
     it "should have the right ideas in the right order" do
       @user.ideas.should == [@idea1, @idea2]
     end
-
-    it "should destroy associated ideas" do
-      @user.destroy
-      [@idea1, @idea2].each do |idea|
-        @user.ideas.find_by_id(idea.id).should be_nil
-      end
-    end
   end
 
   describe "user associations" do
-    before(:each) do
-      @idea = @user.ideas.create(@attr)
-    end
-
     it "should have a user attribute" do
       @idea.should respond_to(:user)
-    end
-
-    it "should have the right associated user" do
-      @idea.user_id.should == @user.id
-      @idea.user.should == @user
     end
   end
   
@@ -119,20 +108,24 @@ describe Idea do
     it "should have an liked_by attribute" do
       @idea.should respond_to(:liked_by)
     end
+  end
     
-    describe 'create like' do 
-      before(:each) do 
-        @user2 = Factory(:user, :email => Factory.next(:email))
-        @user2.like!(@idea.id, 3)
-      end
-      
-      it "can check if the idea liked by user" do
-        @idea.should be_liked_by(@user2)
-      end
-      
-      it "can get all ideas the user like" do
-        @idea.liked_by.should include(@user2)
-      end
+  describe 'test function like! and liked_by' do 
+    before(:each) do 
+      @user2 = Factory(:user, :email => Factory.next(:email))
+      @user2.like!(@idea.id, 3)
+    end
+    
+    it "should save right score" do
+      Like.score(@user2.id, @idea.id) == 3
+    end
+    
+    it "can check if the idea liked by user" do
+      @idea.should be_liked_by(@user2)
+    end
+    
+    it "can get all ideas the user like" do
+      @idea.liked_by.should include(@user2)
     end
   end
 end

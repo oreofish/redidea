@@ -15,7 +15,7 @@
       </div>
       <div class='item'>
         <b><%= idea.title %></b>
-        <p><%= idea.content %></p>
+        <p><%= (idea.content).html_safe %></p>
         <div class='right small'>
           <% if @scope == 'mine' %>
           <% scores = [0,0,0,0] %>
@@ -46,9 +46,9 @@
       </div>
       <div class='item'>
         <b><%= idea.title %></b>
-        <p><%= idea.content %></p>
+        <p><%= (idea.content).html_safe %></p>
         <div class='right small'>
-          <% my_like = Like.find(:first, :conditions => "user_id = #{current_user.id} and idea_id = #{idea.id}") %>
+          <% my_like = current_user.likes.find_by_idea_id(:first, idea.id) %>
           <% if my_like != nil %>
             <% score = my_like.score %>
             <% scores = ['不喜欢','没感觉','还不错','牛'] %>
