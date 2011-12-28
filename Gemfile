@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'gravatar_image_tag', '1.0.0'
 gem 'carrierwave'
 gem 'mysql2'
+gem 'cancan'
 
 group :development do
   gem 'rspec-rails'
