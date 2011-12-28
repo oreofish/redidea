@@ -1,22 +1,34 @@
 <%# encoding: utf-8 %>
 
-<% if @scope == 'rule' or @scope == 'upload' %>
+(function() {
+  var scope_pat = new RegExp("scope=(<%= j @scope %>)", 'g');
+
+  <% if @scope == 'rule' or @scope == 'upload' %>
+    var $active = $('.secondary-navigation .wat-cf li.active');
+    if ($active.length) {
+      var ret = scope_pat.exec( $active.find('a').attr('href') );
+      if (ret && ret[1] === "<%= @scope %>") {
+        return;
+      } 
+    }
     $('#main .block .content').html( "<%= j render @scope %>" );
-<% else %>
-    $('#main .block .content').html( " <%= j render 'idea_box' %> " );
-<% end %>
 
-var pat = new RegExp("scope=(<%= j @scope %>)", 'g');
-$('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
-  var ret = pat.exec( $(el).attr('href') );
-  if ( ret && ret[1] ) {
-    $(el).parent().addClass('active first');
-  } else {
-    $(el).parent().removeClass('active first');
-  }
-} );
+  <% else %>
+      $('#main .block .content').html( " <%= j render 'idea_box' %> " );
+  <% end %>
 
-<% if @scope == 'mine' %>
-    ideasController.initialized = false;
+  $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+    var ret = scope_pat.exec( $(el).attr('href') );
+    if ( ret && ret[1] ) {
+      $(el).parent().addClass('active first');
+    } else {
+      $(el).parent().removeClass('active first');
+    }
+  } );
+
+  <% if @scope == 'mine' %>
+      ideasController.initialized = false;
     ideasController.init();
-<% end %>
+  <% end %>
+
+})();

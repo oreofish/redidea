@@ -32,23 +32,8 @@ var ideasController = {
 
     },
 
-    handleIdeaCreate: function() {
-        var log_idea_create_success = false;
-        $('#new_idea').bind({
-            'ajax:failure': function() {
-            },
-            'ajax:success': function() {
-                log_idea_create_success = true;
-            },
-            'ajax:complete': function() {
-                log_idea_create_success = false;
-            }
-        });
-    },
-
     init: function() {
         if (!this.initialized) {
-            this.handleIdeaCreate(); 
             this.bindIdeaHandler();
         }
 
@@ -58,3 +43,56 @@ var ideasController = {
     } 
 };
 
+// tabswitch check
+var tabsManager = {
+    activeTab : "", 
+    previousTab : "",
+    switchTab: function(tab) {
+        this.previousTab = this.activeTab;
+        this.activeTab = tab;
+    },
+    bindHandlers: function() {
+        var that = this;
+        $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+            $(el).bind( {
+                'click': function(ev) {
+                    $this = $(this);
+                    var scope_pat = new RegExp("scope=(.*)", 'g');
+                    var ret = scope_pat.exec( $this.attr('href') );
+                    that.switchTab( ret[1] );
+
+                    console.log(that.previousTab + "," + that.activeTab + ":focus");
+                    // need to reinit
+                    if (that.activeTab == 'mine') {
+                        ideasController.initialized = false;
+                        ideasController.init();
+                    }
+                },
+            })
+        });
+
+        $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+            $(el).bind({
+                'ajax:before': function(ev, xhr) {
+                    console.log(that.previousTab + "," + that.activeTab);
+                    console.log(this.toString() + ':before');
+                    if (that.previousTab == that.activeTab) {
+                        return false;
+                    } else 
+                        return true;
+                },
+                'ajax:beforeSend': function(xhr, data, status) {
+                    console.log(that.previousTab + "," + that.activeTab);
+                    console.log(this.toString() + ':beforeSend');
+                    if (that.previousTab == that.activeTab) {
+                        xhr.abort();
+                        return false;
+                    } else 
+                        return true;
+                }
+            });
+        });
+    }
+};
+
+//$(document).ready( function() {tabsManager.bindHandlers(); ideasController.init();} );
