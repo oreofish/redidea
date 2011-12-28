@@ -72,6 +72,14 @@ class IdeasController < ApplicationController
     end
   end
 
+  def fresh
+    @liked_ideas = current_user.liking
+    @fresh_ideas = Idea.all - @liked_ideas - current_user.ideas
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def authorized_user
       @idea = current_user.ideas.find_by_id(params[:id])

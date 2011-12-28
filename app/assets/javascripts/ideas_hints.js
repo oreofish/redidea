@@ -1,5 +1,7 @@
 var ideasController = {
-    initialized: false, // this handler are binded, then it's true
+    initialized: false, // if event handler are binded, then it's true
+    checkFrequence: 3000,
+    lastCheckedCount: 0,
 
     bindIdeaHandler: function() {
         var $idea_content = $('#idea_content').first();
@@ -31,6 +33,18 @@ var ideasController = {
         }
 
     },
+
+    checkFreshIdeas : function() {
+        var that = this;
+        $.get("/ideas/fresh", function(respone) {
+            var new_count = parseInt(respone);
+            console.log( "Get fresh ideas: " + new_count );
+            if (new_count > that.lastCheckedCount) {
+                flashController.doSuccess( "<div class='message notice'><b>有"+respone+"条新点子</b></div>" );
+            }
+            that.lastCheckedCount = new_count;
+        });
+    }, 
 
     init: function() {
         if (!this.initialized) {
@@ -98,12 +112,12 @@ var tabsManager = {
 // handle flash messages and animations
 var flashController = {
     doFailure: function(msg) {
-        $('.flash').html(msg);
-        $('.flash .notice').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
+        $('.flash').html('<div class="message alert"> '+msg+'  </div>');
+        $('.flash .message').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
     }, 
     doSuccess: function(msg) {
-        $('.flash').html(msg);
-        $('.flash .notice').effect('fade', {}, 3000);
+        $('.flash').html('<div class="message notice"> '+msg+'  </div>');
+        $('.flash .message').effect('fade', {}, 3000);
     }
 };
 
@@ -111,5 +125,6 @@ $(document).ready( function() {
     tabsManager.bindHandlers();
     ideasController.init();
 
+    setInterval( function() { ideasController.checkFreshIdeas(); }, 4000);
     //$('.flash').show('bounce', { times: 3}, 500);
 } );
