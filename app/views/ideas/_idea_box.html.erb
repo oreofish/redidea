@@ -3,6 +3,8 @@
   <%= render 'form' %>
 <% elsif @ideas.empty? %>
   <p class="first">没有新鲜点子啦。</p>
+<% else %>
+  <p class="first">还有<%= @ideas.count %>个待评点子。</p>
 <% end %>
 
 <div class="inner">
