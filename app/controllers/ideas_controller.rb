@@ -73,10 +73,15 @@ class IdeasController < ApplicationController
   end
 
   def fresh
-    @liked_ideas = current_user.liking
-    @fresh_ideas = Idea.all - @liked_ideas - current_user.ideas
+    # I need know the current number of all ideas excluding mine, and ideas 
+    # has been liked now. so it's easy to know the reason why fresh_ideas 
+    # reduced (by liking or/and by user deleting ideas)
+    @total = Idea.count
+    @liked_ideas = current_user.liking.count
+    @fresh_ideas = @total - @liked_ideas - current_user.ideas.count
     respond_to do |format|
       format.js
+      format.json 
     end
   end
 

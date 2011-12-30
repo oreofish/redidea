@@ -68,29 +68,44 @@ var ideasController = {
     },
 
     checkFrequence: 10000,
-    lastCheckedCount: 0,
+    //lastCheckedResponse: 0,
     hasNewIdeas: false,      // this can be used by other objects
     hasIdeasDeleted: false,  // this can be used by other objects
 
     checkFreshIdeas : function() {
         var that = this;
-        $.get("/ideas/fresh", function(respone) {
-            var new_count = parseInt(respone);
-            console.log( "Get fresh ideas: " + new_count );
-            if (new_count > that.lastCheckedCount) {
-                that.hasNewIdeas = true;
-                flashController.doSuccess( "<b>有"+respone+"条新点子</b>" );
+        $.getJSON("/ideas/fresh", function(respone, status, jqxhr) {
+            var log = "";
+            $.each(respone, function(key, val) {
+                log += "" + key + ":" + val + ", ";
+            });
+            console.log( "Get Json: " + log );
 
-            } else if (new_count < that.lastCheckedCount) {
-                flashController.doSuccess( "<b>有点子被删除</b>" );
+            var first_respone = false;
+            if (typeof that.lastCheckedResponse == "undefined") {
+                that.lastCheckedResponse = respone;
+                first_respone = true;
+            }
+
+            var new_count = respone["fresh"] + respone["liked"];
+            var old_count = that.lastCheckedResponse["fresh"] + that.lastCheckedResponse["liked"];
+
+            if (first_respone || respone['fresh'] > that.lastCheckedResponse['fresh']) {
+                that.hasNewIdeas = true;
+                var new_coming = first_respone? respone['fresh'] : (respone['fresh'] - that.lastCheckedResponse['fresh']);
+                flashController.doMessage( "<b>有"+new_coming+"条新点子</b>" );
+
+            } else if (new_count < old_count) {
+                flashController.doMessage( "<b>有点子被删除</b>" );
                 that.hasIdeasDeleted = true;
             } else {
                 that.hasIdeasDeleted = false;
                 that.hasNewIdeas = false;
             }
-            that.lastCheckedCount = new_count;
+            that.lastCheckedResponse = respone;
 
-            if (tabsManager.activeTab == "liked") {
+            if (tabsManager.activeTab == "liked" && (that.hasNewIdeas || that.hasIdeasDeleted)) {
+                console.log('trigger click');
                 //TODO: need refinement
                 $('.secondary-navigation .wat-cf li a').filter(function(idx) {
                     return $(this).attr('href').indexOf(tabsManager.activeTab) >= 0;
@@ -124,6 +139,19 @@ var tabsManager = {
         this.previousTab = this.activeTab;
         this.activeTab = tab;
     },
+
+    init: function() {
+        var that = this;
+        var scope_pat = new RegExp("scope=(.*)", 'g');
+        $('.secondary-navigation .wat-cf li').each(function(idx, el) {
+            if ($(el).hasClass('active')) {
+                var ret = scope_pat.exec( $(el).find('a').attr('href') );
+                that.activeTab = ret[1];
+                return false;
+            }
+        });
+    },
+
     bindHandlers: function() {
         var that = this;
         $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
@@ -165,6 +193,10 @@ var tabsManager = {
 
 // handle flash messages and animations
 var flashController = {
+    doMessage: function(msg) {
+        $('.flash').html('<div class="message alert"> '+msg+'  </div>');
+        $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000);
+    }, 
     doFailure: function(msg) {
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
         $('.flash .message').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
@@ -176,6 +208,8 @@ var flashController = {
 };
 
 $(document).ready( function() {
+    console.log("ready");
+    tabsManager.init();
     tabsManager.bindHandlers();
     ideasController.init();
 
