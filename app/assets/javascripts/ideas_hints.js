@@ -8,6 +8,9 @@ var ideasController = {
         var $hint = $('.content .field .num').first();
 
         var idea_validator = {
+            titleInvalid: true,
+            contentInvalid: true,
+
             titleValidator: function() {
                 var $this = $(this);
                 var remain = (30 - $this.attr('value').length);
@@ -24,6 +27,28 @@ var ideasController = {
                         color: "#000"
                     }, 1000 );
                 }
+
+                idea_validator.titleInvalid = (remain <= 0);
+            }, 
+
+            // ajax callback
+            isSubmitAllow: function(ev, xhr) {
+                that = idea_validator;
+                if (that.titleInvalid || that.contentInvalid ) {
+                    var err_msg = "";
+                    if (that.titleInvalid && !that.contentInvalid) {
+                        err_msg = "<b>您输入的标题过长或过短</b>";
+                    } else if (!that.titleInvalid && that.contentInvalid) {
+                        err_msg = "<b>您输入的内容过长或过短</b>";
+                    } else {
+                        err_msg = "<b>您输入的标题和内容长度不合适</b>";
+                    }
+
+                    flashController.doFailure( err_msg );
+                    //xhr.abort();
+                    return false;
+                } 
+                return true;
             }, 
 
             hotkeyHandler : function(e) {
@@ -49,6 +74,7 @@ var ideasController = {
                         color: "#000"
                     }, 1000 );
                 }
+                idea_validator.contentInvalid = (remain <= 0);
             }
         };
 
@@ -64,6 +90,11 @@ var ideasController = {
             'focusin'   : function() { $hint.fadeIn('slow') },
             'focusout' : function() { $hint.fadeOut('fast') },
         });
+
+        $('form#new_idea').bind({
+            'ajax:before': idea_validator.isSubmitAllow
+        });
+
         this.initialized = true;
     },
 
@@ -194,16 +225,22 @@ var tabsManager = {
 // handle flash messages and animations
 var flashController = {
     doMessage: function(msg) {
+        this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
         $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000);
     }, 
     doFailure: function(msg) {
+        this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
         $('.flash .message').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
     }, 
     doSuccess: function(msg) {
+        this.stop();
         $('.flash').html('<div class="message notice"> '+msg+'  </div>');
         $('.flash .message').effect('fade', {}, 3000);
+    },
+    stop: function() {
+        $('.flash').stop();
     }
 };
 
