@@ -8,3 +8,9 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require_tree .
+$(function(){
+  var client = new Faye.Client('http://localhost:9292/faye');
+  client.subscribe("/messages/new",function(data){
+    eval(data);
+  });
+});

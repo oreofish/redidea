@@ -12,6 +12,7 @@ Redidea::Application.routes.draw do
   match '/likes', :to => 'likes#create'
   resources :plans, :only => [:index, :create, :update]
   match '/static/an2012', :to => 'static#an2012'
+  resources :messages
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
