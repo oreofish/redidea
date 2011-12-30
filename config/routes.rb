@@ -1,4 +1,6 @@
 Redidea::Application.routes.draw do
+  resources :advises, :only => [:index, :create, :update]
+
   devise_for :users do
     match "/users/sign_up" => redirect("/users/sign_in")
   end

@@ -1,0 +1,9 @@
+<% if @advise.valid? %>
+    $('#advises').prepend( "<%= j render( :partial => 'advise', :locals => { :advise => @advise}) %>" );
+  $('#advises > li:first').effect('highlight', {}, 3000);
+  $('#new_advise')[0].reset();
+  flashController.doSuccess('<p>创建成功</p>');
+<% else %>
+    flashController.doFailure('<p>创建失败</p>');
+<% end %>
+
