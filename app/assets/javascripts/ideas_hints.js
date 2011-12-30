@@ -53,7 +53,7 @@ var ideasController = {
         };
 
         $idea_title.bind({
-            'input': idea_validator.titleValidator
+            'input keyup': idea_validator.titleValidator
         });
 
         $idea_content.bind({
