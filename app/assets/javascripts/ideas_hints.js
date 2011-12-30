@@ -27,7 +27,7 @@ var ideasController = {
             }, 
 
             hotkeyHandler : function(e) {
-                if (e.ctrlKey && e.which == 13) {
+                if (e.ctrlKey && (e.which == 13 || e.which == 10)) {
                     $submit.trigger('click');
                 }
             },
