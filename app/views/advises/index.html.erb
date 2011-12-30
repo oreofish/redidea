@@ -1,0 +1,15 @@
+<div>
+<h1>建议</h1>
+<%= render 'form' %>
+<br />
+</div>
+<div class="inner">
+<ul id='advises'>
+<% @advises.each do |advise| %>
+  <%= render :partial => "advise", :locals => { :advise => advise} %>
+<% end %>
+</ul>
+</div>
+
+<br />
+
