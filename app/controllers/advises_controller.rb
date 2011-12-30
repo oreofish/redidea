@@ -5,7 +5,7 @@ class AdvisesController < ApplicationController
     @advise = Advise.new
 
     respond_to do |format|
-    @advises = Advise.all
+    @advises = Advise.order("created_at DESC")
       format.html # index.html.erb
       format.json { render json: @advises }
     end
@@ -19,7 +19,6 @@ class AdvisesController < ApplicationController
 
     respond_to do |format|
       if @advise.save
-    	@advises = Advise.all
         format.html { redirect_to @advise, notice: 'Advise was successfully created.' }
         format.json { render json: @advise, status: :created, location: @advise }
         format.js # show.html.erb
