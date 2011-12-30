@@ -24,9 +24,40 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
     /*font-weight: 300;*/
 }
 
+.backToTop {
+	display: none; 
+	width:18px; 
+	line-height:1.2; 
+	padding:5px 0; 
+	background-color:#000; 
+	color:#fff; 
+	font-size:12px; 
+	text-align:center; 
+	position:fixed; 
+	_position:absolute; 
+	right:10px; 
+	bottom:90px; 
+	_bottom:"auto"; 
+	cursor:pointer; 
+	opacity:.6; 
+	filter:Alpha(opacity=60);
+}
+
 .advise {
-	font-size: 28px;
-	position: fixed;
-	right: 0%;
-	top: 1%;
+	display: block; 
+	width:18px; 
+	line-height:1.2; 
+	padding:5px 0; 
+	background-color:#000; 
+	color:#fff; 
+	font-size:12px; 
+	text-align:center; 
+	position:fixed; 
+	_position:absolute; 
+	right:10px; 
+	bottom:10px; 
+	_bottom:"auto"; 
+	cursor:pointer; 
+	opacity:.6; 
+	filter:Alpha(opacity=60);
 }
