@@ -3,7 +3,7 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
     make_users
-  # make_ideas
+    make_ideas
   # make_likes
   end
 
@@ -19,8 +19,8 @@ end
 
 def make_users
   emails = [
-    'jianxing@redflag-linux.com',
     'zhouhuan@redflag-linux.com', 
+    'jianxing@redflag-linux.com',
     'sycao@redflag-linux.com',
     'shensuwen@redflag-linux.com',
     'junhuang@redflag-linux.com',
@@ -42,11 +42,11 @@ def make_users
   ]
   password = "abc123"
   emails.each do | email |
-    if not User.find(:first, "email = #{email}")
+    #if not User.find(:first, "email = #{email}")
       User.create!(:email => email,
                    :password => password,
                    :password_confirmation => password)
-    end
+    #end
   end
 end
 
