@@ -42,7 +42,7 @@ def make_users
   ]
   password = "abc123"
   emails.each do | email |
-    if not User.find(:first, :conditions => "email = #{email}")
+    if not User.find(:first, :conditions => "email = '#{email}'")
       User.create!(:email => email,
                    :password => password,
                    :password_confirmation => password)
