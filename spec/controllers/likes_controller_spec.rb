@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe LikesController do
+  render_views
+  
   describe "access deny" do
     it "should deny access to 'create'" do
       post :create

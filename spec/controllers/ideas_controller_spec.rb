@@ -19,6 +19,7 @@ require 'spec_helper'
 # that an instance is receiving a specific message.
 
 describe IdeasController do
+  render_views
 
   describe "access deny" do
     it "should deny access to 'index'" do
