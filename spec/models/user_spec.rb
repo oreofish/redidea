@@ -36,14 +36,23 @@ describe User do
     @user.should respond_to(:ideas)
   end
 
-  it "should have an like attribute" do
+  it "should have a like attribute" do
     @user.should respond_to(:likes)
   end
 
+  it "should have a plan method" do
+    @user.should respond_to(:plans)
+  end
+  
   describe "idea associations" do
     before(:each) do
       @idea1 = Factory(:idea, :user => @user, :created_at => 1.day.ago)
-      @idea2 = Factory(:idea, :user => @user, :title => Factory.next(:title), :created_at => 1.hour.ago)
+      @idea2 = Factory(:idea, :user => @user, :title => Factory.next(:title),
+                       :created_at => 1.hour.ago)
+    end
+
+    it "should have the right ideas in the right order" do
+      @user.ideas.should == [@idea1, @idea2]
     end
 
     it "should destroy associated ideas" do

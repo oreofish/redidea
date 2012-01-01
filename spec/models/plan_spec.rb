@@ -13,5 +13,29 @@
 require 'spec_helper'
 
 describe Plan do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before(:each) do
+    @attr = {
+      :title => "foobar",
+      :plan => "/file/path",
+    }
+    @user = Factory(:user)
+  end
+  
+#  it "should create with user and attr" do 
+#    plan = @user.plans.build(@attr)
+#    plan.save!
+#  end
+  
+  describe "attribute" do 
+    before(:each) do 
+      @plan = @user.plans.create(@attr)
+    end
+    
+    it "should have a user attribute" do
+      @plan.should respond_to(:user)
+      @plan.should respond_to(:plan_url)
+      @plan.should respond_to(:remote_plan_url)
+      @plan.should respond_to(:plan_cache)
+    end
+  end
 end
