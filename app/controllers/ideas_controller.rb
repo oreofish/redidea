@@ -7,6 +7,10 @@ class IdeasController < ApplicationController
   # GET /ideas
   # GET /ideas.json
   def index
+    @idea = Idea.new
+    @ideas = Array.new
+    @liked_ideas = Array.new
+
     @scope = params[:scope] || 'liked'
     @scopes = [:liked, :mine, :upload, :rule]
 
@@ -23,11 +27,6 @@ class IdeasController < ApplicationController
         @plan = Plan.new
       end 
     end
-
-    @idea = Idea.new
-    @user = current_user
-    @ideas = Array.new if @ideas == nil
-    @liked_ideas = Array.new if @ideas == nil
 
     respond_to do |format|
       format.html # index.html.erb

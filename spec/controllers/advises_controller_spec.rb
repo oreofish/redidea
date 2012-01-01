@@ -24,7 +24,7 @@ describe AdvisesController do
   # Advise. As you add validations to Advise, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:content => "test advise"}
   end
 
   describe "GET index" do
@@ -32,29 +32,6 @@ describe AdvisesController do
       advise = Advise.create! valid_attributes
       get :index
       assigns(:advises).should eq([advise])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested advise as @advise" do
-      advise = Advise.create! valid_attributes
-      get :show, :id => advise.id
-      assigns(:advise).should eq(advise)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new advise as @advise" do
-      get :new
-      assigns(:advise).should be_a_new(Advise)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested advise as @advise" do
-      advise = Advise.create! valid_attributes
-      get :edit, :id => advise.id
-      assigns(:advise).should eq(advise)
     end
   end
 
@@ -74,7 +51,7 @@ describe AdvisesController do
 
       it "redirects to the created advise" do
         post :create, :advise => valid_attributes
-        response.should redirect_to(Advise.last)
+        response.should redirect_to(advises_path)
       end
     end
 
@@ -90,68 +67,24 @@ describe AdvisesController do
         # Trigger the behavior that occurs when invalid params are submitted
         Advise.any_instance.stub(:save).and_return(false)
         post :create, :advise => {}
-        response.should render_template("new")
+        response.should redirect_to(advises_path)
       end
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested advise" do
-        advise = Advise.create! valid_attributes
-        # Assuming there are no other advises in the database, this
-        # specifies that the Advise created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Advise.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => advise.id, :advise => {'these' => 'params'}
-      end
-
-      it "assigns the requested advise as @advise" do
-        advise = Advise.create! valid_attributes
-        put :update, :id => advise.id, :advise => valid_attributes
-        assigns(:advise).should eq(advise)
-      end
-
-      it "redirects to the advise" do
-        advise = Advise.create! valid_attributes
-        put :update, :id => advise.id, :advise => valid_attributes
-        response.should redirect_to(advise)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the advise as @advise" do
-        advise = Advise.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Advise.any_instance.stub(:save).and_return(false)
-        put :update, :id => advise.id, :advise => {}
-        assigns(:advise).should eq(advise)
-      end
-
-      it "re-renders the 'edit' template" do
-        advise = Advise.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Advise.any_instance.stub(:save).and_return(false)
-        put :update, :id => advise.id, :advise => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested advise" do
-      advise = Advise.create! valid_attributes
-      expect {
-        delete :destroy, :id => advise.id
-      }.to change(Advise, :count).by(-1)
-    end
-
-    it "redirects to the advises list" do
-      advise = Advise.create! valid_attributes
-      delete :destroy, :id => advise.id
-      response.should redirect_to(advises_url)
-    end
-  end
+#  describe "DELETE destroy" do
+#    it "destroys the requested advise" do
+#      advise = Advise.create! valid_attributes
+#      expect {
+#        delete :destroy, :id => advise.id
+#      }.to change(Advise, :count).by(-1)
+#    end
+#
+#    it "redirects to the advises list" do
+#      advise = Advise.create! valid_attributes
+#      delete :destroy, :id => advise.id
+#      response.should redirect_to(advises_url)
+#    end
+#  end
 
 end
