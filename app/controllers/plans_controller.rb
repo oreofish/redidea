@@ -9,7 +9,7 @@ class PlansController < ApplicationController
   # upload plan
   def create
     my_plan_path = ideas_path + "?scope=upload"
-    @plan = Plan.new(params[:plan].merge(:user_id => current_user.id))
+    @plan = @user.plans.build(params[:plan])
 
     respond_to do |format|
       if @plan.save
@@ -25,7 +25,7 @@ class PlansController < ApplicationController
   # update plan
   def update
     my_plan_path = ideas_path + "?scope=upload"
-    @plan = Plan.find(:first, :conditions => "user_id = #{current_user.id}")
+    @plan = @user.plans.first
 
     respond_to do |format|
       if @plan.update_attributes(params[:plan])
