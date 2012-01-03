@@ -11,6 +11,7 @@ var ideasController = {
             titleInvalid: true,
             contentInvalid: true,
 
+            // set background color to green when title is too long
             titleValidator: function() {
                 var $this = $(this);
                 var remain = (30 - $this.attr('value').length);
@@ -31,7 +32,7 @@ var ideasController = {
                 idea_validator.titleInvalid = (remain <= 0);
             }, 
 
-            // ajax callback
+            // ajax callback, show flash warning of validator
             isSubmitAllow: function(ev, xhr) {
                 that = idea_validator;
                 if (that.titleInvalid || that.contentInvalid ) {
@@ -51,12 +52,14 @@ var ideasController = {
                 return true;
             }, 
 
+            // shortcut of click
             hotkeyHandler : function(e) {
                 if (e.ctrlKey && (e.which == 13 || e.which == 10)) {
                     $submit.trigger('click');
                 }
             },
 
+            // set background color to red when content is too long.
             keyHandler : function(e) {
                 var $this = $(this);
                 var remain = (400 - $this.attr('value').length);
@@ -98,7 +101,7 @@ var ideasController = {
         this.initialized = true;
     },
 
-    checkFrequence: 10000,
+    checkFrequence: 120000,
     //lastCheckedResponse: 0,
     hasNewIdeas: false,      // this can be used by other objects
     hasIdeasDeleted: false,  // this can be used by other objects
@@ -176,6 +179,7 @@ var tabsManager = {
         var scope_pat = new RegExp("scope=(.*)", 'g');
         $('.secondary-navigation .wat-cf li').each(function(idx, el) {
             if ($(el).hasClass('active')) {
+                // find current tab in navigation bar, set activeTab to it.
                 var ret = scope_pat.exec( $(el).find('a').attr('href') );
                 that.activeTab = ret[1];
                 return false;
@@ -186,7 +190,9 @@ var tabsManager = {
     bindHandlers: function() {
         var that = this;
         $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+            // binding actions to navigation tabs.
             $(el).bind( {
+                // when the tab is clicked, set the tab to active
                 'click': function(ev) {
                     $this = $(this);
                     var scope_pat = new RegExp("scope=(.*)", 'g');
@@ -194,7 +200,7 @@ var tabsManager = {
                     that.switchTab( ret[1] );
 
                     console.log(that.previousTab + "," + that.activeTab + ":focus");
-                    // need to reinit
+                    // need to reinit, why?
                     if (that.activeTab == 'mine') {
                         ideasController.initialized = false;
                         ideasController.init();
@@ -203,6 +209,7 @@ var tabsManager = {
                 'ajax:before': function(ev, xhr) {
                     if (that.previousTab == that.activeTab) {
                         if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
+                            // if no update, do not refresh
                             return false;
                         }
                     } 
@@ -211,6 +218,7 @@ var tabsManager = {
                 'ajax:beforeSend': function(xhr, data, status) {
                     if (that.previousTab == that.activeTab) {
                         if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
+                            // if no update, do not refresh
                             xhr.abort();
                             return false;
                         }
@@ -250,26 +258,27 @@ $(document).ready( function() {
     tabsManager.bindHandlers();
     ideasController.init();
 
+
     setInterval( function() { 
         ideasController.checkFreshIdeas(); 
     }, ideasController.checkFrequence );
     
-    (function() {	
-	var __backtoptxt = "回到顶部";	
-	var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))		
-	  .text(__backtoptxt).attr("title", __backtoptxt).click(function() {			
-	  $("html,body").animate({ scrollTop: 0 }, 500);		
-	  }),
-	__backtopfuc = function() {		
-	  var st = $(document).scrollTop(), 		
-	  winh = $(window).height();		
-	  (st > 0)? __backtopele.show() : __backtopele.hide();			
-	  //IE6		
-	  if (!window.XMLHttpRequest) {			
-	    __backToTopEle.css("top", st + winh - 166);			
-	  }	
-	};
-	$(window).bind("scroll", __backtopfuc);	
-	$(function() { __backtopfuc(); });
-     })();
+    (function() {
+	    var __backtoptxt = "回到顶部";
+	    var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))
+	        .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
+	            $("html,body").animate({ scrollTop: 0 }, 500);
+	        }),
+	    __backtopfuc = function() {
+	        var st = $(document).scrollTop(),
+	        winh = $(window).height();
+	        (st > 0)? __backtopele.show() : __backtopele.hide();
+	        //IE6
+	        if (!window.XMLHttpRequest) {
+	            __backToTopEle.css("top", st + winh - 166);
+	        }
+	    };
+	    $(window).bind("scroll", __backtopfuc);
+	    $(function() { __backtopfuc(); });
+    })();
 } );
