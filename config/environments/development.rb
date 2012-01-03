@@ -28,15 +28,15 @@ Redidea::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
   
-  # send confirm mail
+  # send confirm mail, UserMailer.notify("foo@example.com").deliver
   config.action_mailer.default_url_options = { :host => '172.16.82.163' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    :domain               => 'gmail.com',
-    :user_name            => 'redidea1988@gmail.com',
-    :password             => 'redidea2011',
+    :address              => "smtp.redflag-linux.com",
+    :port                 => 25,
+    :domain               => 'redflag-linux.com',
+    :user_name            => 'jianxing@redflag-linux.com',
+    :password             => ENV["MAIL_PASSWORD",
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 

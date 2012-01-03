@@ -10,6 +10,7 @@ gem 'gravatar_image_tag', '1.0.0'
 gem 'carrierwave'
 gem 'mysql2'
 gem 'cancan'
+gem 'roadie' # send HTML mail
 
 group :development do
   gem 'rspec-rails'
