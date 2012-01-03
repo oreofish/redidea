@@ -10,25 +10,38 @@
 //= require_tree .
 $(function(){
     var client = new Faye.Client('http://localhost:9292/faye');
+    var user_email = $("#user-navigation .wat-cf li").eq(0).html();
+
     client.subscribe("/messages/new",function(data){
         eval(data);
     });
 
-    // faye log
-    Logger = {
+    client.subscribe("/users/" + user_email, function(data){
+        eval(data);
+    });
+
+    // faye 
+    Slot = {
         update_count: 0,
 
         incoming: function(message, callback) {
             if (message['channel'] == "/messages/new") {
                 var feedback = eval("(" + message['data'] + ")");
-                var user_email = $("#user-navigation .wat-cf li").eq(0).html();
+                console.log('incoming', user_email + this.update_count);
                 if (feedback.user_email != user_email) {
                     this.update_count += 1
                     var link = "<a href='/ideas' class='notify'>更新了"
                         + this.update_count + "个点子，点击查看</a>";
                     $('div.update-notice').html(link);
                 }
-                console.log('incoming', user_email + this.update_count);
+            }else if (message['channel'].slice(0,7) == "/users/") {
+                console.log('incoming', message['data']);
+                var msg = eval("(" + message['data'] + ")");
+                if (msg.type == 'notify') {
+                    $('#chat').append(msg.content);
+                }else if (msg.type == 'message'){
+                    $('#chat').append(msg.content);
+                }
             }else{
                 callback(message);
             }
@@ -42,6 +55,6 @@ $(function(){
         }
     };
 
-    client.addExtension(Logger);
+    client.addExtension(Slot);
 
 });
