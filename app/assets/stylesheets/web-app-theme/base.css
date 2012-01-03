@@ -52,6 +52,21 @@ a.small-button {
   text-indent: 0;
 }
 
+a.notify {
+  display: inline-block;
+  margin: 0 5px 5px 0;
+  padding: 0px 10px;
+  background-color: #ffeeee;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+}
+
 body {
   font-size: 14px;
   font-family: sans-serif;  

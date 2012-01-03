@@ -1,23 +1,25 @@
 <%# encoding: utf-8 %>
+
+
 <% if @scope == 'mine' %>
   <%= render 'form' %>
-<% elsif @ideas.empty? %>
-  <p class="first">没有新鲜点子啦。</p>
 <% else %>
-  <p class="first">还有<%= @ideas.count %>个待评点子。</p>
+  <div class="update-notice">
+    <%= "没有新鲜点子啦。" if @ideas.empty? %>
+  </div>
 <% end %>
 
 <div class="inner">
   <ul id="myideas" class="list">
     <!-- unlied ideas -->
+    <li><%= "还有#{@ideas.count}个待评点子。" if not @ideas.empty? %></li>
     <% @ideas.each do |idea| %>
       <%= render :partial => "my_ideas", :locals => { :idea => idea } %>
     <% end %>
 
     <!-- liked ideas -->
     <% if @scope == 'liked' and not @liked_ideas.empty? %>
-    <li>已评价点子：
-    </li>
+    <li>已评价点子：</li>
 
     <% @liked_ideas.each do |idea| %>
     <li>
