@@ -30,14 +30,24 @@ Redidea::Application.configure do
   
   # send confirm mail, UserMailer.notify("foo@example.com").deliver
   config.action_mailer.default_url_options = { :host => '172.16.82.163' }
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   domain: "railscasts.com",
+  #   authentication: "plain",
+  #   enable_starttls_auto: true,
+  #   user_name: 'oreofish',
+  #   password: ENV["GMAIL_PASSWORD"]
+  # }
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.redflag-linux.com",
-    :port                 => 25,
-    :domain               => 'redflag-linux.com',
-    :user_name            => 'jianxing@redflag-linux.com',
-    :password             => ENV["MAIL_PASSWORD",
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  }
+    address: "smtp.redflag-linux.com",
+    port: 25,
+    domain: 'redflag-linux.com',
+    user_name: 'jianxing',
+    password: ENV["MAIL_PASSWORD"],
+    authentication: 'plain'
+  }
 
 end
