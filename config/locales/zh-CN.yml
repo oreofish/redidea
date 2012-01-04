@@ -5,6 +5,8 @@
   submit: '提交'
   liked: '评价点子'
   mine: '提交点子'
+  rank: '排名'
+  email: '邀请'
   upload: '提交策划书'
   rule: '竞赛规则'
   remember_me: '记住我'

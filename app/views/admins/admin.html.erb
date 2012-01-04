@@ -11,11 +11,7 @@
     </div>
 
     <div class="content">
-      <% if @scope == 'rank' %>
       <%= render @scope %>
-      <% else @scope == 'email' %>
-      <%= render 'email' %>
-      <% end %>
     </div>
 
     <% content_for :sidebar, render(:partial => 'sidebar') -%>

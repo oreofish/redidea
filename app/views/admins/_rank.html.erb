@@ -2,10 +2,13 @@
 
 <div class="inner">
   <ul class="list">
+		<% ranklist = 0 %>
     <% @ideas.each do |idea| %>
     <li>
       <div class='left'>
+				<% ranklist = ranklist + 1 %>
 				<% @user = User.find(:first, :conditions => "id = #{idea.user_id}") %>
+				<%= ranklist %> :
 				<%= @user.email.gsub(/@redflag-linux.com/,'') %>
       </div>
       <div class='item'>
