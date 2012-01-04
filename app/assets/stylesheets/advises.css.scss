@@ -17,6 +17,11 @@
         cursor:pointer;
         opacity:.6;
         filter:Alpha(opacity=60);
+	text-decoration:none;
+}
+
+.home_page a:hover {
+        text-decoration:none;
 }
 
 .state {
