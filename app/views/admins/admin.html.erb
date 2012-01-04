@@ -2,8 +2,20 @@
 
 <div id="main">
   <div class="block" id="block-text">
+    <div class="secondary-navigation">
+      <ul class="wat-cf">
+        <% @scopes.each do |s| %>
+          <li <%= "class='active first'" if s.to_s == @scope %> ><%= link_to t(s), "#{admin_path}?scope=#{s}", :remote => true %></li>
+        <% end %>
+      </ul>
+    </div>
+
     <div class="content">
-      <%= render 'rank' %>
+      <% if @scope == 'rank' %>
+      <%= render @scope %>
+      <% else @scope == 'email' %>
+      <%= render 'email' %>
+      <% end %>
     </div>
 
     <% content_for :sidebar, render(:partial => 'sidebar') -%>
