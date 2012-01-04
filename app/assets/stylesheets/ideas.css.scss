@@ -36,7 +36,7 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 	position:fixed; 
 	_position:absolute; 
 	right:10px; 
-	bottom:90px; 
+	bottom:1%;
 	_bottom:"auto"; 
 	cursor:pointer; 
 	opacity:.6; 
@@ -44,7 +44,6 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 }
 
 .advise {
-	display: block; 
 	width:18px; 
 	line-height:1.2; 
 	padding:5px 0; 
@@ -55,7 +54,7 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 	position:fixed; 
 	_position:absolute; 
 	right:10px; 
-	bottom:10px; 
+	bottom:50%;
 	_bottom:"auto"; 
 	cursor:pointer; 
 	opacity:.6; 
