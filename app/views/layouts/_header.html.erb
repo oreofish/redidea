@@ -8,7 +8,10 @@
       <% if user_signed_in? %>
       <li><%= current_user.email %></li>
       <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
-      <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>
+      <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
+				<% if can? :rank, Idea %>
+     			<li><%= link_to "管理", admin_path %></li>	
+				<% end %>
       <% else %>
       <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
       <li><%= link_to "登录", new_user_session_path %></li>

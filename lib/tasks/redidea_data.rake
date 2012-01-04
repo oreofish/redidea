@@ -23,22 +23,6 @@ def make_users
     'jianxing@redflag-linux.com',
     'sycao@redflag-linux.com',
     'shensuwen@redflag-linux.com',
-    'junhuang@redflag-linux.com',
-    'lvlisong@redflag-linux.com',
-    'zyzheng@redflag-linux.com',
-    'penghao@redflag-linux.com',
-    'lingwei@redflag-linux.com',
-    'wudi@redflag-linux.com',
-    'hanlifei@redflag-linux.com',
-    'pengyin@redflag-linux.com',
-    'zuohongsheng@redflag-linux.com',
-    'jianhuichen@redflag-linux.com',
-    'hgfan@redflag-linux.com',
-    'wangchao@redflag-linux.com',
-    'yushang@redflag-linux.com',
-    'zhzhang@redflag-linux.com',
-    'sywang@redflag-linux.com',
-    'chenjie@redflag-linux.com'
   ]
   password = "abc123"
   emails.each do | email |

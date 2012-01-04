@@ -9,7 +9,7 @@ class IdeasController < ApplicationController
   def index
     @scope = params[:scope] || 'liked'
     @scopes = [:liked, :mine, :upload, :rule]
-    
+
     if @scope == "mine" 
       @ideas = current_user.ideas
       @ideas.reverse!
@@ -90,6 +90,7 @@ class IdeasController < ApplicationController
       @idea = current_user.ideas.find_by_id(params[:id])
       redirect_to root_path if @idea.nil?
     end
+
     def user_info
 		@browser = request.env['HTTP_USER_AGENT']
 		$my_logger.info("user_email = #{current_user.email}")

@@ -1,0 +1,23 @@
+<%# encoding: utf-8 %>
+
+<div class="inner">
+  <ul class="list">
+    <% @ideas.each do |idea| %>
+    <li>
+      <div class='left'>
+				<% @user = User.find(:first, :conditions => "id = #{idea.user_id}") %>
+				<%= @user.email.gsub(/@redflag-linux.com/,'') %>
+      </div>
+      <div class='item'>
+        <b><%= idea.title %></b>
+        <p><%= idea.content %></p>
+        <div class='right small'>
+          目前评价： 得分(<%= idea.scores-idea.counts %>), 评价人数(<%= idea.counts %>)
+        </div>
+        <div class='small'><%= time_ago_in_words(idea.created_at) %>前</div>
+      </div>
+    </li>
+    <% end %>
+	</ul>
+</div>
+
