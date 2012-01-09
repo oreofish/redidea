@@ -263,22 +263,21 @@ $(document).ready( function() {
         ideasController.checkFreshIdeas(); 
     }, ideasController.checkFrequence );
     
-    (function() {
-	    var __backtoptxt = "回到顶部";
-	    var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))
-	        .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
-	            $("html,body").animate({ scrollTop: 0 }, 500);
-	        }),
-	    __backtopfuc = function() {
-	        var st = $(document).scrollTop(),
-	        winh = $(window).height();
-	        (st > 0)? __backtopele.show() : __backtopele.hide();
-	        //IE6
-	        if (!window.XMLHttpRequest) {
-	            __backToTopEle.css("top", st + winh - 166);
-	        }
-	    };
-	    $(window).bind("scroll", __backtopfuc);
-	    $(function() { __backtopfuc(); });
-    })();
+    var __backtoptxt = "回到顶部";
+    var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))
+    .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
+        $("html,body").animate({ scrollTop: 0 }, 500);
+    }),
+    __backtopfuc = function() {
+        var st = $(document).scrollTop(),
+        winh = $(window).height();
+        (st > 0)? __backtopele.show() : __backtopele.hide();
+        //IE6
+        if (!window.XMLHttpRequest) {
+            __backToTopEle.css("top", st + winh - 166);
+        }
+    };
+    $(window).bind("scroll", __backtopfuc);
+    __backtopfuc();
 } );
+
