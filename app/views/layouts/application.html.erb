@@ -15,13 +15,6 @@
   <div id="container">
     <%= render 'layouts/header' %>
     <div id="wrapper" class="wat-cf">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
 
       <%= yield %>
     </div>
