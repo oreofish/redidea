@@ -8,7 +8,8 @@ Redidea::Application.routes.draw do
   root :to => "ideas#index"
   match '/ideas/fresh', :to => 'ideas#fresh'
   resources :ideas
-	match '/admin', :to => 'admins#admin'
+  match '/admin', :to => 'admins#admin'
+  match '/invite', :to => 'admins#invite'
   match '/likes', :to => 'likes#create'
   resources :plans, :only => [:index, :create, :update]
   match '/static/an2012', :to => 'static#an2012'
