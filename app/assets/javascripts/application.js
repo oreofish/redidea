@@ -9,7 +9,7 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
-    var client = new Faye.Client('http://localhost:9292/faye');
+    var client = new Faye.Client('http://172.16.82.163:9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
     client.subscribe("/messages/*",function(data){
