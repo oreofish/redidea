@@ -200,12 +200,14 @@ var tabsManager = {
                     that.switchTab( ret[1] );
 
                     console.log(that.previousTab + "," + that.activeTab + ":focus");
-                    // need to reinit, why?
+                    // need to reinit to rebind event handlers
                     if (that.activeTab == 'mine') {
                         ideasController.initialized = false;
                         ideasController.init();
                     }
                 },
+
+                // ajax:* event handlers used to avoid unnecessary xhr transfer
                 'ajax:before': function(ev, xhr) {
                     if (that.previousTab == that.activeTab) {
                         if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
