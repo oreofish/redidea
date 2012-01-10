@@ -25,10 +25,16 @@ class PlansController < ApplicationController
   # update plan
   def update
     my_plan_path = ideas_path + "?scope=upload"
-    @plan = current_user.plans.first
+    @plan = current_user.plans.find_by_title(params[:plan][:title])
+    if @plan.nil?
+      @plan = current_user.plans.build(params[:plan])
+      ret = @plan.save
+    else
+      ret = @plan.update_attributes(params[:plan])
+    end
 
     respond_to do |format|
-      if @plan.update_attributes(params[:plan])
+      if ret
         format.html { redirect_to my_plan_path, :notice => 'plan is successfully updated.' }
         format.json { render :json => @idea, :status => :created, :location => @idea }
       else

@@ -29,6 +29,18 @@
 <br>
 
 <div id="plan_holder">
-  <%= render "ideas/myplan" %>
+  <% if @plans.length > 0 %>
+    <h2>已提交的策划书</h2>
+    <table id="plans" class="myplan">
+      <tbody>
+        <tr>
+          <th class="title">主题</th>
+          <th class="plan">当前策划书</th>
+        </tr>
+
+        <%= render :partial => "ideas/myplan", :collection => @plans, :as => :plan %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
 

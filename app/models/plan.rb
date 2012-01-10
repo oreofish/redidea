@@ -17,8 +17,7 @@ class Plan < ActiveRecord::Base
 
   validates :title,   :presence     => true,
                       :length  => { :within => 3..255 }
-  validates :plan,    :presence     => true,
-                      :length  => { :maximum => 255 }
+  validates :plan,    :presence     => true
   validates :user_id, :presence => true
 
   belongs_to :user 

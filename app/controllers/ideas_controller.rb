@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
     @idea = Idea.new
     @ideas = Array.new
     @liked_ideas = Array.new
+    @plans = current_user.plans
 
     @scope = params[:scope] || 'liked'
     @scopes = [:liked, :mine, :upload, :rule]
