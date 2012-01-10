@@ -237,17 +237,26 @@ var flashController = {
     doMessage: function(msg) {
         this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
-        $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000, function(){
+            $('.flash').css('z-index', '-1');
+        });
     }, 
     doFailure: function(msg) {
         this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
-        $('.flash .message').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').show('bounce', { times: 2 }, 1000).fadeOut('slow', function(){
+            $('.flash').css('z-index', '-1');
+        });
     }, 
     doSuccess: function(msg) {
         this.stop();
         $('.flash').html('<div class="message notice"> '+msg+'  </div>');
-        $('.flash .message').effect('fade', {}, 3000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').fadeIn('slow').delay(1000).fadeOut('slow', function(){
+            $('.flash').css('z-index', '-1');
+        });
     },
     stop: function() {
         $('.flash').stop();
