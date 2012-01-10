@@ -3,8 +3,8 @@ namespace :db do
   task :populate => :environment do
     Rake::Task['db:reset'].invoke
     make_users
-  #  make_ideas
-  # make_likes
+    make_ideas
+    make_likes
   end
 
 end
@@ -36,7 +36,7 @@ end
 
 def make_ideas
   User.all.each do |user|
-    ('1'..'10').each do |i|
+    ('1'..'5').each do |i|
       content = "ssssssssssssssssssssssssssssssssssssssssssssss"
 	  title = user.email+i
       user.ideas.create!(:content => content, :title => title)
@@ -47,7 +47,7 @@ end
 def make_likes
   users = User.all
   user = users.first
-  Idea.all[11..40].each do | idea |
+  Idea.all[6..20].each do | idea |
     user.like!(idea.id, 1) 
   end
   #likers.each { |liker| liker.like!(user) }
