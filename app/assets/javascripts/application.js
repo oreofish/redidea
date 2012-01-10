@@ -12,7 +12,7 @@ $(function(){
     var client = new Faye.Client('http://localhost:9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
-    client.subscribe("/messages/new",function(data){
+    client.subscribe("/messages/*",function(data){
         eval(data);
     });
 
@@ -23,27 +23,53 @@ $(function(){
     // faye 
     Slot = {
         update_count: 0,
+        destroy_count: 0,
 
         incoming: function(message, callback) {
-            if (message['channel'] == "/messages/new") {
-                var feedback = eval("(" + message['data'] + ")");
+            var feedback, msg;
+            switch( message['channel'] ) {
+                case "/messages/new":
+                    feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.update_count);
                 if (feedback.user_email != user_email) {
                     this.update_count += 1
-                    var link = "<a href='/ideas' class='notify'>更新了"
+                    if (tabsManager.activeTab === "liked") {
+                        var link = "<a href='/ideas' class='notify'>更新了"
                         + this.update_count + "个点子，点击查看</a>";
-                    $('div.update-notice').html(link);
+                        $('div.update-notice').html(link);
+                    } else {
+                        flashController.doMessage("<b>有"+this.update_count+"条新点子</b>" );
+                    }
                 }
-            }else if (message['channel'].slice(0,7) == "/users/") {
-                console.log('incoming', message['data']);
-                var msg = eval("(" + message['data'] + ")");
-                if (msg.type == 'notify') {
-                    $('#chat').append(msg.content);
-                }else if (msg.type == 'message'){
-                    $('#chat').append(msg.content);
+                break;
+
+                case "/messages/destroy":
+                    feedback = eval("(" + message['data'] + ")");
+                console.log('incoming', user_email + this.destroy_count);
+                if (feedback.user_email != user_email) {
+                    this.destroy_count += 1
+                    if (tabsManager.activeTab === "liked") {
+                        var link = "<a href='/ideas' class='notify'>删除了"
+                        + this.destroy_count + "个点子，点击刷新</a>";
+                        $('div.update-notice').html(link);
+                    } else {
+                        flashController.doMessage("<b>有"+this.destroy_count+"条点子被删除</b>" );
+                    }
                 }
-            }else{
-                callback(message);
+                break;
+
+                default:
+                    if (message['channel'].slice(0,7) == "/users/") {
+                    console.log('incoming', message['data']);
+                    msg = eval("(" + message['data'] + ")");
+                    if (msg.type == 'notify') {
+                        $('#chat').append(msg.content);
+                    }else if (msg.type == 'message'){
+                        $('#chat').append(msg.content);
+                    }
+                }else{
+                    callback(message);
+                }
             }
         },
         outgoing: function(message, callback) {

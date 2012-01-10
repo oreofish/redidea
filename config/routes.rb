@@ -6,7 +6,6 @@ Redidea::Application.routes.draw do
   end
 
   root :to => "ideas#index"
-  match '/ideas/fresh', :to => 'ideas#fresh'
   resources :ideas
   match '/admin', :to => 'admins#admin'
   match '/invite', :to => 'admins#invite'

@@ -101,53 +101,6 @@ var ideasController = {
         this.initialized = true;
     },
 
-    checkFrequence: 120000,
-    //lastCheckedResponse: 0,
-    hasNewIdeas: false,      // this can be used by other objects
-    hasIdeasDeleted: false,  // this can be used by other objects
-
-    checkFreshIdeas : function() {
-        var that = this;
-        $.getJSON("/ideas/fresh", function(respone, status, jqxhr) {
-            var log = "";
-            $.each(respone, function(key, val) {
-                log += "" + key + ":" + val + ", ";
-            });
-            console.log( "Get Json: " + log );
-
-            var first_respone = false;
-            if (typeof that.lastCheckedResponse == "undefined") {
-                that.lastCheckedResponse = respone;
-                first_respone = true;
-            }
-
-            var new_count = respone["fresh"] + respone["liked"];
-            var old_count = that.lastCheckedResponse["fresh"] + that.lastCheckedResponse["liked"];
-
-            if (first_respone || respone['fresh'] > that.lastCheckedResponse['fresh']) {
-                that.hasNewIdeas = true;
-                var new_coming = first_respone? respone['fresh'] : (respone['fresh'] - that.lastCheckedResponse['fresh']);
-                flashController.doMessage( "<b>有"+new_coming+"条新点子</b>" );
-
-            } else if (new_count < old_count) {
-                flashController.doMessage( "<b>有点子被删除</b>" );
-                that.hasIdeasDeleted = true;
-            } else {
-                that.hasIdeasDeleted = false;
-                that.hasNewIdeas = false;
-            }
-            that.lastCheckedResponse = respone;
-
-            if (tabsManager.activeTab == "liked" && (that.hasNewIdeas || that.hasIdeasDeleted)) {
-                console.log('trigger click');
-                //TODO: need refinement
-                $('.secondary-navigation .wat-cf li a').filter(function(idx) {
-                    return $(this).attr('href').indexOf(tabsManager.activeTab) >= 0;
-                }).trigger('click');
-            }
-        });
-    }, 
-
     // this needs to get called when tab 'mine' activated
     reinit: function() {
         this.initialized = false;
@@ -205,27 +158,6 @@ var tabsManager = {
                         ideasController.initialized = false;
                         ideasController.init();
                     }
-                },
-
-                // ajax:* event handlers used to avoid unnecessary xhr transfer
-                'ajax:before': function(ev, xhr) {
-                    if (that.previousTab == that.activeTab) {
-                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
-                            // if no update, do not refresh
-                            return false;
-                        }
-                    } 
-                    return true;
-                },
-                'ajax:beforeSend': function(xhr, data, status) {
-                    if (that.previousTab == that.activeTab) {
-                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
-                            // if no update, do not refresh
-                            xhr.abort();
-                            return false;
-                        }
-                    } 
-                    return true;
                 }
             })
         });
@@ -269,11 +201,6 @@ $(document).ready( function() {
     tabsManager.bindHandlers();
     ideasController.init();
 
-
-    setInterval( function() { 
-        ideasController.checkFreshIdeas(); 
-    }, ideasController.checkFrequence );
-    
     var __backtoptxt = "回到顶部";
     var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))
     .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
