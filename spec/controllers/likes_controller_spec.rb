@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe LikesController do
+  render_views
+  
   describe "access deny" do
     it "should deny access to 'create'" do
       post :create
@@ -34,26 +36,25 @@ describe LikesController do
           }.to change(Like, :count).by(0)
         end
 
-	it "should not create a Like to others idea twice" do
+        it "should not create a Like to others idea twice" do
           get :create, :idea_id => @idea2.id, :score => 1
           expect {
             get :create, :idea_id => @idea2.id, :score => 1
           }.to change(Like, :count).by(0)
         end
 
-     
-        it "redirects to the root" do
+        it "redirects to the liked page" do
           get :create, :idea_id => @idea2.id, :score => 1
-          response.should redirect_to(root_path)
+          response.should redirect_to(ideas_path + "?scope=liked")
         end
       end
 
       describe "with invalid params" do
-        it "redirects to the ideas" do
+        it "redirects to the liked page" do
           # Trigger the behavior that occurs when invalid params are submitted
           Like.any_instance.stub(:save).and_return(false)
           post :create, :like => {}
-          response.should redirect_to(root_path)
+          response.should redirect_to(ideas_path + "?scope=liked")
         end
       end
     end

@@ -14,6 +14,7 @@
   like_created: '评价成功'
   like_create_fail: '评价失败'
   idea_was_unsuccessfully_created: '点子创建失败'
+  notify_subject: '红点子上又有好多新点子了'
 
   activerecord:
     models:
@@ -28,7 +29,7 @@
         current_password: '当前密码：'
       idea:
         title: '标题(限制30字):'
-        content: '内容(请尽量把你点子的意图描述清楚，让评论者知道这个点子是要做什么):'
+        content: '内容(请把你点子的意图描述清楚):'
       like:
         score: '分数'
 

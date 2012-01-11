@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: advises
+# Table name: messages
 #
 #  id         :integer(4)      not null, primary key
 #  content    :string(255)
@@ -8,7 +8,8 @@
 #  updated_at :datetime
 #
 
-class Advise < ActiveRecord::Base
-  validates :content, :presence     => true,
-                      :length       => { :maximum => 255 }
+# -*- encoding : utf-8 -*-
+class Message < ActiveRecord::Base
+  attr_accessible :content
+  validates :content, :presence => true
 end

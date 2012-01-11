@@ -5,12 +5,12 @@
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form login" }) do |f| %>
     <div class='group wat-cf'>
       <div class='left'><%= f.label :email %></div>
-      <div class='right'><%= f.email_field :email %></div>
+      <div class='right'><%= f.email_field :email, :size => 25 %></div>
     </div>
 
     <div class='group wat-cf'>
       <div class='left'><%= f.label :password %></div>
-      <div class='right'><%= f.password_field :password %></div>
+      <div class='right'><%= f.password_field :password, :size => 25 %></div>
     </div>
     
     <% if devise_mapping.rememberable? -%>

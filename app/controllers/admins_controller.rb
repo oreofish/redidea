@@ -21,4 +21,22 @@ class AdminsController < ApplicationController
 			redirect_to ideas_path
 		end
 	end
+    
+    def invite
+      emails = params[:invite].split("\n")
+      emails.each do |email|
+        email.strip!
+        user = User.find_by_email(email)
+        if user
+          # registered user
+          UserMailer.notify(user).deliver
+        else
+          # non registered user
+          password = "abc123"
+          User.create!(:email => email, :password => password,
+                       :password_confirmation => password)
+        end
+      end
+      render :text => emails
+    end
 end

@@ -1,3 +1,11 @@
+<% broadcast "/messages/destroy" do  %>
+  {
+    "user_email": "<%= current_user.email %>",
+    "user_id": "<%= current_user.id %>",
+    "action"   : "delete"
+  }
+<% end %>
+
 <% if @idea.valid? %>
     <%# find which idea gets deleted, lcoate it's index%> 
   var deleted_idx = null;

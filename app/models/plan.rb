@@ -12,11 +12,11 @@
 
 class Plan < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :title, :user_id,
-    :plan, :plan_url, :remote_plan_url, :plan_cache, :remote_plan
+  attr_accessible :title, :plan, :plan_url,
+                  :remote_plan_url, :plan_cache, :remote_plan
 
   validates :title,   :presence     => true,
-                      :length  => { :minimum => 3 }
+                      :length  => { :within => 3..255 }
   validates :plan,    :presence     => true
   validates :user_id, :presence => true
 
@@ -25,3 +25,4 @@ class Plan < ActiveRecord::Base
   mount_uploader :plan, PlanUploader
   
 end
+

@@ -1,5 +1,5 @@
 <p>亲爱的同事,<%= @resource.email %>!</p>
-<p>红旗红点子大赛开始啦，红旗员工都能参加，奖品有iPad、iTouch，你只需要提交<b>一段话的创新想法</b>或者<b>一份商业策划书</b>就能参赛。</p>
+<p>红旗红点子大赛开始啦，奖品有iPad、iTouch，你只需要提交<b>一段话的创新想法</b>或者<b>一份商业策划书</b>就能参赛。</p>
 <p>同时我们也邀请您参与进来评判别人提交的点子，哪个点子能够胜出完全看你的投票。</p>
 <p>快来参加吧！（注意：此登录链接只能使用一次，登录后记得修改密码）</p>
 <p><%= link_to '红点子大奖赛网址', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %><br>

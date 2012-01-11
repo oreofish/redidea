@@ -25,9 +25,9 @@ describe Like do
     @like.save!
   end
   
-  it "should delete" do 
-    @like.save
-    @like.destroy
+  it "should not create without user" do 
+    no_user_like = Like.new(:user_id => 1, :idea_id => @idea2.id, :score => 1)
+    no_user_like.should_not be_valid
   end
   
   it "should not create with same idea and user" do
@@ -56,10 +56,6 @@ describe Like do
       @like.should respond_to(:user)
     end
     
-    it "should have right user" do
-      @like.user.should == @user
-    end
-    
     it "should not like ideas of itself" do
       @selflike = @user.likes.build(:idea_id => @idea.id)
       # @like.should_not be_valid
@@ -74,10 +70,6 @@ describe Like do
   describe Idea do 
     it "should have a idea attribute" do
       @like.should respond_to(:idea)
-    end
-    
-    it "should have right idea" do
-      @like.idea.should == @idea2
     end
   end
 

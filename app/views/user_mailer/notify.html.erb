@@ -1,0 +1,13 @@
+Hi <%= @user.email.split('@')[0] %>,
+
+<p>红点子网站上已经有<%= @new_ideas.count %>个你没评价过的新点子了，猛击以下地址前去浏览:<br />
+<%= link_to '红点子网站', @link %>
+</p>
+<p>
+未评价点子有：
+<ul>
+<% @new_ideas.each do |idea| %>
+  <li><%= idea.title %></li>
+<% end %>
+</ul>
+</p>

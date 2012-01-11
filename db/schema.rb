@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(:version => 20111229050453) do
   add_index "likes", ["user_id", "idea_id"], :name => "index_likes_on_user_id_and_idea_id", :unique => true
   add_index "likes", ["user_id"], :name => "index_likes_on_user_id"
 
+  create_table "messages", :force => true do |t|
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "plans", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"

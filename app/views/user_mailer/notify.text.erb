@@ -1,0 +1,9 @@
+Hi <%= @user.email %>,
+
+红点子网站上已经有<%= @new_ideas.count %>个你没评价过的新点子了，猛击以下地址前去浏览:
+<%= @link %>
+
+未评价点子有：
+<% @new_ideas.each do |idea| %>
+  *<%= idea.title %>
+<% end %>

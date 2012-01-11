@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag 'web_app_theme' %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "http://172.16.82.163:9292/faye.js" %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="/images/idea.ico">
   <link rel="Bookmark" href="/images/idea.ico">
@@ -13,17 +14,7 @@
 <body> 
   <div id="container">
     <%= render 'layouts/header' %>
-
-<!--    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> -->
     <div id="wrapper" class="wat-cf">
-      <div class="flash">
-        <% flash.each do |type, message| -%>
-          <div class="message <%= type %>">
-            <p><%= message %></p>
-          </div>
-        <% end -%>
-      </div>
 
       <%= yield %>
     </div>

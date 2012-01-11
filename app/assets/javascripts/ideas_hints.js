@@ -11,6 +11,7 @@ var ideasController = {
             titleInvalid: true,
             contentInvalid: true,
 
+            // set background color to green when title is too long
             titleValidator: function() {
                 var $this = $(this);
                 var remain = (30 - $this.attr('value').length);
@@ -31,7 +32,7 @@ var ideasController = {
                 idea_validator.titleInvalid = (remain <= 0);
             }, 
 
-            // ajax callback
+            // ajax callback, show flash warning of validator
             isSubmitAllow: function(ev, xhr) {
                 that = idea_validator;
                 if (that.titleInvalid || that.contentInvalid ) {
@@ -51,12 +52,14 @@ var ideasController = {
                 return true;
             }, 
 
+            // shortcut of click
             hotkeyHandler : function(e) {
                 if (e.ctrlKey && (e.which == 13 || e.which == 10)) {
                     $submit.trigger('click');
                 }
             },
 
+            // set background color to red when content is too long.
             keyHandler : function(e) {
                 var $this = $(this);
                 var remain = (400 - $this.attr('value').length);
@@ -98,53 +101,6 @@ var ideasController = {
         this.initialized = true;
     },
 
-    checkFrequence: 10000,
-    //lastCheckedResponse: 0,
-    hasNewIdeas: false,      // this can be used by other objects
-    hasIdeasDeleted: false,  // this can be used by other objects
-
-    checkFreshIdeas : function() {
-        var that = this;
-        $.getJSON("/ideas/fresh", function(respone, status, jqxhr) {
-            var log = "";
-            $.each(respone, function(key, val) {
-                log += "" + key + ":" + val + ", ";
-            });
-            console.log( "Get Json: " + log );
-
-            var first_respone = false;
-            if (typeof that.lastCheckedResponse == "undefined") {
-                that.lastCheckedResponse = respone;
-                first_respone = true;
-            }
-
-            var new_count = respone["fresh"] + respone["liked"];
-            var old_count = that.lastCheckedResponse["fresh"] + that.lastCheckedResponse["liked"];
-
-            if (first_respone || respone['fresh'] > that.lastCheckedResponse['fresh']) {
-                that.hasNewIdeas = true;
-                var new_coming = first_respone? respone['fresh'] : (respone['fresh'] - that.lastCheckedResponse['fresh']);
-                flashController.doMessage( "<b>有"+new_coming+"条新点子</b>" );
-
-            } else if (new_count < old_count) {
-                flashController.doMessage( "<b>有点子被删除</b>" );
-                that.hasIdeasDeleted = true;
-            } else {
-                that.hasIdeasDeleted = false;
-                that.hasNewIdeas = false;
-            }
-            that.lastCheckedResponse = respone;
-
-            if (tabsManager.activeTab == "liked" && (that.hasNewIdeas || that.hasIdeasDeleted)) {
-                console.log('trigger click');
-                //TODO: need refinement
-                $('.secondary-navigation .wat-cf li a').filter(function(idx) {
-                    return $(this).attr('href').indexOf(tabsManager.activeTab) >= 0;
-                }).trigger('click');
-            }
-        });
-    }, 
-
     // this needs to get called when tab 'mine' activated
     reinit: function() {
         this.initialized = false;
@@ -176,6 +132,7 @@ var tabsManager = {
         var scope_pat = new RegExp("scope=(.*)", 'g');
         $('.secondary-navigation .wat-cf li').each(function(idx, el) {
             if ($(el).hasClass('active')) {
+                // find current tab in navigation bar, set activeTab to it.
                 var ret = scope_pat.exec( $(el).find('a').attr('href') );
                 that.activeTab = ret[1];
                 return false;
@@ -186,7 +143,9 @@ var tabsManager = {
     bindHandlers: function() {
         var that = this;
         $('.secondary-navigation .wat-cf li').find('a').each( function(idx, el) {
+            // binding actions to navigation tabs.
             $(el).bind( {
+                // when the tab is clicked, set the tab to active
                 'click': function(ev) {
                     $this = $(this);
                     var scope_pat = new RegExp("scope=(.*)", 'g');
@@ -194,28 +153,11 @@ var tabsManager = {
                     that.switchTab( ret[1] );
 
                     console.log(that.previousTab + "," + that.activeTab + ":focus");
-                    // need to reinit
+                    // need to reinit to rebind event handlers
                     if (that.activeTab == 'mine') {
                         ideasController.initialized = false;
                         ideasController.init();
                     }
-                },
-                'ajax:before': function(ev, xhr) {
-                    if (that.previousTab == that.activeTab) {
-                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
-                            return false;
-                        }
-                    } 
-                    return true;
-                },
-                'ajax:beforeSend': function(xhr, data, status) {
-                    if (that.previousTab == that.activeTab) {
-                        if (!ideasController.hasNewIdeas && !ideasController.hasIdeasDeleted) {
-                            xhr.abort();
-                            return false;
-                        }
-                    } 
-                    return true;
                 }
             })
         });
@@ -227,17 +169,26 @@ var flashController = {
     doMessage: function(msg) {
         this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
-        $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').hide().slideDown(500).delay(1000).slideUp(1000, function(){
+            $('.flash').css('z-index', '-1');
+        });
     }, 
     doFailure: function(msg) {
         this.stop();
         $('.flash').html('<div class="message alert"> '+msg+'  </div>');
-        $('.flash .message').show('bounce', { times: 2 }, 1000).hide('fade', {}, 1000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').show('bounce', { times: 2 }, 1000).fadeOut('slow', function(){
+            $('.flash').css('z-index', '-1');
+        });
     }, 
     doSuccess: function(msg) {
         this.stop();
         $('.flash').html('<div class="message notice"> '+msg+'  </div>');
-        $('.flash .message').effect('fade', {}, 3000);
+        $('.flash').css('z-index', 'auto');
+        $('.flash .message').fadeIn('slow').delay(1000).fadeOut('slow', function(){
+            $('.flash').css('z-index', '-1');
+        });
     },
     stop: function() {
         $('.flash').stop();
@@ -250,26 +201,22 @@ $(document).ready( function() {
     tabsManager.bindHandlers();
     ideasController.init();
 
-    setInterval( function() { 
-        ideasController.checkFreshIdeas(); 
-    }, ideasController.checkFrequence );
-    
-    (function() {	
-	var __backtoptxt = "回到顶部";	
-	var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))		
-	  .text(__backtoptxt).attr("title", __backtoptxt).click(function() {			
-	  $("html,body").animate({ scrollTop: 0 }, 500);		
-	  }),
-	__backtopfuc = function() {		
-	  var st = $(document).scrollTop(), 		
-	  winh = $(window).height();		
-	  (st > 0)? __backtopele.show() : __backtopele.hide();			
-	  //IE6		
-	  if (!window.XMLHttpRequest) {			
-	    __backToTopEle.css("top", st + winh - 166);			
-	  }	
-	};
-	$(window).bind("scroll", __backtopfuc);	
-	$(function() { __backtopfuc(); });
-     })();
+    var __backtoptxt = "回到顶部";
+    var __backtopele = $('<div class="backToTop"></div>').appendTo($("html body"))
+    .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
+        window.scroll(0, 0);
+        //$("html, body").animate({ scrollTop: 0 }, 500);
+    }),
+    __backtopfuc = function() {
+        var st = $(document).scrollTop(),
+        winh = $(window).height();
+        (st > 0)? __backtopele.show() : __backtopele.hide();
+        //IE6
+        if (!window.XMLHttpRequest) {
+            __backToTopEle.css("top", st + winh - 166);
+        }
+    };
+    $(window).bind("scroll", __backtopfuc);
+    __backtopfuc();
 } );
+

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   def create
     @like = current_user.like!(params[:idea_id], params[:score])
     respond_to do |format|
-      if @like.save
+      if @like and @like.save
         format.html { redirect_to ideas_path+"?scope=liked", :notice => t(:like_created) }
         format.json { render :json => @like, :status => :created, :location => @like }
       else

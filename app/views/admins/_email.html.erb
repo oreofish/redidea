@@ -1,1 +1,20 @@
-<p>Email</p>
+<%# encoding: utf-8 %>
+
+<%= form_tag :action => :invite do %>
+  <div class="field">
+    <ul>
+    <li>对于未注册邮箱，将发送邀请邮件。</li>
+    <li>对于已注册邮箱且有3个以上未评价点子的，将发送提醒邮件。</li>
+    <li>对于已注册但从未登录的，将同时发送邀请链接。</li>
+    </ul>
+    <br />
+    填写邮箱列表，一行一个邮箱：<br />
+    <%= text_area_tag :invite, :emails, :cols => 66, :rows => 16 %>
+  </div>
+  <button class='button' type='submit'>
+    <%= image_tag "web-app-theme/icons/tick.png"%>发送邀请
+  </button>
+  <p></p>
+  <p></p>
+<% end %>
+
