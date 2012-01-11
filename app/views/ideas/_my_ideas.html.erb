@@ -5,7 +5,7 @@
 <div class="left">
   <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
 	<div class="user_icon">
-		<span>
+		<span class="id<%= idea.user_id %>">
 			<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
 			num_of_ideas:<%= num_of_ideas %>
 			</br>
