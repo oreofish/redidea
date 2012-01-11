@@ -1,0 +1,17 @@
+#header .wrapper {
+  width: 400px;
+  margin:0 auto;
+  color: #eeeeee;
+  font-size: 14px;
+}
+
+#wrapper {
+  padding: 0 20px;
+  width: 400px;
+  margin:0 auto;
+  padding-top: 20px;
+}
+
+#main {
+  width: 100%;
+}
