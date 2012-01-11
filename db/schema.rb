@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20111229050453) do
   create_table "ideas", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

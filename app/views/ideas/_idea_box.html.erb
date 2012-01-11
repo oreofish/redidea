@@ -21,9 +21,17 @@
 
     <% @liked_ideas.each do |idea| %>
     <li>
-      <div class='left'>
+      <div class="left">
         <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
-      </div>
+				<div class ="user_icon">
+					<span>
+						<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
+						num_of_ideas:<%= num_of_ideas %>
+						<br/>
+						abc
+					</span>
+      	</div>
+			</div>
       <div class='item'>
         <b><%= idea.title %></b>
         <p><%= (idea.content).html_safe %></p>
