@@ -2,6 +2,63 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px; }
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px; }
+
+a {
+  color: #000;
+  &:visited {
+    color: #666; }
+  &:hover {
+    color: #fff;
+    background-color: #000; } }
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px; } }
+
+#notice {
+  color: green; }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; }
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff; }
+  ul li {
+    font-size: 12px;
+    list-style: square; } }
+
 .wrapper .flash {
   position: fixed;
   opacity: 0.7;
@@ -46,6 +103,25 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 	filter:Alpha(opacity=60);
 }
 
+table.myplan tr th.title {
+  width: 100px;
+}
+
+table.myplan tr th.plan {
+  text-align: center;
+  width: 300px;
+}
+
+table.myplan tr td.title {
+  width: 100px;
+}
+
+table.myplan tr td.plan {
+  text-align: center;
+  vertical-align: middle;
+  width: 300px;
+}
+
 .advise {
 	width:18px; 
 	line-height:1.2; 
@@ -66,4 +142,39 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 
 .advise a:hover {
 	text-decoration:none;
+}
+
+.home_page {
+        width:18px;
+        line-height:1.2;
+        padding:5px 0;
+        background-color:#000;
+        color:#fff;
+        font-size:12px;
+        text-align:center;
+        position:fixed;
+        _position:absolute;
+        right:10px;
+        bottom:50%;
+        _bottom:"auto";
+        cursor:pointer;
+        opacity:.6;
+        filter:Alpha(opacity=60);
+	text-decoration:none;
+}
+
+.home_page a:hover {
+        text-decoration:none;
+}
+
+.state {
+	padding:5px 10px;
+	color:#FFFFFF;
+	margin:5px 0;
+	text-align:left; 
+	font-size:12px; 
+	margin-right:3px; 
+	margin-left:1px; 
+	font-weight:normal;
+	background-color:#1766AF;
 }
