@@ -9,8 +9,12 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
-    var client = new Faye.Client('http://172.16.82.163:9292/faye');
+    var client = new Faye.Client('http://127.0.0.1:9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
+
+    client.subscribe("/ideas/*",function(data){
+        eval(data);
+    });
 
     client.subscribe("/messages/*",function(data){
         eval(data);
@@ -28,7 +32,7 @@ $(function(){
         incoming: function(message, callback) {
             var feedback, msg;
             switch( message['channel'] ) {
-                case "/messages/new":
+                case "/ideas/new":
                     feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.update_count);
                 if (feedback.user_email != user_email) {
@@ -43,7 +47,7 @@ $(function(){
                 }
                 break;
 
-                case "/messages/destroy":
+                case "/ideas/destroy":
                     feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.destroy_count);
                 if (feedback.user_email != user_email) {
