@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<% if mobile_device? %>
+<% if not mobile_device? %>
 <div id="sidebar">
   <%= yield :sidebar %>
 </div>

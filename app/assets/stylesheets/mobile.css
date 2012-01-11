@@ -12,6 +12,10 @@
   padding-top: 20px;
 }
 
+#container {
+min-width: 400px;
+}
+
 #main {
   width: 100%;
 }
