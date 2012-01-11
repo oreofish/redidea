@@ -202,9 +202,10 @@ $(document).ready( function() {
     ideasController.init();
 
     var __backtoptxt = "回到顶部";
-    var __backtopele = $('<div class="backToTop"></div>').appendTo($("body"))
+    var __backtopele = $('<div class="backToTop"></div>').appendTo($("html body"))
     .text(__backtoptxt).attr("title", __backtoptxt).click(function() {
-        $("html,body").animate({ scrollTop: 0 }, 500);
+        window.scroll(0, 0);
+        //$("html, body").animate({ scrollTop: 0 }, 500);
     }),
     __backtopfuc = function() {
         var st = $(document).scrollTop(),

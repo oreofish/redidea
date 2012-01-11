@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
 
   def client_info
-    return if params[:controller] == 'devise/sessions'
+    return if current_user.nil? or (params[:controller] == 'devise/sessions')
     browser = request.env['HTTP_USER_AGENT']
     from = request.env['HTTP_REFERER']
     $my_logger.info("user = #{current_user.email}, time = #{Time.now}, from = #{from}, user_agent = #{browser}\n")

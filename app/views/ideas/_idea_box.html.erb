@@ -12,7 +12,10 @@
 <div class="inner">
   <ul id="myideas" class="list">
     <!-- unlied ideas -->
-    <li><%= "还有#{@ideas.count}个待评点子。" if @scope != 'mine' and not @ideas.empty? %></li>
+    <% if @scope != 'mine' and not @ideas.empty? %>
+      <li><%= "还有#{@ideas.count}个待评点子。"  %></li>
+    <% end %>
+
     <% @ideas.each do |idea| %>
       <%= render :partial => "my_ideas", :locals => { :idea => idea } %>
     <% end %>

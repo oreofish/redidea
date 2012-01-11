@@ -18,6 +18,7 @@ group :development do
   gem 'annotate'
   gem 'faker'
   gem 'web-app-theme'
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
 end
 
 group :test do
