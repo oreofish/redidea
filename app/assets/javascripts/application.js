@@ -9,7 +9,11 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
-    var client = new Faye.Client('http://'+location.host+':9292/faye');
+    var server = location.host.replace(/:\d*/, '');
+    if (/localhost/.test(server)) {
+        server = '127.0.0.1'
+    }
+    var client = new Faye.Client('http://'+server+':9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
     client.subscribe("/ideas/*",function(data){
