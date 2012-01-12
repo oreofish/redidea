@@ -41,6 +41,13 @@ $(function(){
                         var link = "<a href='/ideas' class='notify'>更新了"
                         + this.update_count + "个点子，点击查看</a>";
                         $('div.update-notice').html(link);
+                        var str="id"+feedback.user_id;
+                        $('.block .content .inner .left .user_icon span').each(function(idx, el) {
+                            if ($(el).hasClass(str)){
+								var cont = $(el).find('b').first();
+                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)+1));
+                            }
+                        })
                     } else {
                         flashController.doMessage("<b>有"+this.update_count+"条新点子</b>" );
                     }
@@ -56,6 +63,13 @@ $(function(){
                         var link = "<a href='/ideas' class='notify'>删除了"
                         + this.destroy_count + "个点子，点击刷新</a>";
                         $('div.update-notice').html(link);
+                        var str="id"+feedback.user_id;
+                        $('.block .content .inner .left .user_icon span').each(function(idx, el) {
+                            if ($(el).hasClass(str)){
+								var cont = $(el).find('b').first();
+                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)-1));
+                            }
+                        })
                     } else {
                         flashController.doMessage("<b>有"+this.destroy_count+"条点子被删除</b>" );
                     }

@@ -31,9 +31,8 @@
 				<div class ="user_icon">
 					<span class="id<%= idea.user_id %>">
 						<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
-						num_of_ideas:<%= num_of_ideas %>
-						<br/>
-						abc
+						<b>已发点子数：<%= num_of_ideas %></b>
+						<b></b>
 					</span>
       	</div>
 			</div>
