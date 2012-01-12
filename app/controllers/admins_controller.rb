@@ -24,6 +24,12 @@ class AdminsController < ApplicationController
     
     def invite
       emails = params[:invite].split("\n")
+      if emails.count == 1 and emails[0] == 'all'
+        users = User.find(:all)
+        render :text => users.count
+      end
+      return
+      
       emails.each do |email|
         email.strip!
         user = User.find_by_email(email)
