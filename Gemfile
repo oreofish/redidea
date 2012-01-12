@@ -12,6 +12,7 @@ gem 'mysql2'
 gem 'cancan'
 gem 'faye'
 gem 'roadie' # send HTML mail
+gem 'acts_as_commentable'
 
 group :development do
   gem 'rspec-rails'

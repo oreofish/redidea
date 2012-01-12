@@ -11,6 +11,8 @@
 #
 
 class Idea < ActiveRecord::Base
+  acts_as_commentable
+  
   validates :content, :presence     => true,
                       :length       => { :maximum => 400 }
   validates :title,   :presence     => true,
