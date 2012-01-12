@@ -156,7 +156,23 @@ var tabsManager = {
                 return false;
             }
         });
+
+        //that.bindLikingButtons();
     },
+
+    bindLikingButtons: function() {
+        var that = this;
+        $('#myideas a.small-button').each( function(idx, el) {
+            $(el).bind( {
+                'ajax:success': function() {
+                    // need to reinit to rebind event handlers
+                    console.log('liking after: rebind commentsManager');
+                    commentsManager.bindHandlers();
+                    that.bindLikingButtons();
+                }
+            });
+        });
+    }, 
 
     bindHandlers: function() {
         var that = this;
@@ -169,14 +185,18 @@ var tabsManager = {
                     var scope_pat = new RegExp("scope=(.*)", 'g');
                     var ret = scope_pat.exec( $this.attr('href') );
                     that.switchTab( ret[1] );
-
                     console.log(that.previousTab + "," + that.activeTab + ":focus");
+                },
+                'ajax:success': function() {
+                    console.log('ajax.success');
                     // need to reinit to rebind event handlers
                     if (that.activeTab == 'mine') {
                         ideasController.initialized = false;
                         ideasController.init();
                     } else if (that.activeTab == 'liked') {
+                        console.log('rebind commentsManager');
                         commentsManager.bindHandlers();
+                        //that.bindLikingButtons();
                     }
                 }
             })
