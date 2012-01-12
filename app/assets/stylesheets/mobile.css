@@ -1,21 +1,96 @@
 #header .wrapper {
-  width: 400px;
-  margin:0 auto;
-  color: #eeeeee;
-  font-size: 14px;
+    width: 100%;
+    margin:0 auto;
+    color: #eeeeee;
+    font-size: 14px;
+}
+
+#header h1 {
+    font-size: 20px;
+    font-style: normal;
+    text-transform: normal;
+    letter-spacing: -1px;
+    line-height: 1.2em;
+    color: white;
+    font-family: "Museo700", helvetica, arial, sans-serif;
+}
+
+#user-navigation {
+    padding: 4px 6px;
+    float: right;
+    color: #EEE;
+    font-size: 14px;
 }
 
 #wrapper {
-  padding: 0 20px;
-  width: 400px;
-  margin:0 auto;
-  padding-top: 20px;
+    padding: 0 0px;
+    width: 100%;
+    margin:0 auto;
+    padding-top: 5px;
 }
 
 #container {
-min-width: 400px;
+    width: 100%;
+    min-width: 300px;
+    max-width: 340px;
 }
 
 #main {
-  width: 100%;
+    width: 100%;
+}
+
+#main .block .content {
+    margin: 2px;
+    padding: 0 2px 2px;
+}
+
+#main .block .content .inner img {
+    padding: 0 3px 3px;
+}
+
+#main .block .content .inner {
+    padding: 10px 5px 5px;
+}
+
+.secondary-navigation ul li a {
+    display: block;
+    padding: 5px 5px;
+}
+
+ul.list li .item {
+    margin-left: 20px;
+}
+
+ul.list li {
+    border-bottom-color: #DDD;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    clear: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+a.small-button {
+    display: inline-block;
+    margin: 0 2px 2px 0;
+    padding: 0px 4px;
+    background-color: #57A;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    text-indent: 0;
 }
