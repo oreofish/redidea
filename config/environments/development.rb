@@ -41,4 +41,5 @@ Redidea::Application.configure do
     authentication: 'plain'
   }
 
+  config.gem 'acts_as_commentable'
 end

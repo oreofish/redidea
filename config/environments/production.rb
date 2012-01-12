@@ -57,4 +57,6 @@ Redidea::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.gem 'acts_as_commentable'
 end

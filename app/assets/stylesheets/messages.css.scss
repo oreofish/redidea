@@ -1,0 +1,33 @@
+//#chat {
+//	position:relative;
+//        height:100px;
+//        overflow:auto;
+//	padding:5px;
+//}
+.message_box {
+	display:none;
+	position: fixed;
+	right: 10%;
+	bottom: 5%;
+	z-index: 1001;
+	height: 389px;
+	border: 1px solid #AFAFAF;
+	background: yellow;
+	width: 316px;
+	height: 365px;
+	float:left;
+}
+.message_list {
+	height: 222px;
+	padding: 0 4px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+}
+
+#friend .button {
+	position: fixed;
+	bottom: 1%;
+	right: 20%;
+	background: red;
+}

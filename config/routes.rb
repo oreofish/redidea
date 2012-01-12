@@ -5,6 +5,7 @@ Redidea::Application.routes.draw do
     match "/users/sign_up" => redirect("/users/sign_in")
   end
 
+  resources :comments
   root :to => "ideas#index"
   resources :ideas
   match '/admin', :to => 'admins#admin'
