@@ -11,9 +11,7 @@
     </div>
   <% end %>
 
-  <button class='right button' type='submit'>
-    发布
-  </button>
   <%= f.text_field :comment %>
   <%= f.hidden_field :commentable_id %>
+  <%= f.submit "评论" %>
 <% end %>

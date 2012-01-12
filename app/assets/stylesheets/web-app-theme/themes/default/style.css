@@ -422,6 +422,7 @@ hr {
   margin-bottom: 15px;
 }
 
+
 ul.list li {
   border-bottom-color: #dddddd;
   border-bottom-width: 1px;
@@ -439,6 +440,12 @@ ul.list li .item .avatar {
   border-width: 1px;
   border-style: solid;
   padding: 2px;
+}
+
+ul.comment li {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  list-style-type: none;
 }
 
 #box {
