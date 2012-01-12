@@ -2,7 +2,7 @@
 
 
 <% if @scope == 'mine' %>
-  <%= render 'form' %>
+  <%= render 'ideas/form' %>
 <% else %>
   <div class="update-notice">
     <%= "没有新鲜点子啦。" if @ideas.empty? %>
@@ -17,7 +17,7 @@
     <% end %>
 
     <% @ideas.each do |idea| %>
-      <%= render :partial => "my_ideas", :locals => { :idea => idea } %>
+      <%= render :partial => "ideas/my_ideas", :locals => { :idea => idea } %>
     <% end %>
 
     <!-- liked ideas -->

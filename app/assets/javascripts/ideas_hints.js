@@ -156,23 +156,7 @@ var tabsManager = {
                 return false;
             }
         });
-
-        //that.bindLikingButtons();
     },
-
-    bindLikingButtons: function() {
-        var that = this;
-        $('#myideas a.small-button').each( function(idx, el) {
-            $(el).bind( {
-                'ajax:success': function() {
-                    // need to reinit to rebind event handlers
-                    console.log('liking after: rebind commentsManager');
-                    commentsManager.bindHandlers();
-                    that.bindLikingButtons();
-                }
-            });
-        });
-    }, 
 
     bindHandlers: function() {
         var that = this;
@@ -196,7 +180,6 @@ var tabsManager = {
                     } else if (that.activeTab == 'liked') {
                         console.log('rebind commentsManager');
                         commentsManager.bindHandlers();
-                        //that.bindLikingButtons();
                     }
                 }
             })
