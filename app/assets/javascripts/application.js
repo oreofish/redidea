@@ -9,7 +9,7 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
-    var client = new Faye.Client('http://127.0.0.1:9292/faye');
+    var client = new Faye.Client('http://'+location.host+':9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
     client.subscribe("/ideas/*",function(data){
@@ -33,7 +33,7 @@ $(function(){
             var feedback, msg;
             switch( message['channel'] ) {
                 case "/ideas/new":
-                    feedback = eval("(" + message['data'] + ")");
+                feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.update_count);
                 if (feedback.user_email != user_email) {
                     this.update_count += 1
@@ -55,7 +55,7 @@ $(function(){
                 break;
 
                 case "/ideas/destroy":
-                    feedback = eval("(" + message['data'] + ")");
+                feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.destroy_count);
                 if (feedback.user_email != user_email) {
                     this.destroy_count += 1
@@ -77,7 +77,7 @@ $(function(){
                 break;
 
                 default:
-                    if (message['channel'].slice(0,7) == "/users/") {
+                if (message['channel'].slice(0,7) == "/users/") {
                     console.log('incoming', message['data']);
                     msg = eval("(" + message['data'] + ")");
                     if (msg.type == 'notify') {
@@ -85,10 +85,9 @@ $(function(){
                     }else if (msg.type == 'message'){
                         $('#chat').append(msg.content);
                     }
-                }else{
-                    callback(message);
                 }
             }
+            callback(message);
         },
         outgoing: function(message, callback) {
             if (message['channel'] == "/messages/new") {
