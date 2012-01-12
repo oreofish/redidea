@@ -6,3 +6,4 @@ Redidea::Application.initialize!
 
 #Record user info
 $my_logger = Logger.new("log/userinfo.log")
+

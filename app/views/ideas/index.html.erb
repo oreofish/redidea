@@ -25,9 +25,11 @@
   </div>
 </div>
 
+<% if not mobile_device? %>
 <div id="sidebar">
   <%= yield :sidebar %>
 </div>
+<% end %>
 
 <div class="backToTop" title="回到顶部" style="display: none;"></div>
 

@@ -9,7 +9,11 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
-    var client = new Faye.Client('http://127.0.0.1:9292/faye');
+    var server = location.host.replace(/:\d*/, '');
+    if (/localhost/.test(server)) {
+        server = '127.0.0.1'
+    }
+    var client = new Faye.Client('http://'+server+':9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
     client.subscribe("/ideas/*",function(data){
@@ -33,7 +37,7 @@ $(function(){
             var feedback, msg;
             switch( message['channel'] ) {
                 case "/ideas/new":
-                    feedback = eval("(" + message['data'] + ")");
+                feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.update_count);
                 if (feedback.user_email != user_email) {
                     this.update_count += 1
@@ -41,6 +45,13 @@ $(function(){
                         var link = "<a href='/ideas' class='notify'>更新了"
                         + this.update_count + "个点子，点击查看</a>";
                         $('div.update-notice').html(link);
+                        var str="id"+feedback.user_id;
+                        $('.block .content .inner .left .user_icon span').each(function(idx, el) {
+                            if ($(el).hasClass(str)){
+								var cont = $(el).find('b').first();
+                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)+1));
+                            }
+                        })
                     } else {
                         flashController.doMessage("<b>有"+this.update_count+"条新点子</b>" );
                     }
@@ -48,7 +59,7 @@ $(function(){
                 break;
 
                 case "/ideas/destroy":
-                    feedback = eval("(" + message['data'] + ")");
+                feedback = eval("(" + message['data'] + ")");
                 console.log('incoming', user_email + this.destroy_count);
                 if (feedback.user_email != user_email) {
                     this.destroy_count += 1
@@ -56,6 +67,13 @@ $(function(){
                         var link = "<a href='/ideas' class='notify'>删除了"
                         + this.destroy_count + "个点子，点击刷新</a>";
                         $('div.update-notice').html(link);
+                        var str="id"+feedback.user_id;
+                        $('.block .content .inner .left .user_icon span').each(function(idx, el) {
+                            if ($(el).hasClass(str)){
+								var cont = $(el).find('b').first();
+                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)-1));
+                            }
+                        })
                     } else {
                         flashController.doMessage("<b>有"+this.destroy_count+"条点子被删除</b>" );
                     }
@@ -63,7 +81,7 @@ $(function(){
                 break;
 
                 default:
-                    if (message['channel'].slice(0,7) == "/users/") {
+                if (message['channel'].slice(0,7) == "/users/") {
                     console.log('incoming', message['data']);
                     msg = eval("(" + message['data'] + ")");
                     if (msg.type == 'notify') {
@@ -71,10 +89,9 @@ $(function(){
                     }else if (msg.type == 'message'){
                         $('#chat').append(msg.content);
                     }
-                }else{
-                    callback(message);
                 }
             }
+            callback(message);
         },
         outgoing: function(message, callback) {
             if (message['channel'] == "/messages/new") {
