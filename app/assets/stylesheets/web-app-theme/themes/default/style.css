@@ -65,8 +65,8 @@ hr {
 }
 
 #main {
-  width: 77%;
-  float: left;
+  width: 79%;
+  float: right;
 }
 #main .block {
   padding-top: 0px;
@@ -232,7 +232,7 @@ hr {
 
 #sidebar {
   width: 20%;
-  float: right;
+  float: left;
 }
 #sidebar .block {
   padding-top: 2px;
@@ -427,10 +427,10 @@ ul.list li {
   border-bottom-color: #dddddd;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-left-radius: 9px;
-  border-bottom-right-radius: 9px;
-  border-top-left-radius: 9px;
-  border-top-right-radius: 9px;
+//  border-bottom-left-radius: 9px;
+//  border-bottom-right-radius: 9px;
+//  border-top-left-radius: 9px;
+//  border-top-right-radius: 9px;
   clear: left;
   padding-top: 20px;
   padding-bottom: 20px;
