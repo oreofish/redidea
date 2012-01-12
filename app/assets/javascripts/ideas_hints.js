@@ -215,6 +215,15 @@ var flashController = {
     }
 };
 
+var chat = {
+    messageBox: function() {
+        var __box = $('.message_box');
+        var __button = $('.button').click(function() {
+           __box.toggle();
+        });
+    }
+}
+
 $(document).ready( function() {
     console.log("ready");
     tabsManager.init();
@@ -222,6 +231,11 @@ $(document).ready( function() {
     ideasController.init();
     if (tabsManager.activeTab == 'liked') {
         commentsManager.bindHandlers();
+    }
+
+    var url = window.location.pathname;
+    if (url == "/messages/new") {
+        chat.messageBox();
     }
 
     var __backtoptxt = "回到顶部";
