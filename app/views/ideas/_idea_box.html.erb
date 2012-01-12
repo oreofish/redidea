@@ -31,7 +31,7 @@
 				<div class ="user_icon">
 					<span class="id<%= idea.user_id %>">
 						<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
-						<b>已发点子数：<%= num_of_ideas %></b>
+						<b>已发点子数:<%= num_of_ideas %></b>
 						<b></b>
 					</span>
       	</div>
@@ -43,8 +43,8 @@
           <% my_like = current_user.likes.find_by_idea_id(idea.id) %>
           <% score = my_like.score %>
           <% scores = ['不喜欢','没感觉','还不错','牛'] %>
-          这个点子<%= scores[score] %>
-          <br />
+          <i class='vline'>我觉得<%= scores[score] %></i>
+          <i class='vline'>|</i>
           <%= link_to "评论(#{idea.comments.count})", comments_path(:idea_id => idea.id), { :remote => true, :class => "comment_link" } %>
         </div>
         <div class='small'><%= time_ago_in_words(idea.created_at) %>前</div>

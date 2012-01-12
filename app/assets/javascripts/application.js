@@ -49,7 +49,9 @@ $(function(){
                         $('.block .content .inner .left .user_icon span').each(function(idx, el) {
                             if ($(el).hasClass(str)){
 								var cont = $(el).find('b').first();
-                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)+1));
+                                var num=cont.text().match(/\d+/);
+                                num=Number(num)+1;
+                                cont.text(cont.text().replace(/(\d+)/,num));
                             }
                         })
                     } else {
@@ -71,7 +73,9 @@ $(function(){
                         $('.block .content .inner .left .user_icon span').each(function(idx, el) {
                             if ($(el).hasClass(str)){
 								var cont = $(el).find('b').first();
-                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)-1));
+                                var num=cont.text().match(/\d+/);
+                                num=Number(num)-1;
+                                cont.text(cont.text().replace(/(\d+)/,num));
                             }
                         })
                     } else {
