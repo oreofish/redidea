@@ -195,11 +195,25 @@ var flashController = {
     }
 };
 
+var chat = {
+    messageBox: function() {
+        var __box = $('.message_box');
+        var __button = $('.button').click(function() {
+           __box.toggle();
+        });
+    }
+}
+
 $(document).ready( function() {
     console.log("ready");
     tabsManager.init();
     tabsManager.bindHandlers();
     ideasController.init();
+
+    var url = window.location.pathname;
+    if (url == "/messages/new") {
+        chat.messageBox();
+    }
 
     var __backtoptxt = "回到顶部";
     var __backtopele = $('<div class="backToTop"></div>').appendTo($("html body"))
