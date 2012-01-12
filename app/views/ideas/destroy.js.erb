@@ -10,7 +10,7 @@
     <%# find which idea gets deleted, lcoate it's index%> 
   var deleted_idx = null;
   $('#myideas li').each( function(idx, el) {
-    if ($(el).find('b').html() == "<%= j @idea.title %>" ) {
+    if ($(el).find('.item b.title').html() == "<%= j @idea.title %>" ) {
       deleted_idx = idx;
     }
   });
