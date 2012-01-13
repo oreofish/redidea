@@ -3,8 +3,9 @@
 
   var $item = $('#myideas .item').has('div.id<%= @idea.id %>');
   var $link = $item.find('a.comment_link');
-  var $box =  $item.find('div.comments');
-
-  $box.html( "<%= j render 'comment_box' %>" );
   $link.text( $link.text().replace(/\d+/, <%= @comments.length %>) );
+
+  var $box =  $item.find('div.comments');
+  $box.html( "<%= j render 'comment_box' %>" );
+  $box.find('#comment_comment').focus();
 }());

@@ -29,6 +29,24 @@
     </div>
 
   </div>
+
+<div class="message_box" >
+  <div class="message_list">
+    <dl id="chat">
+      <%= render @messages %>
+    </dl>
+  </div>
+  <div class="input">
+    <%= render 'messages/form' %>
+  </div>
+</div>
+
+<div id="friend">
+<button class='button' type='submit'>
+  <%= image_tag "web-app-theme/icons/tick.png"%>聊天
+</button>
+</div>
+
 <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

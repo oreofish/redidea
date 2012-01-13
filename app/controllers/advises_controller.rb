@@ -3,6 +3,8 @@ class AdvisesController < ApplicationController
   # GET /advises.json
   def index
     @advise = Advise.new
+    @messages = Message.all
+    @message = Message.new
 
     respond_to do |format|
     @advises = Advise.order("created_at DESC")

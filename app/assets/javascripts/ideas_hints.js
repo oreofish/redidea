@@ -236,10 +236,10 @@ $(document).ready( function() {
         commentsManager.bindHandlers();
     }
 
-    var url = window.location.pathname;
-    if (url == "/messages/new") {
+    //var url = window.location.pathname;
+    //if (url == "/messages/new") {
         chat.messageBox();
-    }
+    //}
 
     var __backtoptxt = "回到顶部";
     var __backtopele = $('<div class="backToTop"></div>').appendTo($("html body"))
