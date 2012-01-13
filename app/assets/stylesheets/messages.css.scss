@@ -6,28 +6,29 @@
 //}
 .message_box {
 	display:none;
-	position: fixed;
-	right: 10%;
-	bottom: 5%;
-	z-index: 1001;
-	height: 389px;
-	border: 1px solid #AFAFAF;
-	background: yellow;
-	width: 316px;
-	height: 365px;
-	float:left;
-}
-.message_list {
-	height: 222px;
-	padding: 0 4px;
-	overflow-x: hidden;
-	overflow-y: auto;
-	position: relative;
+	background: white;
+	width: 270px;
+	height: 360px;
 }
 
-#friend .message_button {
-	position: fixed;
-	bottom: 1%;
-	right: 20%;
-	background: red;
+.message_list {
+	top:5px;
+	left:10px;
+	height: 200px;
+	width: 255px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: absolute;
+}
+
+.message_input {
+	position: absolute;
+	text-align: center;
+	top:215px;
+	left:6px;
+}
+
+.chat_room .message_button {
+	position: absolute;
+	width:80px;
 }
