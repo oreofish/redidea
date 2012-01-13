@@ -17,15 +17,13 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-
     @idea = Idea.find(params[:comment][:commentable_id])
     @comment = @idea.comments.create(:comment => params[:comment][:comment])
     @comment.user = current_user
- 
-    @comments = @idea.comments
 
     respond_to do |format|
       if @comment.save
+        @comments = @idea.comments
         @comment = Comment.new(:commentable_id => @idea.id)
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
@@ -33,6 +31,7 @@ class CommentsController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.js { redirect_to ideas_path+"?scope=liked" }
       end
     end
   end
