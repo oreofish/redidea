@@ -7,14 +7,12 @@ class LikesController < ApplicationController
     @like = current_user.like!(params[:idea_id], params[:score])
     @idea = Idea.new
 
-    @scope = params[:scope] || 'liked'
+    @scope = 'liked'
     @scopes = [:liked, :mine, :upload, :rule]
 
-    if @scope == "liked" 
-      @liked_ideas = current_user.liking
-      @ideas = Idea.all - @liked_ideas - current_user.ideas
-      @liked_ideas.reverse!
-    end
+    @liked_ideas = current_user.liking
+    @ideas = Idea.all - @liked_ideas - current_user.ideas
+    @liked_ideas.reverse!
 
     respond_to do |format|
       if @like and @like.save
