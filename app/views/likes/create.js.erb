@@ -1,0 +1,7 @@
+<%# encoding: utf-8 %>
+
+(function() {
+  $('#main .block .content').html( " <%= j render 'ideas/idea_box' %> " );
+  console.log('rebind commentsManager');
+  commentsManager.bindHandlers();
+})();
