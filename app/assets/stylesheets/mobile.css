@@ -1,3 +1,7 @@
+#header {
+    height: 70px;
+}
+
 #header .wrapper {
     width: 100%;
     margin:0 auto;
@@ -20,6 +24,10 @@
     float: right;
     color: #EEE;
     font-size: 14px;
+}
+
+#user-navigation ul li {
+padding: 2px 2px;
 }
 
 #wrapper {
