@@ -1,9 +1,18 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require jquery-ui
+ *= require ideas
+ *= require messages
+ *= require web_app_theme
+ *= require_self
+*/
 #header {
     height: 70px;
 }
 
 #header .wrapper {
-    width: 100%;
     margin:0 auto;
     color: #eeeeee;
     font-size: 14px;
@@ -21,7 +30,6 @@
 
 #user-navigation {
     padding: 4px 6px;
-    float: right;
     color: #EEE;
     font-size: 14px;
 }
@@ -32,19 +40,11 @@ padding: 2px 2px;
 
 #wrapper {
     padding: 0 0px;
-    width: 100%;
     margin:0 auto;
     padding-top: 5px;
 }
 
 #container {
-    width: 100%;
-    min-width: 300px;
-    max-width: 340px;
-}
-
-#main {
-    width: 100%;
 }
 
 #main .block .content {
@@ -58,6 +58,11 @@ padding: 2px 2px;
 
 #main .block .content .inner {
     padding: 10px 5px 5px;
+}
+
+#main-navigation {
+    padding-top: 2px;
+    width: auto;
 }
 
 .secondary-navigation ul li a {

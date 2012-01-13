@@ -3,9 +3,11 @@
 <html>
 <head>
   <title>Red iDea</title>
-  <%= stylesheet_link_tag 'web_app_theme' %>
-  <%= stylesheet_link_tag    "application" %>
-  <% if mobile_device? %><%= stylesheet_link_tag 'mobile' %><% end %>
+  <% if mobile_device? %>
+    <%= stylesheet_link_tag 'application-mobile' %>
+  <% else %>
+    <%= stylesheet_link_tag 'application-desktop' %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <link rel="shortcut icon" href="/images/idea.ico">

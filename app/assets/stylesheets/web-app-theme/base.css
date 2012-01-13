@@ -72,12 +72,7 @@ body {
   font-family: sans-serif;  
 }
 
-#container {
-  min-width: 960px;
-}
-
 #header .wrapper {
-  width: 900px;
   margin:0 auto;
   color: #eeeeee;
   font-size: 14px;
@@ -96,11 +91,6 @@ body {
 
 #header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
   text-decoration: none;
-}
-
-#main {  
-  width: 70%;
-  float: left;    
 }
 
 .actions-bar {
@@ -162,13 +152,6 @@ body {
 
 #sidebar .block .sidebar-block, #sidebar .notice {
   padding:10px;
-}
-
-#wrapper {
-  padding: 0 20px;
-  width: 900px;
-  margin:0 auto;
-  padding-top: 20px;
 }
 
 #main .block {
