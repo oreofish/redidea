@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(:version => 20120112054423) do
   create_table "ideas", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
-    t.text     "content"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -181,7 +181,13 @@ table.myplan tr td.plan {
 
 // comments
 #myideas .item div.comments {
-    border: 2px solid green;
+    padding: 10px;
+    border: 1px solid grey;
     display: none;
 }
 
+i.vline {
+    margin: 0 5px;
+    color: #ccc;
+    font-style: normal;
+}

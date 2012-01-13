@@ -11,13 +11,13 @@
 $(function(){
     var server = location.host.replace(/:\d*/, '');
     if (/localhost/.test(server)) {
-        server = '127.0.0.1'
+        server = '127.0.0.1';
     }
     var client = new Faye.Client('http://'+server+':9292/faye');
     var user_email = $("#user-navigation .wat-cf li").eq(0).html();
 
     client.subscribe("/ideas/*",function(data){
-        eval(data);
+        //eval(data);
     });
 
     client.subscribe("/messages/*",function(data){
@@ -49,7 +49,9 @@ $(function(){
                         $('.block .content .inner .left .user_icon span').each(function(idx, el) {
                             if ($(el).hasClass(str)){
 								var cont = $(el).find('b').first();
-                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)+1));
+                                var num=cont.text().match(/\d+/);
+                                num=Number(num)+1;
+                                cont.text(cont.text().replace(/(\d+)/,num));
                             }
                         })
                     } else {
@@ -71,7 +73,9 @@ $(function(){
                         $('.block .content .inner .left .user_icon span').each(function(idx, el) {
                             if ($(el).hasClass(str)){
 								var cont = $(el).find('b').first();
-                                cont.text(cont.text().replace(/(\d+)/,('$1'*1)-1));
+                                var num=cont.text().match(/\d+/);
+                                num=Number(num)-1;
+                                cont.text(cont.text().replace(/(\d+)/,num));
                             }
                         })
                     } else {

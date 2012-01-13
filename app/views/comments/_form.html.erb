@@ -11,9 +11,7 @@
     </div>
   <% end %>
 
-  <button class='right button' type='submit'>
-    发布
-  </button>
-  <%= f.text_field :comment %>
+  <%= f.text_field :comment, :style => "margin-top: 0px; margin-left: 0px; margin-bottom: 3px; margin-right: 0px; padding-top: 4px; padding-left: 4px; padding-bottom: 0px; padding-right: 4px; border-top-color: rgb(198, 198, 198); border-top-style: solid; border-top-width: 1px; border-left-color: rgb(198, 198, 198); border-left-style: solid; border-left-width: 1px; border-bottom-color: rgb(198, 198, 198); border-bottom-style: solid; border-bottom-width: 1px; border-right-color: rgb(198, 198, 198); border-right-style: solid; border-right-width: 1px; font-size: 12px; font-family: Tahoma, 宋体; word-wrap: break-word; line-height: 18px; outline-style: none; outline-width: initial; outline-color: initial; overflow-x: hidden; overflow-y: hidden; height: 22px; width: 80%" %>
   <%= f.hidden_field :commentable_id %>
+  <%= f.submit "评论", :style => "height: 24px; width: auto; margin-left: 10px; margin-top: 0px; padding-left: 4px; padding-right: 4px;" %>
 <% end %>
