@@ -5,15 +5,16 @@
  *= require jquery-ui
  *= require ideas
  *= require messages
- *= require web_app_theme
+ *= require_tree ./web-app-theme
  *= require_self
 */
-#header .wrapper {
-    width: 900px;
+
+@mixin right() {
+  float: right;
 }
 
-#container {
-  min-width: 960px;
+#header .wrapper {
+    width: 900px;
 }
 
 #main {

@@ -1,3 +1,4 @@
+/* start of scss */
 * {margin:0;padding:0}
 .clear { clear: both; height: 0; }
 
@@ -22,7 +23,6 @@ h3 { font-size: 18px; margin: 10px 0; font-weight: normal;}
 h4 { font-size: 16px; margin: 10px 0; font-weight: normal;}
 hr {height: 1px; border: 0; }
 p { margin: 15px 0;}
-a img { border: none; }
 
 a:link {
     color: #369;
@@ -31,6 +31,9 @@ a:link {
 
 a {
     color: #0078B6;
+    img {
+        border: none;
+    }
 }
 
 a:hover {
@@ -72,140 +75,138 @@ body {
   font-family: sans-serif;  
 }
 
-#header .wrapper {
-  margin:0 auto;
-  color: #eeeeee;
-  font-size: 14px;
-}
-
 #header {
-  position: relative;
-  padding-top: 1px;  
-}
-
-#header h1 {
-  margin: 0;
-  padding: 10px 0;  
-  font-size: 26px;
-}
-
-#header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
-  text-decoration: none;
+    position: relative;
+    padding-top: 1px;  
+    .wrapper {
+        margin:0 auto;
+        color: #eeeeee;
+        font-size: 14px;
+    }
+    h1 {
+        margin: 0;
+        padding: 10px 0;  
+        font-size: 26px;
+        a:link, a:active, a:hover, a:visited {
+            text-decoration: none;
+        }
+    }
 }
 
 .actions-bar {
-  padding: 10px 1px;
-}
+    padding: 10px 1px;
 
-.actions-bar .actions {
-  float: left;
-}
+    .actions {
+        float: left;
+    }
 
-
-.actions-bar .pagination {
-  float: right;
-  padding: 1px 0;
+    .pagination {
+        float: right;
+        padding: 1px 0;
+    }
 }
 
 #sidebar {
-  width: 25%;
-  float: right;
+    width: 25%;
+    float: right;
+
+    h5 {  
+        padding: 10px 15px;
+        margin: 0;
+        font-size: 14px;
+        color: #eeeeee;
+    }
+
+    .block {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+
+    .block .content {
+        padding: 0 10px;
+        font-size: 14px;
+        color: #ccc;
+    }
+
+    h4 { 
+        padding: 10px 5px;
+        margin: 0;
+        font-size: 15px;
+        color: #ffff88;
+    }
+
+    p1 {
+        color: #fff;
+        font-size:13px;
+        font-weight: "bold";
+    }
+
+
+    ul.navigation li a:link, ul.navigation li a:visited {
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+    }
+
+    .block .sidebar-block,  .notice {
+        padding:10px;
+    }
 }
 
-#sidebar h5 {  
-  padding: 10px 15px;
-  margin: 0;
-  font-size: 14px;
-  color: #eeeeee;
-}
+#main {
+    .block {
+        margin-bottom: 20px;
+        padding-top: 1px;
 
-#sidebar .block {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-}
+        .content {
+            margin: 20px;
+            padding: 0 15px 15px;  
+        }
 
-#sidebar .block .content {
-  padding: 0 10px;
-  font-size: 14px;
-  color: #ccc;
-}
+        .content .inner {
+            padding: 0 15px 15px;  
+        }
 
-#sidebar h4 { 
-  padding: 10px 5px;
-  margin: 0;
-  font-size: 15px;
-  color: #ffff88;
-}
+        .content .right {
+            margin-bottom: 20;
+            float: right;
+        }
+    }
 
-#sidebar p1 {
-  color: #fff;
-  font-size:13px;
-  font-weight: "bold";
-}
-
-
-#sidebar ul.navigation li a:link, #sidebar ul.navigation li a:visited {
-  display: block;
-  padding: 10px 15px;
-  text-decoration: none;
-}
-
-#sidebar .block .sidebar-block, #sidebar .notice {
-  padding:10px;
-}
-
-#main .block {
-  margin-bottom: 20px;
-  padding-top: 1px;
-}
-
-#main .block .content {
-  margin: 20px;
-  padding: 0 15px 15px;  
-}
-
-#main .block .content .inner {
-  padding: 0 15px 15px;  
-}
-
-#main .block .content .right {
-  margin-bottom: 20;
-  float: right;  
+    .main p.first {
+        margin-top: 0;
+    }
 }
 
 #box .right {
-  margin-bottom: 20;
-  float: right;  
-}
-
-#main .main p.first {
-  margin-top: 0;
+    margin-bottom: 20;
+    float: right;
 }
 
 #rule {
 	margin: 0;
-}
 
-#rule h3 {
-  padding: 0 0;
-  font-size: 18px;
-  color: #880;
-}
+    h3 {
+        padding: 0 0;
+        font-size: 18px;
+        color: #880;
+    }
 
-#rule h4 {
-  padding: 0 0;
-  font-size: 15px;
-  color: purple;
-	font-family: "Arial","Sans-serif";
-}
+    h4 {
+        padding: 0 0;
+        font-size: 15px;
+        color: purple;
+	    font-family: "Arial","Sans-serif";
+    }
 
 
-#rule .content p {
-	padding:0 0;
-	text-indent: 5%;
-	color: #000;
-	font-size: 14px;
-	font-family: "Arial","cursive";
+    .content p {
+	    padding:0 0;
+	    text-indent: 5%;
+	    color: #000;
+	    font-size: 14px;
+	    font-family: "Arial","cursive";
+    }
 }
 
 #main-navigation {
@@ -279,35 +280,35 @@ body {
 
 /* tables */
 .table {
-  width: 100%;
-  border-collapse: collapse;  
-  margin-bottom: 15px;
-}
+    width: 100%;
+    border-collapse: collapse;  
+    margin-bottom: 15px;
 
-.table th {
-  padding: 10px;
-  font-weight: bold;
-  text-align: left;
-}
+    th {
+        padding: 10px;
+        font-weight: bold;
+        text-align: left;
+    }
 
-.table th.first {
-  width: 30px;
-}
+    th.first {
+        width: 30px;
+    }
 
-.table th.last {
-  width: 200px;  
-}
+    th.last {
+        width: 200px;  
+    }
 
-.table .checkbox {
-  margin-left: 10px;
-}
+    .checkbox {
+        margin-left: 10px;
+    }
 
-.table td {
-  padding: 10px;
-}
+    td {
+        padding: 10px;
+    }
 
-.table td.last {
-  text-align: right;
+    td.last {
+        text-align: right;
+    }
 }
 
 /* forms */
@@ -317,121 +318,125 @@ input.checkbox {
   padding: 0;
 }
 
-.form .group {
-  margin-bottom: 15px;
-}
+.form {
+    .group {
+        margin-bottom: 15px;
+    }
 
-.form div.left {
-  width: 20%;
-  float: left;
-}
+    div.left {
+        width: 20%;
+        float: left;
+    }
 
-.form div.right {
-  width: 75%;
-  float: right;
-}
+    div.right {
+        width: 75%;
+        float: right;
+    }
 
-.form .columns .column {
-  width: 48%;
-}
+    .columns {
+        .column {
+            width: 48%;
+        }
 
-.form .columns .left {
-  float: left;
-}
+        .left {
+            float: left;
+        }
 
-.form .columns .right {
-  float: right;
-}
+        .right {
+            float: right;
+        }
+    }
 
-.form label.label, .form input.text_field, .form textarea.text_area {
-  font-size: 1.2em;
-  padding: 1px 0;
-  margin: 0;
-}
+    label.label, input.text_field, textarea.text_area {
+        font-size: 1.2em;
+        padding: 1px 0;
+        margin: 0;
+    }
 
-.form label.right {
-  text-align: right;
-}
+    label.right {
+        text-align: right;
+    }
 
-.form input.checkbox, .form input.radio {
-  margin-right: 5px;
-}
+    input.checkbox, input.radio {
+        margin-right: 5px;
+    }
 
-.form label.checkbox, .form label.radio {
-  line-height: 1.5em;
-}
+    label.checkbox,  label.radio {
+        line-height: 1.5em;
+    }
 
-.form label.label {
-  display: block;
-  padding-bottom: 2px;  
-  font-weight: bold;
-}
+    label.label {
+        display: block;
+        padding-bottom: 2px;  
+        font-weight: bold;
+    }
 
-.form div.fieldWithErrors label.label {
-  display: inline;
-}
+    div.fieldWithErrors label.label {
+        display: inline;
+    }
 
-.form .fieldWithErrors .error {
-  color: red;
-}
+    .fieldWithErrors .error {
+        color: red;
+    }
 
-.form input.text_field, .form textarea.text_area {
-  width: 100%;
-  border-width: 1px;
-  border-style: solid;
+    input.text_field, textarea.text_area {
+        width: 100%;
+        border-width: 1px;
+        border-style: solid;
+    }
 }
 
 /* lists */
 
 ul.list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 
-ul.list li {
-  clear: left;
-  padding-bottom: 5px;
-}
+    li {
+        clear: left;
+        padding-bottom: 5px;
 
-ul.list li .left {
-  float: left;  
-}
+        .left {
+            float: left;  
+        }
 
-ul.list li .left .avatar {
-  width: 50px;
-  height: 50px;
-}
+        .left .avatar {
+            width: 50px;
+            height: 50px;
+        }
 
-ul.list li .item {
-  margin-left: 80px;
-}
+        .item {
+            margin-left: 80px;
+        }
 
-ul.list li .item .avatar {
-  float: left;
-  margin: 0 5px 5px 0;
-  width: 30px;
-  height: 30px;
+        .item .avatar {
+            float: left;
+            margin: 0 5px 5px 0;
+            width: 30px;
+            height: 30px;
+        }
+    }
 }
 
 /* box */
 
 #box {
-  width: 500px;
-  margin: 100px auto;  
-}
+    width: 500px;
+    margin: 100px auto;  
 
-#box .block {
-  margin-bottom: 20px;
-}
+    .block {
+        margin-bottom: 20px;
+    }
 
-#box .block h2 {
-  padding: 10px 15px;
-  margin: 0;  
-}
+    .block h2 {
+        padding: 10px 15px;
+        margin: 0;  
+    }
 
-#box .block .content {
-  padding: 10px 20px;
+    .block .content {
+        padding: 10px 20px;
+    }
 }
 
 /*  Inspired by http://particletree.com/features/rediscovering-the-button-element */

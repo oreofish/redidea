@@ -5,37 +5,41 @@
  *= require jquery-ui
  *= require ideas
  *= require messages
- *= require web_app_theme
+ *= require_tree ./web-app-theme
  *= require_self
 */
+
+@mixin right() {
+  float: right;
+}
+
 #header {
     height: 70px;
-}
+    .wrapper {
+        margin:0 auto;
+        color: #eeeeee;
+        font-size: 14px;
+    }
 
-#header .wrapper {
-    margin:0 auto;
-    color: #eeeeee;
-    font-size: 14px;
-}
-
-#header h1 {
-    font-size: 20px;
-    font-style: normal;
-    text-transform: normal;
-    letter-spacing: -1px;
-    line-height: 1.2em;
-    color: white;
-    font-family: "Museo700", helvetica, arial, sans-serif;
+    h1 {
+        font-size: 20px;
+        font-style: normal;
+        text-transform: normal;
+        letter-spacing: -1px;
+        line-height: 1.2em;
+        color: white;
+        font-family: "Museo700", helvetica, arial, sans-serif;
+    }
 }
 
 #user-navigation {
     padding: 4px 6px;
     color: #EEE;
     font-size: 14px;
-}
 
-#user-navigation ul li {
-padding: 2px 2px;
+    ul li {
+        padding: 2px 2px;
+    }
 }
 
 #wrapper {
@@ -44,20 +48,16 @@ padding: 2px 2px;
     padding-top: 5px;
 }
 
-#container {
-}
-
 #main .block .content {
     margin: 2px;
     padding: 0 2px 2px;
-}
 
-#main .block .content .inner img {
-    padding: 0 3px 3px;
-}
-
-#main .block .content .inner {
-    padding: 10px 5px 5px;
+    .inner {
+        padding: 10px 5px 5px;
+        img {
+            padding: 0 3px 3px;
+        }
+    }
 }
 
 #main-navigation {
@@ -70,10 +70,6 @@ padding: 2px 2px;
     padding: 5px 5px;
 }
 
-ul.list li .item {
-    margin-left: 20px;
-}
-
 ul.list li {
     border-bottom-color: #DDD;
     border-bottom-width: 1px;
@@ -81,6 +77,9 @@ ul.list li {
     clear: left;
     padding-top: 10px;
     padding-bottom: 10px;
+    .item {
+        margin-left: 20px;
+    }
 }
 
 p {
