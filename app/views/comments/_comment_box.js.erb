@@ -3,6 +3,9 @@
 <ul class='comment'>
   <% @comments.each do |comment| %>
     <li>
+			<div class='left'>
+      	<%= image_tag("/images/icons/#{comment.user_id % 67}.png") %>
+			</div>
       <%= comment.comment %>
     </li>
   <% end %>
