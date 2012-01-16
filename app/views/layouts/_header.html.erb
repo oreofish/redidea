@@ -9,7 +9,7 @@
     <% end -%>
   </div>
 
-  <h1><a href="/">Red iDea</a></h1>
+  <h1><a href="/">Red iDea</a> <small><small><small>beta<% if mobile_device? %>手机版<% end %></small></small></small></h1>
 
   <div id="user-navigation">
     <ul class="wat-cf">
@@ -30,7 +30,7 @@
   <div id="main-navigation">
     <ul class="wat-cf">
       <li class='active'><%= link_to "红点子大赛", ideas_path+'?scope=liked' %></li>
-      <li><%= link_to "2012年会", '/static/an2012' %></li>
+      <!--<li><%= link_to "2012年会", '/static/an2012' %></li>-->
     </ul>
   </div>
 </div>

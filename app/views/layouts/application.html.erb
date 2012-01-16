@@ -3,9 +3,11 @@
 <html>
 <head>
   <title>Red iDea</title>
-  <%= stylesheet_link_tag 'web_app_theme' %>
-  <%= stylesheet_link_tag    "application" %>
-  <% if mobile_device? %><%= stylesheet_link_tag 'mobile' %><% end %>
+  <% if mobile_device? %>
+    <%= stylesheet_link_tag 'application-mobile' %>
+  <% else %>
+    <%= stylesheet_link_tag 'application-desktop' %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "http://" + local_ip + ":9292/faye.js" %>
   <%= csrf_meta_tags %>
@@ -28,21 +30,25 @@
 
   </div>
 
-<div class="message_box" >
-  <div class="message_list">
-    <dl id="chat">
-      <%= render @messages %>
-    </dl>
+<div class="chat_room" style=" position:fixed; right:40px; bottom:0px;">
+  <div class="message_box" style="position:absolute; right:80px; bottom:0px; display:none;" >
+    <div class="split" style="position:absolute; background:#256FB7; height:5px;width:270px;top:0px;"></div>
+    <div class="split" style="position:absolute; background:#256FB7; height:360px;width:5px;"></div>
+    <div class="split" style="position:absolute; background:#256FB7; height:360px;width:5px;right:0px;"></div>
+    <div class="message_list"style="position:absolute;">
+      <dl id="chat">
+        <%= render @messages %>
+      </dl>
+    </div>
+    <div class="split" style="position:absolute; background:#DFDFDF; height:20px;width:260px;top:205px;left:5px;"></div>
+    <div class="message_input">
+      <%= render 'messages/form' %>
+    </div>
   </div>
-  <div class="input">
-    <%= render 'messages/form' %>
-  </div>
-</div>
 
-<div id="friend">
-<button class='button' type='submit'>
-  <%= image_tag "web-app-theme/icons/tick.png"%>聊天
-</button>
+  <button class='message_button' style="position:absolute; bottom:0px; right:0px;">
+    <%= image_tag "web-app-theme/icons/tick.png"%>聊天
+  </button>
 </div>
 
 <%= debug(params) if Rails.env.development? %>

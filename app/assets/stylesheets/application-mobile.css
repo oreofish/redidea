@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require jquery-ui
+ *= require ideas
+ *= require messages
+ *= require web_app_theme
+ *= require_self
+*/
+#header {
+    height: 70px;
+}
+
+#header .wrapper {
+    margin:0 auto;
+    color: #eeeeee;
+    font-size: 14px;
+}
+
+#header h1 {
+    font-size: 20px;
+    font-style: normal;
+    text-transform: normal;
+    letter-spacing: -1px;
+    line-height: 1.2em;
+    color: white;
+    font-family: "Museo700", helvetica, arial, sans-serif;
+}
+
+#user-navigation {
+    padding: 4px 6px;
+    color: #EEE;
+    font-size: 14px;
+}
+
+#user-navigation ul li {
+padding: 2px 2px;
+}
+
+#wrapper {
+    padding: 0 0px;
+    margin:0 auto;
+    padding-top: 5px;
+}
+
+#container {
+}
+
+#main .block .content {
+    margin: 2px;
+    padding: 0 2px 2px;
+}
+
+#main .block .content .inner img {
+    padding: 0 3px 3px;
+}
+
+#main .block .content .inner {
+    padding: 10px 5px 5px;
+}
+
+#main-navigation {
+    padding-top: 2px;
+    width: auto;
+}
+
+.secondary-navigation ul li a {
+    display: block;
+    padding: 5px 5px;
+}
+
+ul.list li .item {
+    margin-left: 20px;
+}
+
+ul.list li {
+    border-bottom-color: #DDD;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    clear: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+p, ol, ul, td {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+a.small-button {
+    display: inline-block;
+    margin: 0 2px 2px 0;
+    padding: 0px 4px;
+    background-color: #57A;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    text-indent: 0;
+}

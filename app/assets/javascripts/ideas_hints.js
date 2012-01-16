@@ -221,8 +221,11 @@ var flashController = {
 var chat = {
     messageBox: function() {
         var __box = $('.message_box');
-        var __button = $('.button').click(function() {
+        var __button = $('.message_button').click(function() {
            __box.toggle();
+	   var __list = $('.message_list');
+	   var __chat = $('#chat');
+	   __list.scrollTop( __chat.height() );
         });
     }
 }
