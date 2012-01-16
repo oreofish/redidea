@@ -177,6 +177,8 @@ var tabsManager = {
                     if (that.activeTab == 'mine') {
                         ideasController.initialized = false;
                         ideasController.init();
+                        console.log('rebind commentsManager');
+                        commentsManager.bindHandlers();
                     } else if (that.activeTab == 'liked') {
                         console.log('rebind commentsManager');
                         commentsManager.bindHandlers();
@@ -235,7 +237,7 @@ $(document).ready( function() {
     tabsManager.init();
     tabsManager.bindHandlers();
     ideasController.init();
-    if (tabsManager.activeTab == 'liked') {
+    if (tabsManager.activeTab == 'liked' ||tabsManager.activeTab == 'mine') {
         commentsManager.bindHandlers();
     }
 

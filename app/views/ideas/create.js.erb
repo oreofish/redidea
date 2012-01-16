@@ -15,3 +15,8 @@
     flashController.doFailure('<p>创建失败</p>');
 <% end %>
 
+(function() {
+  $('#main .block .content').html( " <%= j render 'ideas/idea_box' %> " );
+  console.log('rebind commentsManager');
+  commentsManager.bindHandlers();
+})();

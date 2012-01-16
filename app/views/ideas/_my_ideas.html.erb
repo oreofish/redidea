@@ -1,7 +1,7 @@
 <%# encoding: utf-8 %>
 <%# insert newly created idea into my list %>
 
-<li>
+<li class='ideaid<%= idea.id %>'>
 <div class="left">
   <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
 	<div class="user_icon">
