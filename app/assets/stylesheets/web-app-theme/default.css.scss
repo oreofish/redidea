@@ -1,3 +1,5 @@
+@import 'include';
+
 /* Activo 2 by David Francisco (activo.dmfranc.com) - tiny version for web-app-theme */
 @font-face {
   font-family: "MuseoSans500";
@@ -51,7 +53,7 @@ hr {
     h1 {
         padding: 5px 5px;
         float: left;
-        font-size: 36px;
+        font-size: $big-font*2;
         font-style: normal;
         text-transform: normal;
         letter-spacing: -1px;
@@ -90,7 +92,7 @@ hr {
             }
 
             .small {
-                font-size: 12px;
+                font-size: $small-font;
             }
 
             .left {
@@ -107,14 +109,12 @@ hr {
 
         h2 {
             margin-left: 15px;
-            font-size: 22px;
             text-transform: normal;
             letter-spacing: -1px;
             line-height: 1.2em;
         }
 
         p {
-            font-size: 14px;
             font-style: normal;
             font-weight: normal;
             text-transform: normal;
@@ -383,7 +383,6 @@ hr {
         cursor: pointer;
         color: #111111;
         font-weight: bold;
-        font-size: 11px;
     }
     input.button:hover {
         border: 1px solid #666666;
@@ -391,7 +390,6 @@ hr {
     .description {
         font-style: italic;
         color: #8c8c8c;
-        font-size: 0.9em;
     }
     .navform a {
         color: #cc0000;
@@ -427,7 +425,6 @@ hr {
         text-align: left;
     }
     .error-list h2 {
-        font-size: 16px;
         text-align: center;
     }
     .error-list ul {
