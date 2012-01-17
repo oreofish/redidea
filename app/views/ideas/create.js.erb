@@ -11,12 +11,8 @@
   $('#myideas > li:first').effect('highlight', {}, 3000);
   $('#new_idea')[0].reset();
   flashController.doSuccess('<p>创建成功</p>');
+  commentsManager.bindHandlers();
 <% else %>
     flashController.doFailure('<p>创建失败</p>');
 <% end %>
 
-(function() {
-  $('#main .block .content').html( " <%= j render 'ideas/idea_box' %> " );
-  console.log('rebind commentsManager');
-  commentsManager.bindHandlers();
-})();

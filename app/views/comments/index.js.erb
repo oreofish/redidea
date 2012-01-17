@@ -1,7 +1,5 @@
 (function() {
-  // $('#myideas .comments').filter('.id<%= @idea.id %>').html( "<%= j render 'comment_box' %>" );
-
-  var $item = $('#myideas .item').has('div.id<%= @idea.id %>');
+  var $item = $('#myideas li.ideaid<%= @idea.id %> .item');
   var $link = $item.find('a.comment_link');
   $link.text( $link.text().replace(/\d+/, <%= @comments.length %>) );
 

@@ -125,6 +125,8 @@ var commentsManager = {
         $items.each( function(idx, el) {
             var $link = $(el).find('a.comment_link');
 
+            //TODO: make it more efficient
+            $link.unbind('click');
             $link.bind( {
                 'click': function(ev) {
                     var $this = $(this);
