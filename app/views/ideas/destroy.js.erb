@@ -7,20 +7,9 @@
 <% end %>
 
 <% if @idea.valid? %>
-    <%# find which idea gets deleted, lcoate it's index%> 
-  var deleted_idx = null;
-  $('#myideas li').each( function(idx, el) {
-    if ($(el).find('.item b.title').html() == "<%= j @idea.title %>" ) {
-      deleted_idx = idx;
-    }
-  });
-
-  <%#alert( deleted_idx);%>
-  if (deleted_idx >= 0) {
-    $('#myideas li').eq(deleted_idx).fadeOut(1000, function() {
+    $('#myideas').find('.ideaid<%= @idea.id%> ').fadeOut(1000,function(){
       $(this).remove();
     } );
-  }
 
   flashController.doSuccess('<p>删除成功</p>');
 <% end %>

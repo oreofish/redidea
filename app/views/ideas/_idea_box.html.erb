@@ -25,7 +25,7 @@
     <li>已评价点子：</li>
 
     <% @liked_ideas.each do |idea| %>
-    <li>
+    <li class='ideaid<%= idea.id%>'>
       <div class="left">
         <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
 				<div class ="user_icon">
