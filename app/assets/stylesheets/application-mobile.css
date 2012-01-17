@@ -9,6 +9,8 @@
  *= require_self
 */
 
+@import 'include';
+
 @mixin right() {
   float: right;
 }
@@ -18,11 +20,10 @@
     .wrapper {
         margin:0 auto;
         color: #eeeeee;
-        font-size: 14px;
     }
 
     h1 {
-        font-size: 20px;
+        font-size: $big-font;
         font-style: normal;
         text-transform: normal;
         letter-spacing: -1px;
@@ -32,10 +33,13 @@
     }
 }
 
+#box {
+    width: 400px;
+}
+
 #user-navigation {
     padding: 4px 6px;
     color: #EEE;
-    font-size: 14px;
 
     ul li {
         padding: 2px 2px;
@@ -88,7 +92,7 @@ p {
 
 p, ol, ul, td {
     font-family: verdana, arial, helvetica, sans-serif;
-    font-size: 12px;
+    font-size: $small-font;
     line-height: 15px;
 }
 
@@ -103,6 +107,6 @@ a.small-button {
     border-radius: 2px;
     color: white;
     text-decoration: none;
-    font-size: 12px;
+    font-size: $small-font;
     text-indent: 0;
 }

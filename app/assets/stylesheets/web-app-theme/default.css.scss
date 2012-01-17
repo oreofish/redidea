@@ -42,12 +42,11 @@ hr {
 }
 
 #header {
-    height: 50px;
-    background-color: #800;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-    box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
-    -moz-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
-    -webkit-box-shadow: inset 0 15px 10px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.3);
+    background: #800;
+    background: -moz-linear-gradient(bottom,#800,#400);
+    background: -webkit-linear-gradient(bottom,#800,#400);
+    border-bottom: 1px solid whiteSmoke;
+    box-shadow: 0 0 8px rgba(0,0,0,.7);
     font-family: "Museo700", helvetica, arial, sans-serif;
     
     h1 {
@@ -145,7 +144,6 @@ hr {
 }
 
 #main-navigation {
-  padding-top: 15px;
   width: auto;
   ul {
       li {
@@ -366,6 +364,7 @@ hr {
 .form label.label {
     font-weight: normal;
     color: #666666;
+
     input.text_field, .form textarea.text_area {
         width: 100%;
         border: 1px solid #dddddd;
@@ -457,7 +456,6 @@ ul.comment li {
 }
 
 #box {
-    width: 400px;
     .block {
         background: white;
         text-shadow: 0 1px 0 white;

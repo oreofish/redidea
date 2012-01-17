@@ -15,6 +15,7 @@
 
 #header .wrapper {
     width: 900px;
+    height: 54px;
 }
 
 #main {
@@ -30,9 +31,16 @@
 }
 
 #user-navigation {
-  padding: 12px 15px;
+  padding: 15px 20px;
   float: right;
   color: #eeeeee;
   font-size: 14px;
 }
 
+#main-navigation {
+  padding-top: 20px;
+}
+
+#box {
+    width: 500px;
+}
