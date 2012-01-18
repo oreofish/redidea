@@ -37,7 +37,7 @@ Redidea::Application.configure do
     port: 25,
     domain: 'redflag-linux.com',
     user_name: 'jianxing',
-    password: 'fdsafdsa',
+    password: ENV["MAIL_PASSWORD"],
     authentication: 'plain'
   }
 
