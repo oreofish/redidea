@@ -1,7 +1,9 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import 'include';
+$small-font: 12px;
+$middle-font: 16px;
+$big-font: 20px;
 
 body {
   background-color: #fff;
