@@ -8,14 +8,13 @@ class UserMailer < ActionMailer::Base
   #
   def notify(user)
     @user = user
-    @new_ideas = Idea.all - @user.liking - @user.ideas
+    like = @user.liking
+    myidea = @user.ideas
     @link = default_url_options[:host]
     if @user.confirmation_token
       @link += "/users/confirmation?confirmation_token=#{@user.confirmation_token}" 
     end
     
-    if @new_ideas.count > 3
-      mail to: @user.email, subject: t(:notify_subject)
-    end
+    mail to: @user.email, subject: t(:notify_subject)
   end
 end
