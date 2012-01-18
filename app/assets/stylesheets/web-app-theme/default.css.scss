@@ -52,8 +52,8 @@ hr {
     h1 {
         padding: 5px 5px;
         float: left;
-        font-size: $big-font*2;
         font-style: normal;
+        font-size: $big-font*2;
         text-transform: normal;
         letter-spacing: -1px;
         line-height: 1.2em;
@@ -80,6 +80,10 @@ hr {
     .content {
         padding-top: 1px;
 
+        .right {
+            margin-bottom: 20;
+            float: right;
+        }
         .inner {
             padding: 25px 15px 15px;
 
@@ -163,6 +167,10 @@ hr {
   }
 }
 
+#user-navigation ul li, #main-navigation ul li, .secondary-navigation ul li {
+  float: left;  
+}
+
 .secondary-navigation {
     background: #e0e0e0 url("/assets/web-app-theme/themes/default/images/boxbar-background.png") top;
     border-bottom-width: 0px;
@@ -208,6 +216,9 @@ hr {
 }
 
 #user-navigation {
+    padding: 15px 20px;
+    color: #eeeeee;
+
     ul { 
         li { 
             float: left;
