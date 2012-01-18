@@ -2,8 +2,16 @@
 
 <ul class='comment'>
   <% @comments.each do |comment| %>
-    <li>
+    <li class='comid<%= comment.id %>'>
+			<div class='left'>
+      	<%= image_tag("/images/icons/#{comment.user_id % 67}.png") %>
+			</div>
       <%= comment.comment %>
+			<div class='right'>
+			<% if(comment.user_id==current_user.id) %>
+				<%= link_to 'x', comment, :confirm => '你确认删除？', :method => :delete, :class => 'small-button', :remote => true %>
+			<%end%>
+			</div>
     </li>
   <% end %>
 </ul>

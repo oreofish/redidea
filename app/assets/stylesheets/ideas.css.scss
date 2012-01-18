@@ -1,23 +1,21 @@
 // Place all the styles related to the Ideas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'include';
 
 body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
   line-height: 18px; }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
   line-height: 18px; }
 
 pre {
   background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
+  padding: 10px; }
 
 a {
   color: #000;
@@ -50,20 +48,17 @@ div {
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
     color: #fff; }
   ul li {
-    font-size: 12px;
     list-style: square; } }
 
 .wrapper .flash {
   position: fixed;
   opacity: 0.7;
   top: 0;
-  font-size: 20px;
   height: 50px;
   width: 40%;
   max-width: 80%;
@@ -80,7 +75,7 @@ form#new_idea.new_idea div.field div.idea_content div.num {
 }
 
 form#new_idea.new_idea div.field div.idea_content div.num span {
-    font-size: 22px;
+    font-size: $big-font;
     /*font-weight: 300;*/
 }
 
@@ -91,7 +86,7 @@ form#new_idea.new_idea div.field div.idea_content div.num span {
 	padding:5px 0; 
 	background-color:#000; 
 	color:#fff; 
-	font-size:12px; 
+	font-size:$small-font; 
 	text-align:center; 
 	position:fixed; 
 	_position:absolute; 
@@ -128,7 +123,6 @@ table.myplan tr td.plan {
 	padding:5px 0; 
 	background-color:#000; 
 	color:#fff; 
-	font-size:12px; 
 	text-align:center; 
 	position:fixed; 
 	_position:absolute; 
@@ -150,7 +144,6 @@ table.myplan tr td.plan {
         padding:5px 0;
         background-color:#000;
         color:#fff;
-        font-size:12px;
         text-align:center;
         position:fixed;
         _position:absolute;
@@ -172,7 +165,6 @@ table.myplan tr td.plan {
 	color:#FFFFFF;
 	margin:5px 0;
 	text-align:left; 
-	font-size:12px; 
 	margin-right:3px; 
 	margin-left:1px; 
 	font-weight:normal;
