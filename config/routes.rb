@@ -1,4 +1,6 @@
 Redidea::Application.routes.draw do
+  resources :activities
+
   resources :advises, :only => [:index, :create, :update]
 
   devise_for :users do
