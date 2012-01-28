@@ -17,15 +17,11 @@
       <%= render 'idea_box' %>
       <% end %>
     </div>
-
-    <% content_for :sidebar, render(:partial => 'sidebar') -%>
-
-    <br />
-
   </div>
 </div>
 
 <% if not mobile_device? %>
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
 <div id="sidebar">
   <%= yield :sidebar %>
 </div>

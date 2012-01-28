@@ -38,6 +38,8 @@
       <div class="split" style="position:absolute; background:#256FB7; height:360px;width:5px;right:0px;"></div>
       <div class="message_list"style="position:absolute;">
         <dl id="chat">
+          <% @messages = Message.all %>
+          <% @message = Message.new %>
           <%= render @messages %>
         </dl>
       </div>

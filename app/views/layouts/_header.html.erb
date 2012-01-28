@@ -14,22 +14,22 @@
   <div id="user-navigation">
     <ul class="wat-cf">
       <% if user_signed_in? %>
-      <li><%= current_user.email.split('@')[0] %></li>
-      <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
-      <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
-				<% if can? :rank, Idea %>
-     			<li><%= link_to "管理", admin_path %></li>	
-				<% end %>
+        <li><%= current_user.email.split('@')[0] %></li>
+        <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
+        <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
+        <% if can? :rank, Idea %>
+          <li><%= link_to "管理", admin_path %></li>	
+        <% end %>
       <% else %>
-      <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
-      <li><%= link_to "登录", new_user_session_path %></li>
+        <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
+        <li><%= link_to "登录", new_user_session_path %></li>
       <% end %>
     </ul>
   </div>
 
   <div id="main-navigation">
     <ul class="wat-cf">
-      <li class='active'><%= link_to "红点子大赛", ideas_path+'?scope=liked' %></li>
+      <li class='active'><%= link_to "活动", activities_path %></li>
       <!--<li><%= link_to "2012年会", '/static/an2012' %></li>-->
     </ul>
   </div>
