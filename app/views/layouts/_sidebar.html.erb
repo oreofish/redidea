@@ -1,4 +1,13 @@
 <%# encoding: utf-8 %>
+<div class="block">
+  <h3>活动</h3>
+  <ul class="navigation">
+    <% @activities.each do |activity| %>
+    <li><%= link_to activity.name, activity %></li>
+    <% end %>
+  </ul>
+</div>
+
 <div class="block notice">
   <div class="content">
    <h5>红点子有奖竞赛</h5>

@@ -1,4 +1,7 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :authorized_user, :only => :destroy
+
   # GET /activities
   # GET /activities.json
   def index
@@ -13,6 +16,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
+    @activities = Activity.all
     @activity = Activity.find(params[:id])
 
     respond_to do |format|
@@ -80,4 +84,10 @@ class ActivitiesController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+    def authorized_user
+      @activity = current_user.activities.find_by_id(params[:id])
+      redirect_to root_path if @activity.nil?
+    end
 end

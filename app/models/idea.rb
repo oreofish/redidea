@@ -21,7 +21,8 @@ class Idea < ActiveRecord::Base
   validates :user_id, :presence => true
 
   belongs_to :user 
-  attr_accessible :title, :created_at, :content
+  belongs_to :activity
+  attr_accessible :title, :created_at, :content, :activity_id
 
   has_many :likes, :dependent => :destroy
   has_many :liked_by, :through => :likes, :source => :user

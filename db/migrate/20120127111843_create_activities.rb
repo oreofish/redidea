@@ -4,7 +4,6 @@ class CreateActivities < ActiveRecord::Migration
       t.integer :user_id
       t.string :name
       t.string :describe
-      t.integer :owner_id
 
       t.timestamps
     end

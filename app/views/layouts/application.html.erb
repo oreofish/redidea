@@ -18,8 +18,21 @@
   <div id="container">
     <%= render 'layouts/header' %>
     <div id="wrapper" class="wat-cf">
+      <div id="main">
+        <%= yield %>
+      </div>
 
-      <%= yield %>
+      <% if not mobile_device? %>
+      <div id="sidebar">
+        <%= render 'layouts/sidebar' %>
+      </div>
+      <% end %>
+
+      <div class="backToTop" title="回到顶部" style="display: none;"></div>
+
+      <div class="advise" >
+        <%= link_to "意见反馈", advises_path %>
+      </div>
     </div>
 
     <div id="footer">
