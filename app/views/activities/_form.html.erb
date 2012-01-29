@@ -1,10 +1,11 @@
-<%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
+<%# encoding: utf-8 %>
+<%= form_for(@idea, :remote => true) do |f| %>
+  <% if @idea.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
 
       <ul>
-      <% @activity.errors.full_messages.each do |msg| %>
+      <% @idea.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,22 +13,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :style => "width: 95%;" %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <div class="idea_content">
+      <div style="display: none;" node-type="num" class="num">
+        请文明发言，还可以输入<span>400</span>字
+      </div>
+      <div class="title"><%= f.label :content %></div>
+      <%= f.text_area :content, :style => "width: 95%;", :rows => 6 %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :describe %><br />
-    <%= f.text_field :describe %>
-  </div>
-  <div class="field">
-    <%= f.label :owner_id %><br />
-    <%= f.number_field :owner_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <button class='button' type='submit'>
+    <%= image_tag "web-app-theme/icons/tick.png"%>发布
+  </button>
+  <p></p>
+  <p></p>
 <% end %>
+

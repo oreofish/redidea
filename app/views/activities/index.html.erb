@@ -1,29 +1,30 @@
-<h1>Listing activities</h1>
+<%# encoding: utf-8 %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Name</th>
-    <th>Describe</th>
-    <th>Owner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @activities.each do |activity| %>
-  <tr>
-    <td><%= activity.user_id %></td>
-    <td><%= activity.name %></td>
-    <td><%= activity.describe %></td>
-    <td><%= activity.owner_id %></td>
-    <td><%= link_to 'Show', activity %></td>
-    <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-    <td><%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
+<div class="block">
+<div class="content">
+  <h2 class='title'>所有活动</h2>
+  <div class='inner'>
+    <ul class='list'>
+      <% @activities.each do |activity| %>
+      <li>
+        <div class='left'>
+          <%= link_to activity.name, activity %>
+        </div>
+      </li>
+      <div class='item'>
+        <%= activity.describe %>
+        <% if current_user == activity.user %>
+          <%= link_to 'Edit', edit_activity_path(activity) %>
+          <%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %>
+        <% else %>
+          <%= activity.user.email %>
+        <% end %>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
 <br />
 
 <%= link_to 'New Activity', new_activity_path %>

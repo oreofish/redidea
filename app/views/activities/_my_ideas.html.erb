@@ -1,0 +1,42 @@
+<%# encoding: utf-8 %>
+<%# insert newly created idea into my list %>
+
+<li class='ideaid<%= idea.id %>'>
+<div class="left">
+  <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
+	<div class="user_icon">
+	<%if @scope!='mine' %>
+		<span class="id<%= idea.user_id %>">
+			<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
+			<b>已发点子数:<%= num_of_ideas %></b>
+			<b></b>
+		</span>
+	<%end%>
+	</div>
+</div>
+<div class='item'>
+  <b class="title"><%= idea.title %></b>
+  <p><%= idea.content %></p>
+  <div class='right small'>
+    <% if @scope == 'mine' %>
+      <% scores = [0,0,0,0] %>
+      <% idea.likes.each{ |like| scores[like.score] += 1 } %>
+      目前评价： 得分(<%= "#{scores[3]*2 + scores[2] - scores[0]}" %>)，关注(<%= "#{scores[3] + scores[2] + scores[0]}" %>)
+    <%= link_to '删除点子', idea, :confirm => '无论评分高还是评分低，其实都是很有价值的点子。除非写错了，否则不需要删除。你确认删除？', :method => :delete, :class => 'small-button', :remote => true %>
+    <%= link_to "评论(#{idea.comments.count})", comments_path(:idea_id => idea.id), { :remote => true, :class => "comment_link" } %>
+  <% else %>
+    <%= link_to '牛', likes_path(:idea_id => idea.id, :score => 3), :class => 'small-button', :remote => true %>
+    <%= link_to '还不错', likes_path(:idea_id => idea.id, :score => 2), :class => 'small-button', :remote => true %>
+    <%= link_to '没感觉', likes_path(:idea_id => idea.id, :score => 1), :class => 'small-button', :remote => true %>
+    <%= link_to '不喜欢', likes_path(:idea_id => idea.id, :score => 0), :class => 'small-button', :remote => true %>
+  <% end %>
+</div>
+<div class='small'>
+  <%= time_ago_in_words(idea.created_at) %>前
+</div>
+<% if @scope=='mine' %>
+<div class="id<%= idea.id %> comments"> 
+</div>
+<%end%>
+      </div>
+      </li>
