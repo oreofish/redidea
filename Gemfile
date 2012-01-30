@@ -13,6 +13,9 @@ gem 'cancan'
 gem 'faye'
 gem 'roadie' # send HTML mail
 gem 'acts_as_commentable'
+gem "ckeditor", "3.7.0.rc2"
+gem "carrierwave"
+gem "mini_magick"
 
 group :development do
   gem 'rspec-rails'

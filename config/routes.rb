@@ -1,4 +1,6 @@
 Redidea::Application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+
   resources :activities
 
   resources :advises, :only => [:index, :create, :update]
