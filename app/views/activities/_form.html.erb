@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
     <%= f.label :describe %><br />
-    <%= f.text_field :describe %>
-  </div>
-  <div class="field">
-    <%= f.label :owner_id %><br />
-    <%= f.number_field :owner_id %>
+    <%= f.cktext_area :describe %>
   </div>
   <div class="actions">
     <%= f.submit %>

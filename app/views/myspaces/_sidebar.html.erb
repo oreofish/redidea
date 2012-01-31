@@ -1,8 +1,9 @@
 <%# encoding: utf-8 %>
 <div class="block">
-  <h3>活动</h3>
+  <h3>我的活动</h3>
   <ul class="navigation">
-    <% @activities.each do |activity| %>
+    <li><%= link_to '活动管理', myspace_manage_path %></li>
+    <% @my_activities.each do |activity| %>
     <li><%= link_to activity.name, activity %></li>
     <% end %>
   </ul>

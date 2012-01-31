@@ -8,14 +8,12 @@
   <% end %>
 </p>
 
-<p>
-  <b>Name:</b>
+<h1>
   <%= @activity.name %>
-</p>
+</h1>
 
 <p>
-  <b>Describe:</b>
-  <%= @activity.describe %>
+  <%= @activity.describe.html_safe %>
 </p>
 
 

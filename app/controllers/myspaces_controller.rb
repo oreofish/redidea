@@ -1,9 +1,19 @@
 class MyspacesController < ApplicationController
   before_filter :authenticate_user!
+
+  def manage
+    @my_activities = Activity.all
+    @activities = Activity.all
+    
+    respond_to do |format|
+      format.html # manage.html.erb
+      format.json { render json: @myspace }
+    end
+  end
   
   def show
     ideas_index
-    @activities = Activity.all
+    @my_activities = Activity.all
     @user = current_user
 
     respond_to do |format|
