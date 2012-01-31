@@ -1,0 +1,34 @@
+<%# encoding: utf-8 %>
+<%= form_for(@idea, :remote => true) do |f| %>
+  <% if @idea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@idea.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+      <ul>
+      <% @idea.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :style => "width: 95%;" %>
+  </div>
+  <div class="field">
+    <div class="idea_content">
+      <div style="display: none;" node-type="num" class="num">
+        请文明发言，还可以输入<span>400</span>字
+      </div>
+      <div class="title"><%= f.label :content %></div>
+      <%= f.text_area :content, :style => "width: 95%;", :rows => 6 %>
+    </div>
+  </div>
+  <button class='button' type='submit'>
+    <%= image_tag "web-app-theme/icons/tick.png"%>发布
+  </button>
+  <p></p>
+  <p></p>
+<% end %>
+

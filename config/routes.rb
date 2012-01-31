@@ -18,6 +18,7 @@ Redidea::Application.routes.draw do
   resources :plans, :only => [:index, :create, :update]
   match '/static/an2012', :to => 'static#an2012'
   resources :messages
+  match '/myspace', :to => 'myspaces#show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

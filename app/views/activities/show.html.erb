@@ -1,19 +1,21 @@
-<%= @activity.name %>
+<p id="notice"><%= notice %></p>
 
-<div class="block" id="block-text">
-  <div class="secondary-navigation">
-    <ul class="wat-cf">
-      <% @scopes.each do |s| %>
-      <li <%= "class='active first'" if s.to_s == @scope %> ><%= link_to t(s), "#{activity_path}?scope=#{s}", :remote => true %></li>
-      <% end %>
-    </ul>
-  </div>
+<p>
+  <% if @activity.user == current_user %>
+    <%= link_to 'Edit', edit_activity_path(@activity) %>
+  <% else %>
+    <%= @activity.user.email %>
+  <% end %>
+</p>
 
-  <div class="content">
-    <% if @scope == 'rule' or @scope == 'upload' %>
-    <%= render @scope %>
-    <% else %>
-    <%= render 'idea_box' %>
-    <% end %>
-  </div>
-</div>
+<p>
+  <b>Name:</b>
+  <%= @activity.name %>
+</p>
+
+<p>
+  <b>Describe:</b>
+  <%= @activity.describe %>
+</p>
+
+

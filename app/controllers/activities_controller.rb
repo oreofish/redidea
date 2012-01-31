@@ -16,9 +16,6 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
-    ideas_index
-    
-    @activities = Activity.all
     @activity = Activity.find(params[:id])
 
     respond_to do |format|
@@ -93,29 +90,4 @@ class ActivitiesController < ApplicationController
       @activity = current_user.activities.find_by_id(params[:id])
       redirect_to root_path if @activity.nil?
     end
-    
-    def ideas_index
-      @idea = Idea.new
-      @ideas = Array.new
-      @liked_ideas = Array.new
-      @plans = current_user.plans
-
-      @scope = params[:scope] || 'liked'
-      @scopes = [:liked, :mine, :upload, :rule]
-
-      if @scope == "mine" 
-        @ideas = current_user.ideas
-        @ideas.reverse!
-      elsif @scope == "liked" 
-        @liked_ideas = current_user.liking
-        @ideas = Idea.all - @liked_ideas - current_user.ideas
-        @liked_ideas.reverse!
-      elsif @scope == "upload"
-        @plan = Plan.find(:first, :conditions => "user_id = #{current_user.id}")
-        if not @plan
-          @plan = Plan.new
-        end 
-      end
-    end
-    
 end

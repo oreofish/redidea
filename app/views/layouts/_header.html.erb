@@ -14,7 +14,7 @@
   <div id="user-navigation">
     <ul class="wat-cf">
       <% if user_signed_in? %>
-        <li><%= current_user.email.split('@')[0] %></li>
+        <li><%= link_to current_user.email.split('@')[0], myspace_path %></li>
         <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
         <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
         <% if can? :rank, Idea %>

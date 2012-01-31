@@ -1,0 +1,17 @@
+<%# encoding: utf-8 %>
+<div class="block">
+  <h3>活动</h3>
+  <ul class="navigation">
+    <% @activities.each do |activity| %>
+    <li><%= link_to activity.name, activity %></li>
+    <% end %>
+  </ul>
+</div>
+
+<!--<div class="block">
+  <h3>Links</h3>
+  <ul class="navigation">
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+  </ul>
+</div>-->

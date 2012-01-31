@@ -23,8 +23,9 @@
       </div>
 
       <% if not mobile_device? %>
+      <% content_for :sidebar, render(:partial => 'sidebar') -%>
       <div id="sidebar">
-        <%= render 'layouts/sidebar' %>
+        <%= yield :sidebar %>
       </div>
       <% end %>
 
