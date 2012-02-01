@@ -11,7 +11,7 @@
 <br />
 </div>
 <div class="inner">
-<ul id='advises'>
+<ul id='advises' style="word-break:break-all;">
 <% @advises.each do |advise| %>
   <%= render :partial => "advise", :locals => { :advise => advise} %>
 <% end %>
