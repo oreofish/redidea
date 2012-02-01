@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="inner">
-  <ul id="myideas" class="list">
+  <ul id="myideas" class="list" style="word-break:break-all;">
     <!-- unlied ideas -->
     <% if @scope != 'mine' and not @ideas.empty? %>
       <li><%= "还有#{@ideas.count}个待评点子。"  %></li>
