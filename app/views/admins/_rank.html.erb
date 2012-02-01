@@ -1,6 +1,9 @@
 <%# encoding: utf-8 %>
 
 <div class="inner">
+  总用户数：<%= @user_info[:total] %><br />
+  激活用户数：<%= @user_info[:confirmed] %><br />
+  活跃用户数：<%= @user_info[:active] %><br />
   <ul class="list">
 		<% ranklist = 0 %>
     <% @ideas.each do |idea| %>

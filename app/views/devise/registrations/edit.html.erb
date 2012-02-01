@@ -7,13 +7,13 @@
     <%= devise_error_messages! %>
 
     <p><%= f.label :current_password %>
-    <%= f.password_field :current_password, :size => 20 %><i>(初始密码abc123)</i></p>
+    <%= f.password_field :current_password %><i>(初始密码abc123)</i></p>
 
     <p><%= f.label '新的密码：' %>
-    <%= f.password_field :password, :size => 20 %><i>(留空则不修改)</i></p>
+    <%= f.password_field :password %></p>
 
     <p><%= f.label '确认密码：' %>
-    <%= f.password_field :password_confirmation, :size => 20 %></p>
+    <%= f.password_field :password_confirmation %></p>
 
 
     <p>

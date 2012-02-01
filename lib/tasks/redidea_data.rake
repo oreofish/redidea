@@ -1,3 +1,4 @@
+# encoding: utf-8
 namespace :db do
   desc "Fill database with sample data"
   task :populate => :environment do
@@ -5,6 +6,7 @@ namespace :db do
     make_users
     make_ideas
     make_likes
+    make_activities
   end
 
 end
@@ -37,7 +39,7 @@ end
 def make_ideas
   User.all.each do |user|
     ('1'..'5').each do |i|
-      content = "ssssssssssssssssssssssssssssssssssssssssssssss"
+      content = "aaa bbb ccc ddd eee"
 	  title = user.email+i
       user.ideas.create!(:content => content, :title => title)
     end
@@ -51,4 +53,11 @@ def make_likes
     user.like!(idea.id, 1) 
   end
   #likers.each { |liker| liker.like!(user) }
+end
+
+def make_activities
+  user = User.first
+  user.activities.create(:name => '最佳商业创意奖', :describe => '红点子大赛')
+  user.activities.create(:name => '最佳商业计划奖', :describe => '红点子大赛计划奖')
+  user.activities.create(:name => 'Todo', :describe => 'My todo list')
 end

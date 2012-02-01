@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -13,13 +13,15 @@ gem 'cancan'
 gem 'faye'
 gem 'roadie' # send HTML mail
 gem 'acts_as_commentable'
+gem "ckeditor", "3.7.0.rc2"
+gem "carrierwave"
+gem "mini_magick"
 
 group :development do
   gem 'rspec-rails'
   gem 'annotate'
   gem 'faker'
   gem 'web-app-theme'
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
 end
 
 group :test do

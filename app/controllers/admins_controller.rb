@@ -3,16 +3,18 @@ class AdminsController < ApplicationController
 	
 	# POST /ranks
 	def admin
-      @messages = Message.all
-      @message = Message.new
-      
       if can? :rank, Idea
+        # admin page
         @scope = params[:scope] || 'rank'
         @scopes= [:rank, :email]
         if @scope == "rank"
           @ideas = Idea.find_by_sql("SELECT ideas.*,SUM(likes.score) AS scores,COUNT(likes.idea_id) AS counts From ideas,likes WHERE likes.idea_id=ideas.id GROUP BY likes.idea_id ORDER BY scores DESC")
         end
 
+        @user_info = { :total => User.count(),
+                       :confirmed => User.find_all_by_sign_in_count(0).count(),
+                       :active => User.find(:all, :conditions => "'sign_in_count' > 5")
+        }
     	respond_to do |format|
           format.html # index.html.erb
           format.js
@@ -26,9 +28,12 @@ class AdminsController < ApplicationController
       emails = params[:invite].split("\n")
       if emails.count == 1 and emails[0] == 'all'
         users = User.find(:all)
+        users.each do |user|
+          UserMailer.notify(user).deliver
+        end
         render :text => users.count
+        return
       end
-      return
       
       emails.each do |email|
         email.strip!

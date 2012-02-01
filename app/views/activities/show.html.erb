@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% if @activity.user == current_user %>
+    <%= link_to 'Edit', edit_activity_path(@activity) %>
+  <% else %>
+    <%= @activity.user.email %>
+  <% end %>
+</p>
+
+<h1>
+  <%= @activity.name %>
+</h1>
+
+<p>
+  <%= @activity.describe.html_safe %>
+</p>
+
+

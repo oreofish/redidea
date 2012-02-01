@@ -1,0 +1,31 @@
+<%# encoding: utf-8 %>
+
+
+<div class="block">
+<div class="content">
+  <h2 class='title'>所有活动</h2>
+  <%= link_to '创建新活动', new_activity_path %>
+  <div class='inner'>
+    <ul class='list'>
+      <% @activities.each do |activity| %>
+      <li>
+        <div class='left'>
+          <%= link_to activity.name, activity %>
+        </div>
+      </li>
+      <div class='item'>
+        <%= activity.describe %>
+        <% if current_user == activity.user %>
+          <%= link_to 'Edit', edit_activity_path(activity) %>
+          <%= link_to 'Destroy', activity, confirm: 'Are you sure?', method: :delete %>
+        <% else %>
+          <%= activity.user.email %>
+        <% end %>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>
+<br />
+

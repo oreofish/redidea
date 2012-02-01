@@ -9,27 +9,27 @@
     <% end -%>
   </div>
 
-  <h1><a href="/">Red iDea</a> <small><small><small>beta<% if mobile_device? %>手机版<% end %></small></small></small></h1>
+  <h1><a href="/">Red iDea</a> <% if mobile_device? %><small><small>手机版</small></small><% end %></h1>
 
   <div id="user-navigation">
     <ul class="wat-cf">
       <% if user_signed_in? %>
-      <li><%= current_user.email %></li>
-      <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
-      <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
-				<% if can? :rank, Idea %>
-     			<li><%= link_to "管理", admin_path %></li>	
-				<% end %>
+        <li><%= link_to current_user.email.split('@')[0], myspace_path %></li>
+        <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
+        <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
+        <% if can? :rank, Idea %>
+          <li><%= link_to "管理", admin_path %></li>	
+        <% end %>
       <% else %>
-      <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
-      <li><%= link_to "登录", new_user_session_path %></li>
+        <!--<li><%= link_to "注册", new_user_registration_path %></li>-->
+        <li><%= link_to "登录", new_user_session_path %></li>
       <% end %>
     </ul>
   </div>
 
   <div id="main-navigation">
     <ul class="wat-cf">
-      <li class='active'><%= link_to "红点子大赛", ideas_path+'?scope=liked' %></li>
+      <li class='active'><%= link_to "活动", activities_path %></li>
       <!--<li><%= link_to "2012年会", '/static/an2012' %></li>-->
     </ul>
   </div>

@@ -14,7 +14,7 @@
   like_created: '评价成功'
   like_create_fail: '评价失败'
   idea_was_unsuccessfully_created: '点子创建失败'
-  notify_subject: '红点子上又有好多新点子了'
+  notify_subject: '红点子网站升级，现在可以在外网访问了'
 
   activerecord:
     models:

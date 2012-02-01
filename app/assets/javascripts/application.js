@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require ckeditor/ckeditor
 //= require_tree .
 $(function(){
     var server = location.host.replace(/:\d*/, '');

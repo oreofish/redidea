@@ -1,0 +1,46 @@
+<%# encoding: utf-8 %>
+<div>
+  <h2>从此处提交你的策划书<a href='/plan_template.doc'>(下载模版)</a></h2>
+  <div>
+    <strong>
+      每个人允许提交多份策划书，但是上传同名的策划书会覆盖已有的。
+    </strong>
+  </div>
+
+  <br>
+
+  <%= form_for(@plan, :remote => true ) do |f| %>
+    <div class="field">
+      <%= f.label "策划书主题:" %>
+      <%= f.text_field :title, :style => "width: 70%;" %>
+    </div>
+    <button class='button' type='submit'>
+      <%= image_tag "web-app-theme/icons/tick.png"%>提交
+    </button>
+    <div class="field">
+      <%= f.label "上传策划书: " %>
+      <%= f.file_field :plan, :style => "width: 70%;" %>
+    </div>
+  <% end %>
+</div>
+
+<br>
+<hr/>
+<br>
+
+<div id="plan_holder">
+  <% if @plans.length > 0 %>
+    <h2>已提交的策划书</h2>
+    <table id="plans" class="myplan">
+      <tbody>
+        <tr>
+          <th class="title">主题</th>
+          <th class="plan">当前策划书</th>
+        </tr>
+
+        <%= render :partial => "ideas/myplan", :collection => @plans, :as => :plan %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+

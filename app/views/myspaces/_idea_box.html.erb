@@ -1,0 +1,58 @@
+<%# encoding: utf-8 %>
+
+
+<% if @scope == 'mine' %>
+  <%= render 'ideas/form' %>
+<% else %>
+  <div class="update-notice">
+    <%= "没有新鲜点子啦。" if @ideas.empty? %>
+  </div>
+<% end %>
+
+<div class="inner">
+  <ul id="myideas" class="list">
+    <!-- unlied ideas -->
+    <% if @scope != 'mine' and not @ideas.empty? %>
+      <li><%= "还有#{@ideas.count}个待评点子。"  %></li>
+    <% end %>
+
+    <% @ideas.each do |idea| %>
+      <%= render :partial => "ideas/my_ideas", :locals => { :idea => idea } %>
+    <% end %>
+
+    <!-- liked ideas -->
+    <% if @scope == 'liked' and not @liked_ideas.empty? %>
+    <li>已评价点子：</li>
+
+    <% @liked_ideas.each do |idea| %>
+    <li class='ideaid<%= idea.id%>'>
+      <div class="left">
+        <%= image_tag("/images/icons/#{idea.user_id % 67}.png") %>
+				<div class ="user_icon">
+					<span class="id<%= idea.user_id %>">
+						<% num_of_ideas = User.find(:first, :conditions => "id = #{idea.user_id}").ideas.length %>
+						<b>已发点子数:<%= num_of_ideas %></b>
+						<b></b>
+					</span>
+      	</div>
+			</div>
+      <div class='item'>
+        <b><%= idea.title %></b>
+        <p><%= (idea.content).html_safe %></p>
+        <div class='right small'>
+          <% my_like = current_user.likes.find_by_idea_id(idea.id) %>
+          <% score = my_like.score %>
+          <% scores = ['不喜欢','没感觉','还不错','牛'] %>
+          <i class='vline'>我觉得<%= scores[score] %></i>
+          <i class='vline'>|</i>
+          <%= link_to "评论(#{idea.comments.count})", comments_path(:idea_id => idea.id), { :remote => true, :class => "comment_link" } %>
+        </div>
+        <div class='small'><%= time_ago_in_words(idea.created_at) %>前</div>
+	<div class="id<%= idea.id %> comments"> 
+	</div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>
