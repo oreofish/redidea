@@ -9,11 +9,9 @@
  *= require_self
 */
 
-@import 'include';
-
-@mixin right() {
-  float: right;
-}
+$small-font: 12px;
+$middle-font: 16px;
+$big-font: 20px;
 
 #header {
     height: 70px;
@@ -37,12 +35,9 @@
     width: 400px;
 }
 
-#user-navigation {
-    padding: 4px 6px;
-    color: #EEE;
-
-    ul li {
-        padding: 2px 2px;
+.form {
+    div.right {
+        float: left;
     }
 }
 
@@ -62,16 +57,31 @@
             padding: 0 3px 3px;
         }
     }
-}
-
-#main-navigation {
-    padding-top: 2px;
-    width: auto;
+    .right {
+        float: left;
+    }
 }
 
 .secondary-navigation ul li a {
     display: block;
-    padding: 5px 5px;
+    padding: 10px 5px;
+}
+
+#main-navigation {
+  padding-top: 10px;
+}
+
+#user-navigation {
+    padding: 10px 5px;
+    float: left;
+}
+
+#user-navigation ul li, #main-navigation ul li, .secondary-navigation ul li {
+    float: left;  
+}
+
+#user-navigation ul li {
+    padding: 2px 4px;
 }
 
 ul.list li {
@@ -92,7 +102,7 @@ p {
 
 p, ol, ul, td {
     font-family: verdana, arial, helvetica, sans-serif;
-    font-size: $small-font;
+    font-size: $small-font+2px;
     line-height: 15px;
 }
 
@@ -107,6 +117,10 @@ a.small-button {
     border-radius: 2px;
     color: white;
     text-decoration: none;
-    font-size: $small-font;
+    font-size: $small-font+2px;
     text-indent: 0;
+}
+
+button.button[type] {
+  float: left;
 }

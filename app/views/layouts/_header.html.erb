@@ -9,12 +9,12 @@
     <% end -%>
   </div>
 
-  <h1><a href="/">Red iDea</a> <small><small><small>beta<% if mobile_device? %>手机版<% end %></small></small></small></h1>
+  <h1><a href="/">Red iDea</a> <% if mobile_device? %><small><small>手机版</small></small><% end %></h1>
 
   <div id="user-navigation">
     <ul class="wat-cf">
       <% if user_signed_in? %>
-      <li><%= current_user.email %></li>
+      <li><%= current_user.email.split('@')[0] %></li>
       <li><%= link_to "修改密码", edit_user_registration_path, :method => :get %></li>
       <li><%= link_to "退出", destroy_user_session_path, :method => :delete %></li>	
 				<% if can? :rank, Idea %>

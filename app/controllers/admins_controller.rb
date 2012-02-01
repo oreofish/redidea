@@ -26,9 +26,12 @@ class AdminsController < ApplicationController
       emails = params[:invite].split("\n")
       if emails.count == 1 and emails[0] == 'all'
         users = User.find(:all)
+        users.each do |user|
+          UserMailer.notify(user).deliver
+        end
         render :text => users.count
+        return
       end
-      return
       
       emails.each do |email|
         email.strip!
