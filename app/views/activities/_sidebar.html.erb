@@ -1,4 +1,13 @@
 <%# encoding: utf-8 %>
+<div class="block">
+  <h3>活动</h3>
+  <ul class="navigation">
+    <li><%= link_to '全部活动', activities_path %></li>
+    <li><%= link_to '我的活动', activities_my_index_path %></li>
+    <li><%= link_to '创建活动', new_activity_path %></li>
+  </ul>
+</div>
+
 <div class="block notice">
   <div class="content">
    <h5>红点子有奖竞赛</h5>
@@ -10,6 +19,7 @@
       <p>二等奖奖品：<br \><p1>1TB USB3.0移动硬盘</p1></p>
   </div>
 </div>
+
 <!--<div class="block">
   <h3>Links</h3>
   <ul class="navigation">

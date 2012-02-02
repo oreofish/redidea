@@ -4,16 +4,31 @@
   <% if @activity.user == current_user %>
     <%= link_to 'Edit', edit_activity_path(@activity) %>
   <% else %>
-    <%= @activity.user.email %>
+    创建者：<%= @activity.user.email %>
   <% end %>
 </p>
 
-<h1>
-  <%= @activity.name %>
-</h1>
+<h1><%= @activity.name %></h1>
 
 <p>
   <%= @activity.describe.html_safe %>
 </p>
 
+<div class="block" id="block-text">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <% @scopes.each do |s| %>
+      <li <%= "class='active first'" if s.to_s == @scope %> ><%= link_to t(s), "#{ideas_path}?scope=#{s}", :remote => true %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="content">
+    <% if @scope == 'rule' or @scope == 'upload' %>
+    <%= render @scope %>
+    <% else %>
+    <%= render 'idea_box' %>
+    <% end %>
+  </div>
+</div>
 

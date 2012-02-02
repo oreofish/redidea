@@ -1,6 +1,7 @@
 Redidea::Application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
+  match '/activities/my_index', :to => 'activities#my_index'
   resources :activities
 
   resources :advises, :only => [:index, :create, :update]
@@ -10,7 +11,7 @@ Redidea::Application.routes.draw do
   end
 
   resources :comments
-  root :to => "ideas#index"
+  root :to => "myspaces#show"
   resources :ideas
   match '/admin', :to => 'admins#admin'
   match '/invite', :to => 'admins#invite'
@@ -19,7 +20,6 @@ Redidea::Application.routes.draw do
   match '/static/an2012', :to => 'static#an2012'
   resources :messages
   match '/myspace', :to => 'myspaces#show'
-  match '/myspace/manage', :to => 'myspaces#manage'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

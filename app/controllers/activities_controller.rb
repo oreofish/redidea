@@ -1,12 +1,11 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :navigate_bar
   before_filter :authorized_user, :only => :destroy
 
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activities }
@@ -16,6 +15,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/1
   # GET /activities/1.json
   def show
+    ideas_index
     @activity = Activity.find(params[:id])
 
     respond_to do |format|
@@ -25,6 +25,14 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def my_index
+    @activities = Activity.all
+    
+    respond_to do |format|
+      format.html { render :template => "activities/index.html.erb" }
+    end
+  end
+  
   # GET /activities/new
   # GET /activities/new.json
   def new
@@ -86,8 +94,38 @@ class ActivitiesController < ApplicationController
   end
   
   private
-    def authorized_user
-      @activity = current_user.activities.find_by_id(params[:id])
-      redirect_to root_path if @activity.nil?
+  def authorized_user
+    @activity = current_user.activities.find_by_id(params[:id])
+    redirect_to root_path if @activity.nil?
+  end
+  
+  def navigate_bar
+    @my_activities = Activity.all
+    @activities = Activity.all
+  end
+  
+  def ideas_index
+    @idea = Idea.new
+    @ideas = Array.new
+    @liked_ideas = Array.new
+    @plans = current_user.plans
+
+    @scope = params[:scope] || 'liked'
+    @scopes = [:liked, :mine, :upload, :rule]
+
+    if @scope == "mine" 
+      @ideas = current_user.ideas
+      @ideas.reverse!
+    elsif @scope == "liked" 
+      @liked_ideas = current_user.liking
+      @ideas = Idea.all - @liked_ideas - current_user.ideas
+      @liked_ideas.reverse!
+    elsif @scope == "upload"
+      @plan = Plan.find(:first, :conditions => "user_id = #{current_user.id}")
+      if not @plan
+        @plan = Plan.new
+      end 
     end
+  end
+
 end

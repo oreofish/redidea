@@ -16,16 +16,15 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.string   "describe"
-    t.integer  "owner_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text     "describe"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "advises", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -48,8 +47,8 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -60,8 +59,8 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "activity_id", :default => 1
   end
 
@@ -69,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
     t.integer  "user_id"
     t.integer  "idea_id"
     t.integer  "score"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "likes", ["idea_id"], :name => "index_likes_on_idea_id"
@@ -79,16 +78,16 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
 
   create_table "messages", :force => true do |t|
     t.string   "content"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "plans", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
     t.string   "plan"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -105,8 +104,8 @@ ActiveRecord::Schema.define(:version => 20120130140830) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
