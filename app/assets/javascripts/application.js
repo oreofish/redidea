@@ -9,6 +9,10 @@
 //= require jquery-ui
 //= require_tree .
 $(function(){
+    for_faye();
+});
+
+function for_faye(){
     var server = location.host.replace(/:\d*/, '');
     if (/localhost/.test(server)) {
         server = '127.0.0.1';
@@ -107,5 +111,4 @@ $(function(){
     };
 
     client.addExtension(Slot);
-
-});
+};

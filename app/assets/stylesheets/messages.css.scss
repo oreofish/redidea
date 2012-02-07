@@ -19,6 +19,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: absolute;
+	word-break:break-all;
 }
 
 .message_input {
@@ -28,6 +29,11 @@
 	left:6px;
 }
 
+#message_input_button {
+	position: absolute;
+	right:6px;
+	bottom:18px;
+}
 .chat_room .message_button {
 	position: absolute;
 	width:80px;

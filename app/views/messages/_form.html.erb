@@ -1,6 +1,10 @@
 <%= form_for @message, :remote => true  do |f| %>
   <p>
-<%= f.text_area :content, :style => "width:255px;", :rows => 4 %>
+    <%= f.text_area :content, :style => "width:255px;", :rows => 4 %>
   </p>
-  <p><%= f.submit "发送", :style => "width: 90px;"  %></p>
+  <div id="message_input_button">
+    <input type="image" src="http://a.xnimg.cn/n/core/res/webpager/send-button.png">
+  </div>
 <% end %>
+
+

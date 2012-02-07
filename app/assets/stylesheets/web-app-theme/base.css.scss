@@ -165,6 +165,37 @@ body {
             padding: 0 15px 15px;  
         }
 
+        .content .right {
+            margin-bottom: 20;
+            float: right;
+        }
+				.content .inner .left {
+						position: relative;
+				}
+				.content .inner .left span{
+						display: none;
+						margin: 20px;
+						border: 1px solid #ccc;
+						padding: 10px;
+				}
+				.content .inner .left:hover span {
+						opacity: 0.8;
+						display: block;
+						position: absolute;
+						top:30px;
+						left:10px;
+						width:100px;
+						background:#eee;
+						color:#333;
+						padding:5px;
+						text-align:left;
+						-moz-border-radius:    10px;
+						-webkit-border-radius: 10px;
+						border-radius:         10px;
+						-moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+						-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+						box-shadow: 0 0 5px rgba(0,0,0,0.5);
+				}
     }
 
     .main p.first {

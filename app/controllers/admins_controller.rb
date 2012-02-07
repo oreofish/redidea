@@ -3,14 +3,12 @@ class AdminsController < ApplicationController
 	
 	# POST /ranks
 	def admin
-      @messages = Message.all
-      @message = Message.new
-      
       if can? :rank, Idea
         # admin page
         @scope = params[:scope] || 'rank'
         @scopes= [:rank, :email]
         if @scope == "rank"
+          # 根据idea_id将like的score相加，得到按总分排名的idea列表
           @ideas = Idea.find_by_sql("SELECT ideas.*,SUM(likes.score) AS scores,COUNT(likes.idea_id) AS counts From ideas,likes WHERE likes.idea_id=ideas.id GROUP BY likes.idea_id ORDER BY scores DESC")
         end
 
