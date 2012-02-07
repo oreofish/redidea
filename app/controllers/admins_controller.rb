@@ -3,9 +3,6 @@ class AdminsController < ApplicationController
 	
 	# POST /ranks
 	def admin
-      @messages = Message.all
-      @message = Message.new
-      
       if can? :rank, Idea
         @scope = params[:scope] || 'rank'
         @scopes= [:rank, :email]

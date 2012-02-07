@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_filter :prepare_for_mobile
+  before_filter :prepare_message
   after_filter :client_info
   protect_from_forgery
   
@@ -29,9 +29,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :mobile_device?
 
-  def prepare_for_mobile
-    session[:mobile_param] = params[:mobile] if params[:mobile]
-    request.format = :mobile if mobile_device?
+  def prepare_message
+    @messages = Message.all
+    @message = Message.new
   end
 
 end
